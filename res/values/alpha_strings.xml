@@ -67,7 +67,7 @@
     <string name="trust_apps_help">Help</string>
     <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
     <string name="trust_apps_info_protected">Protected apps require authentication to be opened from the launcher</string>
-    
+
     <!-- Suggestions -->
     <string name="suggestion_pref_screen_title">Suggestions</string>
     <string name="suggestion_pref_screen_desc">For All Apps &amp; Home screen suggestions</string>
@@ -110,7 +110,7 @@
 
     <!-- App label -->
     <string name="icon_two_lines_title">Use two lines for app label</string>
-   
+
     <!-- Kill App recents action shortcut -->
     <string name="recent_task_option_kill_app">Kill</string>
     <string name="recents_app_killed">App killed</string>
@@ -402,4 +402,10 @@
     <string name="quick_event_weather_text_summary">Display current weather condition summary</string>
 
     <string name="intent_no_app_clock_found">Unable to find calendar or clock activity</string>
+
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
+
 </resources>

@@ -156,6 +156,7 @@ android_library {
         "libGoogleFeed",
         "SettingsLib",
         "view_capture"
+        "monet",
     ],
     manifest: "AndroidManifest-common.xml",
     sdk_version: "current",

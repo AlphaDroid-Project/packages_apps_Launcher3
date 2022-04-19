@@ -44,7 +44,7 @@
         android:summary="@string/suggestion_pref_screen_desc">
         <intent android:action="android.settings.ACTION_CONTENT_SUGGESTIONS_SETTINGS" />
     </androidx.preference.PreferenceScreen>
-    
+
      <com.android.launcher3.settings.preferences.CustomSeekBarPreference
         android:key="pref_blur_depth"
         android:title="@string/background_blur_title"
@@ -61,5 +61,10 @@
         android:title="@string/dev_options_title"
         android:summary="@string/dev_options_summary"
         android:fragment="com.android.launcher3.settings.DeveloperOptionsFragment"/>
+
+    <com.android.launcher3.settings.preference.RestartPreference
+        android:key="pref_restart"
+        android:title="@string/pref_restart_title"
+        android:summary="@string/pref_restart_summary" />
 
 </androidx.preference.PreferenceScreen>

@@ -15,74 +15,76 @@
  */
 package com.android.launcher3.lineage.trust;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.pm.PackageManager.PackageInfoFlags;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import com.android.launcher3.AppFilter;
+import com.android.internal.util.crdroid.Utils;
 import com.android.launcher3.lineage.trust.db.TrustComponent;
-import com.android.launcher3.lineage.trust.db.TrustDatabaseHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<TrustComponent>> {
     @NonNull
-    private TrustDatabaseHelper mDbHelper;
+    private AppLockHelper mAppLockHelper;
 
     @NonNull
     private PackageManager mPackageManager;
 
     @NonNull
-    private AppFilter mAppFilter;
-
-    @NonNull
     private Callback mCallback;
 
-    LoadTrustComponentsTask(@NonNull TrustDatabaseHelper dbHelper,
+    @NonNull
+    private Context mContext;
+
+    LoadTrustComponentsTask(@NonNull AppLockHelper appLockHelper,
             @NonNull PackageManager packageManager,
-            @NonNull AppFilter appFilter,
-            @NonNull Callback callback) {
-        mDbHelper = dbHelper;
+            @NonNull Callback callback,
+            @NonNull Context context) {
+        mAppLockHelper = appLockHelper;
         mPackageManager = packageManager;
-        mAppFilter = appFilter;
         mCallback = callback;
+        mContext = context;
     }
 
     @Override
     protected List<TrustComponent> doInBackground(Void... voids) {
         List<TrustComponent> list = new ArrayList<>();
 
-        Intent filter = new Intent(Intent.ACTION_MAIN, null);
-        filter.addCategory(Intent.CATEGORY_LAUNCHER);
+        List<PackageInfo> apps = mPackageManager.getInstalledPackages(
+                    PackageInfoFlags.of(Long.valueOf(PackageManager.MATCH_ALL)));
 
-        List<ResolveInfo> apps = mPackageManager.queryIntentActivities(filter,
-                PackageManager.GET_META_DATA);
+        List<String> launchablePackages = Utils.launchablePackages(mContext);
+        List<String> whiteListedPackages = Arrays.asList(mContext.getResources().getStringArray(
+                com.android.internal.R.array.config_appLockAllowedSystemApps));
 
         int numPackages = apps.size();
         for (int i = 0; i < numPackages; i++) {
-            ResolveInfo app = apps.get(i);
-
-            if (!mAppFilter.shouldShowApp(app.activityInfo.getComponentName())) {
-                continue;
-            }
+            PackageInfo app = apps.get(i);
 
             try {
-                String pkgName = app.activityInfo.packageName;
-                String label = mPackageManager.getApplicationLabel(
-                        mPackageManager.getApplicationInfo(pkgName,
-                                PackageManager.GET_META_DATA)).toString();
-                Drawable icon = app.loadIcon(mPackageManager);
-                boolean isHidden = mDbHelper.isPackageHidden(pkgName);
-                boolean isProtected = mDbHelper.isPackageProtected(pkgName);
+                String pkgName = app.packageName;
+                if (!app.applicationInfo.isSystemApp() || launchablePackages.contains(pkgName) ||
+                        whiteListedPackages.contains(pkgName)) {
+                    String label = mPackageManager.getApplicationLabel(
+                            mPackageManager.getApplicationInfo(pkgName,
+                                    PackageManager.GET_META_DATA)).toString();
+                    Drawable icon = app.applicationInfo.loadIcon(mPackageManager);
+                    boolean isHidden = mAppLockHelper.isPackageHidden(pkgName);
+                    boolean isProtected = mAppLockHelper.isPackageProtected(pkgName);
 
-                list.add(new TrustComponent(pkgName, icon, label, isHidden, isProtected));
+                    list.add(new TrustComponent(pkgName, icon, label, isHidden, isProtected));
+                }
 
                 publishProgress(Math.round(i * 100f / numPackages));
             } catch (PackageManager.NameNotFoundException ignored) {

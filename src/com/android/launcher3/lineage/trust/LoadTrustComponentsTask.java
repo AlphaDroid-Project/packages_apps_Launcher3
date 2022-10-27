@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2023 AlphaDroid
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +26,7 @@ import android.os.Build;
 import androidx.annotation.NonNull;
 
 import com.android.launcher3.lineage.trust.db.TrustComponent;
-import com.android.launcher3.lineage.trust.db.TrustDatabaseHelper;
+import com.android.launcher3.lineage.trust.db.HiddenAppsDBHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +34,10 @@ import java.util.List;
 
 public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<TrustComponent>> {
     @NonNull
-    private TrustDatabaseHelper mDbHelper;
+    private HiddenAppsDBHelper mDbHelper;
+
+    @NonNull
+    private AppLockHelper mAppLockHelper;
 
     @NonNull
     private PackageManager mPackageManager;
@@ -41,10 +45,12 @@ public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<Trust
     @NonNull
     private Callback mCallback;
 
-    LoadTrustComponentsTask(@NonNull TrustDatabaseHelper dbHelper,
+    LoadTrustComponentsTask(@NonNull HiddenAppsDBHelper dbHelper,
+            @NonNull AppLockHelper appLockHelper,
             @NonNull PackageManager packageManager,
             @NonNull Callback callback) {
         mDbHelper = dbHelper;
+        mAppLockHelper = appLockHelper;
         mPackageManager = packageManager;
         mCallback = callback;
     }
@@ -69,7 +75,7 @@ public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<Trust
                                 PackageManager.GET_META_DATA)).toString();
                 Drawable icon = app.loadIcon(mPackageManager);
                 boolean isHidden = mDbHelper.isPackageHidden(pkgName);
-                boolean isProtected = mDbHelper.isPackageProtected(pkgName);
+                boolean isProtected = mAppLockHelper.isProtected(pkgName);
 
                 list.add(new TrustComponent(pkgName, icon, label, isHidden, isProtected));
 

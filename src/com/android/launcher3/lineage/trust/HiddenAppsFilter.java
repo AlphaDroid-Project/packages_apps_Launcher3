@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2023 AlphaDroid
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,16 +20,16 @@ import android.content.ComponentName;
 import android.content.Context;
 
 import com.android.launcher3.AppFilter;
-import com.android.launcher3.lineage.trust.db.TrustDatabaseHelper;
+import com.android.launcher3.lineage.trust.db.HiddenAppsDBHelper;
 
 @SuppressWarnings("unused")
 public class HiddenAppsFilter extends AppFilter {
-    private TrustDatabaseHelper mDbHelper;
+    private HiddenAppsDBHelper mDbHelper;
 
     public HiddenAppsFilter(Context context) {
         super(context);
 
-        mDbHelper = TrustDatabaseHelper.getInstance(context);
+        mDbHelper = HiddenAppsDBHelper.getInstance(context);
     }
 
     @Override

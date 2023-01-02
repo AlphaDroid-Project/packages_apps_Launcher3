@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Application name -->
-    <string name="crdroid_app_name" translatable="false">crDroid Home</string>
+    <string name="crdroid_app_name" translatable="false">Alpha Launcher</string>
 
     <!-- Folder titles -->
     <string name="google_folder_title" translatable="false">Google</string>
@@ -70,7 +70,7 @@
     <string name="trust_apps_help">Help</string>
     <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
     <string name="trust_apps_info_protected">Protected apps require authentication to be opened from the launcher</string>
-    
+
     <!-- Suggestions -->
     <string name="suggestion_pref_screen_title">Suggestions</string>
     <string name="suggestion_pref_screen_desc">For All Apps &amp; Home screen suggestions</string>
@@ -101,7 +101,7 @@
 
     <!-- App label - max lines -->
     <string name="icon_max_lines_title">Max lines for app label</string>
-   
+
     <!-- Kill App recents action shortcut -->
     <string name="recent_task_option_kill_app">Kill</string>
     <string name="recents_app_killed">App killed</string>
@@ -109,4 +109,111 @@
     <!-- Taskbar -->
     <string name="pref_allow_phone_taskbar_title">Use taskbar</string>
     <string name="pref_allow_phone_taskbar_summary">For opening and switching apps anywhere</string>
+
+    <!-- QuickSpace -->
+    <string name="show_quickspace_title">At A Glance</string>
+    <string name="show_quickspace_summary">Show at the top of your home screen</string>
+    <string name="quickspace_date_format" translatable="false">EEE, MMM d</string>
+    <string name="quickspace_date_format_minimalistic" translatable="false">EEEE, MMMM d</string>
+
+    <!-- QuickSpace: QuickEvent: Device Intro Event -->
+    <string name="quick_event_rom_intro_welcome">Welcome to AlphaDroid!</string>
+    <string name="quick_event_rom_intro_welcome_ext">AlphaDroid time!</string>
+    <string-array name="welcome_message_variants">
+        <item>Thank you for choosing us</item>
+        <item>Best Rom Ever.</item>
+        <item>Tap here to begin</item>
+        <item>We love you 3000</item>
+    </string-array>
+
+    <!-- QuickSpace: QuickEvent: Greetings -->
+    <string name="quickspace_grt_morning">Good morning.</string>
+    <string name="quickspace_grt_evening">Good evening.</string>
+    <string name="quickspace_grt_afternoon">Good afternoon.</string>
+    <string name="quickspace_grt_night">Good night.</string>
+    <string name="quickspace_grt_general">Good day.</string>
+    <string name="quickspace_ext_one">Today is</string>
+    <string name="quickspace_ext_two">It\'s</string>
+
+    <!-- QuickSpace: QuickEvent: Ambient Play -->
+    <string name="qe_now_playing_unknown_artist">Unknown Artist</string>
+    <string name="qe_now_playing_ext_one">Now playing</string>
+    <string name="qe_now_playing_by">By</string>
+
+    <!-- Quickspace Now Playing -->
+    <string name="quickspace_now_playing_title">Now playing</string>
+    <string name="quickspace_now_playing_summary">Show the song you\'re playing</string>
+
+    <!-- Quickspace alternative view -->
+    <string name="quickspace_alternate_style_title">Extended style</string>
+    <string name="quickspace_alternate_style_summary">Switch to extended style</string>
+
+    <!-- Quickspace PSA - Custom messages for the glance -->
+    <string name="quickspace_psa_title">Random messages</string>
+    <string name="quickspace_psa_summary">Make your companion more lively with random messages</string>
+
+    <string-array name="quickspace_psa_morning">
+        <item>Good morning!</item>
+        <item>Have a nice day!</item>
+        <item>Let\'s get this bread.</item>
+        <item>Check the weather just in case</item>
+        <item>Feeling a bit sleepy yet</item>
+        <item>Let\'s get this done.</item>
+        <item>Don\'t forget the cookies!</item>
+    </string-array>
+    <string-array name="quickspace_psa_noon">
+        <item>What about a small 5 minutes nap?</item>
+        <item>Time for a snack</item>
+        <item>Nice coffe |_|\u003E</item>
+    </string-array>
+    <string-array name="quickspace_psa_early_evening">
+        <item>Homer\'s hungry</item>
+        <item>Homer\'s thirsty</item>
+    </string-array>
+    <string-array name="quickspace_psa_evening">
+        <item>I got nothing ¯\u005C_(ツ)_\u002F¯</item>
+    </string-array>
+    <string-array name="quickspace_psa_midnight">
+        <item>Um... good night?</item>
+        <item>It\'s a bit late now</item>
+        <item>You should fix your sleep schedule</item>
+        <item>Are you more productive at this time?</item>
+        <item>Change the channel, Marge.</item>
+    </string-array>
+    <string-array name="quickspace_psa_random">
+        <item>Ignorance is Bliss</item>
+        <item>Is it time to flash another update already?</item>
+        <item>Make peace, not war</item>
+        <item>Oh hey, what\'s up?</item>
+        <item>Focus on your tasks</item>
+        <item>How many screenshots do you take?</item>
+        <item>Spread love, not havoc</item>
+        <item>We didn\'t start the fire!</item>
+        <item>Time for some good music</item>
+        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
+        <item>You need crDroid Alpha to see this</item>
+        <item>Remember the Lineage of the Unicorn</item>
+        <item>Enjoy Xtended battery life</item>
+        <item>Starting from the ground zero</item>
+        <item>We love you 3000</item>
+        <item>Delicious even without Sushi</item>
+        <item>Do something nice today</item>
+        <item>This is best Pixel Experience, isn\'t it?</item>
+        <item>No illusions, welcome to reality!</item>
+        <item>Thank you for your support</item>
+        <item>No festival for Derps - only perfection!</item>
+        <item>One of the buildbot\'s best picks</item>
+        <item>Sanity for your Paranoia</item>
+        <item>Try Ice Cold desserts</item>
+        <item>What a lovely experience, isn\'t it?</item>
+        <item>Evolution is a myth, right?</item>
+        <item>You are what you flash, don\'t be Potato</item>
+        <item>What\'s on your mind?</item>
+        <item>Expecto Patronum</item>
+        <item>Wubba Lubba Dub Dub</item>
+        <item>Winner Winner ....?</item>
+        <item>rm -rf \/</item>
+        <item>Me fail English? That\'s unpossible.</item>
+    </string-array>
+
 </resources>

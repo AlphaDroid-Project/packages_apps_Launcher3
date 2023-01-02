@@ -114,7 +114,7 @@ public class QuickEventsController {
         mEventTitle = mContext.getResources().getString(R.string.quick_event_rom_intro_welcome);
         mWelcomeStr = mContext.getResources().getStringArray(R.array.welcome_message_variants);
         mEventTitleSub = mWelcomeStr[getLuckyNumber(0,mWelcomeStr.length - 1)];
-        mEventSubIcon = R.drawable.ic_quickspace_crdroid;
+        mEventSubIcon = R.drawable.ic_quickspace_pacman;
 
         mEventTitleSubAction = new OnClickListener() {
             @Override
@@ -155,7 +155,7 @@ public class QuickEventsController {
         if (!mPlayingActive) return;
 
         if (mNowPlayingTitle == null) return;
-        
+
         mEventTitle = mContext.getResources().getString(R.string.quick_event_ambient_now_playing);
         if (mNowPlayingArtist == null ) {
             mEventTitleSub = mNowPlayingTitle;
@@ -230,7 +230,7 @@ public class QuickEventsController {
                 if (getLuckyNumber(13) == 7) {
                     psaLength = mPSARandomStr.length - 1;
                     mEventTitleSub = mPSARandomStr[getLuckyNumber(0, psaLength)];
-                    mEventSubIcon = R.drawable.ic_quickspace_crdroid;
+                    mEventSubIcon = R.drawable.ic_quickspace_pacman;
                     mIsQuickEvent = true;
                 } else {
                     mIsQuickEvent = false;

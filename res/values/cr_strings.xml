@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Application name -->
-    <string name="crdroid_app_name" translatable="false">crDroid Home</string>
+    <string name="crdroid_app_name" translatable="false">Alpha Launcher</string>
 
     <!-- Folder titles -->
     <string name="google_folder_title" translatable="false">Google</string>
@@ -133,7 +133,7 @@
 
     <!-- Row Height -->
     <string name="row_height_title">Row height</string>
-    
+
     <!-- Background blur -->
     <string name="background_blur_title">Background blur depth</string>
     <string name="background_blur_summary">Set blur depth level for recents and app drawer</string>
@@ -145,13 +145,11 @@
     <string name="quickspace_date_format_minimalistic" translatable="false">EEE, MMM d</string>
 
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">Welcome to crDroid!</string>
+    <string name="quick_event_rom_intro_welcome">Welcome to AlphaDroid!</string>
     <string-array name="welcome_message_variants">
         <item>Have a great day</item>
         <item>Thank you for choosing us</item>
-        <item>Loving us? Send us a beer</item>
         <item>Best Rom Ever.</item>
-        <item>Say hi to us on Telegram</item>
         <item>Tap here to begin</item>
         <item>We love you 3000</item>
     </string-array>
@@ -186,6 +184,7 @@
         <item>Feeling a bit sleepy yet</item>
         <item>Have you looked outside yet?</item>
         <item>Let\'s get this done.</item>
+        <item>Don\'t forget the cookies!</item>
     </string-array>
 
     <string-array name="quickspace_psa_evening">
@@ -208,6 +207,7 @@
         <item>It\'s a bit late now</item>
         <item>You should fix your sleep schedule</item>
         <item>Are you more productive at this time?</item>
+        <item>Change the channel, Marge.</item>
     </string-array>
 
     <string-array name="quickspace_psa_random">
@@ -217,12 +217,11 @@
         <item>Oh hey, what\'s up?</item>
         <item>Focus on your tasks</item>
         <item>How many screenshots do you take?</item>
-        <item>Open goodness with crDroid</item>
         <item>Spread love, not havoc</item>
         <item>We didn\'t start the fire!</item>
         <item>Time for some good music</item>
         <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
-        <item>You need crDroid Premium to see this</item>
+        <item>You need AlphaDroid Premium to see this</item>
         <item>Remember the Lineage of the Unicorn</item>
         <item>Enjoy Xtended battery life</item>
         <item>Starting from the ground zero</item>
@@ -245,8 +244,9 @@
         <item>Wubba Lubba Dub Dub</item>
         <item>Winner Winner ....?</item>
         <item>rm -rf \/</item>
+        <item>Me fail English? That\'s unpossible.</item>
     </string-array>
-    
+
     <!-- Suggestions -->
     <string name="suggestion_pref_screen_title">Suggestions</string>
     <string name="suggestion_pref_screen_desc">For All Apps &amp; Home screen suggestions</string>
@@ -286,7 +286,7 @@
     <string name="icon_pack_default_label">Default</string>
     <string name="icon_pack_add">Install more</string>
     <string name="icon_pack_no_market">There\'s no available app store</string>
-   
+
     <!-- Kill App recents action shortcut -->
     <string name="recent_task_option_kill_app">Kill</string>
     <string name="recents_app_killed">App killed</string>

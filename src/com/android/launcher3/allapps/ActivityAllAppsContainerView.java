@@ -251,7 +251,6 @@ public class ActivityAllAppsContainerView<T extends Context & AppLauncher
     @Override
     protected void updateHeaderScroll(int scrolledOffset) {
         super.updateHeaderScroll(scrolledOffset);
-        getSearchView().setBackgroundResource(R.drawable.bg_all_apps_searchbox);
         if (mSearchUiManager.getEditText() == null) {
             return;
         }
@@ -264,13 +263,6 @@ public class ActivityAllAppsContainerView<T extends Context & AppLauncher
             bgVisible = false;
         }
         mSearchUiManager.setBackgroundVisibility(bgVisible, 1 - prog);
-    }
-
-    @Override
-    protected int getHeaderColor(float blendRatio) {
-        return ColorUtils.setAlphaComponent(
-                super.getHeaderColor(blendRatio),
-                (int) (mSearchContainer.getAlpha() * 255));
     }
 
     @Override

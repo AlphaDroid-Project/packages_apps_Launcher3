@@ -17,7 +17,8 @@
     android:id="@id/quickspace_content"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="32dp"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="start|top"
     android:orientation="vertical">
 
     <com.android.launcher3.quickspace.views.DoubleShadowTextView

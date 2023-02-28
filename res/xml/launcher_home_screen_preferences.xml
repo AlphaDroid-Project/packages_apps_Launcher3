@@ -93,6 +93,16 @@
             android:summary="@string/hotseat_bg_summary"
             android:defaultValue="false" />
 
+        <com.android.launcher3.settings.preferences.CustomSeekBarPreference
+            android:key="pref_hotseat_opacity"
+            android:title="@string/background_opacity_title"
+            android:persistent="true"
+            android:max="100"
+            android:min="0"
+            settings:units="%"
+            android:dependency="pref_show_hotseat_bg"
+            android:defaultValue="40" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -147,6 +157,12 @@
             android:title="@string/dock_search_title"
             android:summary="@string/dock_search_summary"
             android:defaultValue="true" />
+
+        <SwitchPreference
+            android:key="pref_dock_music_search"
+            android:title="@string/dock_music_search_title"
+            android:summary="@string/dock_music_search_summary"
+            android:defaultValue="false" />
 
         <SwitchPreference
             android:key="pref_dock_theme"

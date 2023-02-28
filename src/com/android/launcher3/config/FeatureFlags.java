@@ -79,10 +79,10 @@ public final class FeatureFlags {
 
     // TODO: b/206508141: Long pressing on some icons on home screen cause launcher to crash.
     public static final BooleanFlag ENABLE_LOCAL_COLOR_POPUPS = getDebugFlag(
-            "ENABLE_LOCAL_COLOR_POPUPS", false, "Enable local color extraction for popups.");
+            "ENABLE_LOCAL_COLOR_POPUPS", true, "Enable local color extraction for popups.");
 
     public static final BooleanFlag KEYGUARD_ANIMATION = getDebugFlag(
-            "KEYGUARD_ANIMATION", false, "Enable animation for keyguard going away on wallpaper");
+            "KEYGUARD_ANIMATION", true, "Enable animation for keyguard going away on wallpaper");
 
     public static final BooleanFlag ENABLE_QUICKSTEP_LIVE_TILE = getDebugFlag(
             "ENABLE_QUICKSTEP_LIVE_TILE", false, "Enable live tile in Quickstep overview");
@@ -235,7 +235,7 @@ public final class FeatureFlags {
             "Enables displaying the all apps button in the hotseat.");
 
     public static final BooleanFlag ENABLE_ALL_APPS_ONE_SEARCH_IN_TASKBAR = getDebugFlag(
-            "ENABLE_ALL_APPS_ONE_SEARCH_IN_TASKBAR", false,
+            "ENABLE_ALL_APPS_ONE_SEARCH_IN_TASKBAR", true,
             "Enables One Search box in Taskbar All Apps.");
 
     public static final BooleanFlag ENABLE_SPLIT_FROM_WORKSPACE = getDebugFlag(

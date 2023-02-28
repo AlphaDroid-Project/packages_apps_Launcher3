@@ -178,6 +178,7 @@ public final class Utilities {
     public static final String LENS_SHARE_ACTIVITY = "com.google.android.apps.search.lens.LensShareEntryPointActivity";
 
     public static final String KEY_DOCK_SEARCH = "pref_dock_search";
+    public static final String KEY_DOCK_MUSIC_SEARCH = "pref_dock_music_search";
     public static final String KEY_DOCK_THEME = "pref_dock_theme";
     public static final String KEY_SEARCH_RADIUS = "pref_search_radius_size";
     public static final String KEY_SHOW_HOTSEAT_BG = "pref_show_hotseat_bg";
@@ -193,6 +194,7 @@ public final class Utilities {
     public static final String KEY_APP_DRAWER_OPACITY = "pref_app_drawer_opacity";
     public static final String KEY_RECENTS_MEMINFO = "pref_recents_meminfo";
     public static final String KEY_DRAWER_SEARCH = "pref_drawer_search";
+    public static final String KEY_HOTSEAT_OPACITY = "pref_hotseat_opacity";
 
     /**
      * Returns true if theme is dark.
@@ -1070,6 +1072,11 @@ public final class Utilities {
         return prefs.getBoolean(KEY_DOCK_SEARCH, true);
     }
 
+    public static boolean isMusicSearchEnabled(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getBoolean(KEY_DOCK_MUSIC_SEARCH, false);
+    }
+
     public static boolean isThemedIconsEnabled(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_DOCK_THEME, false);
@@ -1144,5 +1151,10 @@ public final class Utilities {
     public static boolean showSearch(Context context) {
         SharedPreferences prefs = getPrefs(context.getApplicationContext());
         return prefs.getBoolean(KEY_DRAWER_SEARCH, true);
+    }
+
+    public static int getHotseatOpacity(Context context) {
+        SharedPreferences prefs = getPrefs(context.getApplicationContext());
+        return prefs.getInt(KEY_HOTSEAT_OPACITY, 40);
     }
 }

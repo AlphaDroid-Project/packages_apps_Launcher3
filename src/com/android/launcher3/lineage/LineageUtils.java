@@ -20,6 +20,8 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
+import com.android.internal.util.crdroid.Utils;
+
 import com.android.launcher3.R;
 
 public class LineageUtils {
@@ -53,7 +55,12 @@ public class LineageUtils {
         return false;
     }
 
+    public static boolean isLaunchablePackage (Context context, String pkgName) {
+        return Utils.launchablePackages(context).contains(pkgName);
+    }
+
     public static boolean isPackageLockable(Context context, String pkgName) {
-        return !isSystemApp(context, pkgName) || isPackageWhitelisted(context, pkgName);
+        return !isSystemApp(context, pkgName) || isLaunchablePackage(context, pkgName)
+                ||  isPackageWhitelisted(context, pkgName);
     }
 }

@@ -39,6 +39,8 @@ import com.android.launcher3.util.DisplayController;
 import com.android.launcher3.util.MultiPropertyFactory.MultiProperty;
 import com.android.launcher3.util.MultiValueAlpha;
 import com.android.launcher3.util.NavigationMode;
+import com.android.launcher3.util.ShakeUtils;
+import com.android.launcher3.util.VibratorWrapper;
 import com.android.quickstep.TaskOverlayFactory.OverlayUICallbacks;
 import com.android.quickstep.util.LayoutUtils;
 
@@ -49,7 +51,7 @@ import java.lang.annotation.RetentionPolicy;
  * View for showing action buttons in Overview
  */
 public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayout
-        implements OnClickListener, Insettable, SharedPreferences.OnSharedPreferenceChangeListener {
+        implements OnClickListener, Insettable, SharedPreferences.OnSharedPreferenceChangeListener, ShakeUtils.OnShakeListener {
 
     private final Rect mInsets = new Rect();
 
@@ -98,9 +100,11 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     private static final String KEY_RECENTS_CLEAR_ALL = "pref_recents_clear_all";
     private static final String KEY_RECENTS_LENS = "pref_recents_lens";
     private static final String KEY_RECENTS_LOCK = "pref_recents_lock";
+    private static final String KEY_RECENTS_SHAKE_CLEAR_ALL = "pref_recents_shake_clear_all";
 
     private MultiValueAlpha mMultiValueAlpha;
     private Button mSplitButton;
+    private ShakeUtils mShakeUtils;
 
     @ActionsHiddenFlags
     private int mHiddenFlags;
@@ -125,6 +129,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     private boolean mClearAll;
     private boolean mLens;
     private boolean mLock;
+    private boolean mShakeClearAll;
 
     public OverviewActionsView(Context context) {
         this(context, null);
@@ -142,6 +147,18 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         mLens = prefs.getBoolean(KEY_RECENTS_LENS, false);
         mLock = prefs.getBoolean(KEY_RECENTS_LOCK, true);
         prefs.registerOnSharedPreferenceChangeListener(this);
+        mShakeUtils = new ShakeUtils(context);
+        mShakeClearAll = prefs.getBoolean(KEY_RECENTS_SHAKE_CLEAR_ALL, true);
+    }
+
+    @Override
+    public void onVisibilityAggregated(boolean isVisible) {
+        super.onVisibilityAggregated(isVisible);
+        if (isVisible) {
+            mShakeUtils.bindShakeListener(this);
+        } else {
+            mShakeUtils.unBindShakeListener(this);
+        }
     }
 
     @Override
@@ -167,7 +184,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         lens.setOnClickListener(this);
         lens.setVisibility(mLens && Utilities.isGSAEnabled(getContext()) ? VISIBLE : GONE);
         findViewById(R.id.lens_space).setVisibility(mLens && Utilities.isGSAEnabled(getContext()) ? VISIBLE : GONE);
-        
+
         View actionLock = findViewById(R.id.action_lock);
         actionLock.setOnClickListener(this);
         actionLock.setVisibility(mLock ? VISIBLE : GONE);
@@ -175,6 +192,14 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
 
         mSplitButton = findViewById(R.id.action_split);
         mSplitButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onShake(double speed) {
+        if (mCallbacks != null && mShakeClearAll) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
+            mCallbacks.onClearAllTasksRequested();
+        }
     }
 
     /**
@@ -193,12 +218,16 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         }
         final int id = view.getId();
         if (id == R.id.action_screenshot) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onScreenshot();
         } else if (id == R.id.action_split) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onSplit();
         } else if (id == R.id.action_clear_all) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onClearAllTasksRequested();
         } else if (id == R.id.action_lens) {
+            VibratorWrapper.INSTANCE.get(getContext()).vibrate(VibratorWrapper.EFFECT_CLICK);
             mCallbacks.onLens();
         }
     }
@@ -226,6 +255,8 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
             mLens = prefs.getBoolean(KEY_RECENTS_LENS, false);
         } else if (key.equals(KEY_RECENTS_LOCK)) {
             mLock = prefs.getBoolean(KEY_RECENTS_LOCK, false);
+        } else if (key.equals(KEY_RECENTS_SHAKE_CLEAR_ALL)) {
+            mShakeClearAll = prefs.getBoolean(KEY_RECENTS_SHAKE_CLEAR_ALL, true);
         }
         updateVisibilities();
     }

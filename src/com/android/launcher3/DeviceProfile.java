@@ -615,7 +615,8 @@ public class DeviceProfile {
                     - hotseatBorderSpace * numShownHotseatIcons;
         } else {
             int columns = inv.hotseatColumnSpan[mTypeIndex];
-            return getIconToIconWidthForColumns(columns);
+            return getIconToIconWidthForColumns(columns)
+                    - hotseatBorderSpace;
         }
     }
 
@@ -1032,13 +1033,6 @@ public class DeviceProfile {
                     allAppsBorderSpacePx.x = 0;
                 }
             }
-
-            int cellContentHeight = allAppsIconSizePx
-                    + Utilities.calculateTextHeight(allAppsIconTextSizePx) + allAppsBorderSpacePx.y;
-            if (allAppsCellHeightPx < cellContentHeight) {
-                // Increase allAppsCellHeight to fit its content.
-                allAppsCellHeightPx = cellContentHeight;
-            }
         } else {
             float invIconSizeDp = inv.allAppsIconSize[mTypeIndex];
             float invIconTextSizeSp = inv.allAppsIconTextSize[mTypeIndex];
@@ -1056,6 +1050,13 @@ public class DeviceProfile {
             int drawerWidth = availableWidthPx - leftRightPadding * 2;
             allAppsCellHeightPx = (int) (drawerWidth / inv.numAllAppsColumns * allAppsCellHeightMultiplier);
             allAppsIconDrawablePaddingPx = 0;
+        }
+
+        int cellContentHeight = allAppsIconSizePx + allAppsBorderSpacePx.y
+                + (allAppsIconText ? Utilities.calculateTextHeight(allAppsIconTextSizePx) : 0);
+        if (allAppsCellHeightPx < cellContentHeight) {
+            // Increase allAppsCellHeight to fit its content.
+            allAppsCellHeightPx = cellContentHeight;
         }
 
         updateAllAppsContainerWidth(res);
@@ -1350,7 +1351,7 @@ public class DeviceProfile {
             // workspace cell vs a hotseat cell.
             float workspaceCellWidth = (float) widthPx / inv.numColumns;
             float hotseatCellWidth = (float) widthPx / numShownHotseatIcons;
-            int hotseatAdjustment = Math.round((workspaceCellWidth - hotseatCellWidth) / 2);
+            int hotseatAdjustment = hotseatBorderSpace / 2;
             hotseatBarPadding.set(
                     hotseatAdjustment + workspacePadding.left + cellLayoutPaddingPx.left
                             + mInsets.left,

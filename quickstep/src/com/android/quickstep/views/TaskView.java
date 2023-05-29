@@ -956,7 +956,20 @@ public class TaskView extends FrameLayout implements Reusable {
                 if (confirmSecondSplitSelectApp()) {
                     return;
                 }
-                showTaskMenu(iconView);
+                RecentsView recentsView = getRecentsView();
+                // TODO: find the reason why this is no-op on landscape
+                if (!recentsView.getLandScape()) {
+                    recentsView.switchToScreenshot(
+                            () -> recentsView.finishRecentsAnimation(true /* toRecents */,
+                                    false /* shouldPip */,
+                                    () -> showTaskMenu(iconView)));
+                    recentsView.onGestureAnimationEnd();
+                    recentsView.onSwipeUpAnimationSuccess();
+		} else {
+	    	    // finishRecentsAnimation causes white snapshots on click, 
+	    	    // finish the animation on AbsSwipeUPHandler instead as WA
+		    showTaskMenu(iconView);
+		}
             });
             iconView.setOnLongClickListener(v -> {
                 requestDisallowInterceptTouchEvent(true);
@@ -1153,6 +1166,12 @@ public class TaskView extends FrameLayout implements Reusable {
     }
 
     private void applyScale() {
+        /* This is now only for grid mode on tablets. Unconditionally calling this breaks
+         * our overview scrolling animation. Block this method, otherwise we have to
+         * introduce a multivalue scale fusion class to handle this. */
+        if (!mActivity.getDeviceProfile().isTablet)
+            return;
+
         float scale = 1;
         scale *= getPersistentScale();
         scale *= mDismissScale;

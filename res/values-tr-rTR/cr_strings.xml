@@ -115,7 +115,7 @@
     <string name="show_quickspace_title">Bir Bakışta</string>
     <string name="show_quickspace_summary">Ana ekranınızın üst kısmında göster</string>
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">CrDroid\'e hoş geldiniz!</string>
+    <string name="quick_event_rom_intro_welcome">Alphadroid\'e hoş geldiniz!</string>
     <string-array name="welcome_message_variants">
         <item>İyi günler</item>
         <item>Bizi seçtiğiniz için teşekkürler</item>
@@ -179,12 +179,12 @@
         <item>Hey, nasıl gidiyor?</item>
         <item>Görevlerinize odaklanın</item>
         <item>Kaç tane ekran görüntüsü alıyorsunuz?</item>
-        <item>crDroid ile iyilik açın</item>
+        <item>Alphadroid ile iyilik açın</item>
         <item>Sevgiyi yay, tahribatı değil</item>
         <item>Yangını biz başlatmadık!</item>
         <item>Biraz iyi müzik zamanı</item>
         <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C BAŞ</item>
-        <item>Bunu görmek için crDroid Premium\'a ihtiyacınız var</item>
+        <item>Bunu görmek için Alphadroid Premium\'a ihtiyacınız var</item>
         <item>Tek boynuzlu Atın soyunu hatırlayın</item>
         <item>Daha uzun pil ömrünün keyfini çıkarın</item>
         <item>Sıfırdan başlayarak</item>

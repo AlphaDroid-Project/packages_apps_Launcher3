@@ -115,7 +115,7 @@
     <string name="show_quickspace_title">Самое главное</string>
     <string name="show_quickspace_summary">Показывать в верхней части экрана</string>
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">Добро пожаловать в crDroid!</string>
+    <string name="quick_event_rom_intro_welcome">Добро пожаловать в Alphadroid!</string>
     <string-array name="welcome_message_variants">
         <item>Хорошего дня</item>
         <item>Спасибо за то, что выбрали нас</item>
@@ -179,12 +179,12 @@
         <item>О, привет, что случилось?</item>
         <item>Сосредоточьтесь на своих задачах</item>
         <item>Сколько скриншотов вы делаете?</item>
-        <item>Открой лучшее с crDroid</item>
+        <item>Открой лучшее с Alphadroid</item>
         <item>Распространяйте любовь, а не хаос</item>
         <item>Не мы разожгли огонь!</item>
         <item>Время для хорошей музыки</item>
         <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C ГЛАВНЫЙ</item>
-        <item>Вам нужна подписка crDroid Premium, чтобы использовать это</item>
+        <item>Вам нужна подписка Alphadroid Premium, чтобы использовать это</item>
         <item>Помните родословную единорога</item>
         <item>Наслаждайтесь долгим сроком службы батареи</item>
         <item>Начинайте с нуля</item>

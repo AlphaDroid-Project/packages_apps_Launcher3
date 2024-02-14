@@ -102,6 +102,9 @@
     <!-- Kill App recents action shortcut -->
     <string name="recent_task_option_kill_app">Beenden</string>
     <string name="recents_app_killed">App beendet</string>
+    <!-- Taskbar -->
+    <string name="pref_allow_phone_taskbar_title">Taskleiste verwenden</string>
+    <string name="pref_allow_phone_taskbar_summary">Zum jederzeitigen Öffnen von und Wechseln zwischen Apps</string>
     <!-- Row Height -->
     <string name="row_height_title">Zeilenhöhe</string>
     <!-- Hotseat searchbar -->
@@ -136,6 +139,9 @@
     <string name="meminfo_text">Frei: %1$s | Gesamt: %2$s</string>
     <string name="recents_meminfo_title">RAM-Info</string>
     <string name="recents_meminfo_zram_title">ZRAM-Info</string>
+    <!-- Background blur -->
+    <string name="background_blur_title">Tiefenschärfegrad des Hintergrunds</string>
+    <string name="background_blur_summary">Tiefenschärfegrad in App-Übersicht und -Verlauf anpassen</string>
     <!-- Recents icons -->
     <string name="recents_screenshot_title">Screenshot</string>
     <string name="recents_clear_all_title">Alle Apps schließen</string>
@@ -162,15 +168,12 @@
     <string name="icon_pack_default_label">Standard</string>
     <string name="icon_pack_add">Weitere installieren</string>
     <string name="icon_pack_no_market">Es ist kein App-Store verfügbar</string>
-    <!-- App drawer scrollbar -->
-    <string name="drawer_scrollbar_title">Bildlaufleiste</string>
-    <string name="drawer_scrollbar_summary">Bildlaufleiste neben der App-Übersicht</string>
     <!-- QuickSpace -->
     <string name="show_quickspace_title">Auf einen Blick</string>
     <string name="show_quickspace_summary">Oben auf dem Startbildschirm anzeigen</string>
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">Willkommen zu crDroid!</string>
-    <string name="quick_event_rom_intro_welcome_ext">crDroid Zeit!</string>
+    <string name="quick_event_rom_intro_welcome">Willkommen zu Alphadroid!</string>
+    <string name="quick_event_rom_intro_welcome_ext">Alphadroid Zeit!</string>
     <string-array name="welcome_message_variants">
         <item>Danke, dass du dich für uns entschieden hast</item>
         <item>Gefällt dir unsere Rom? Schick uns doch ein Bier</item>
@@ -309,27 +312,27 @@
         <item>Wird’s mal wieder Zeit, ein neues Update zu flashen?</item>
         <item>Make peace, not war!</item>
         <item>Hey, alles fit?</item>
-        <item>Willkommen in der wahren Matrix!</item>
+        <item>Konzentrier dich aufs Wichtige.</item>
         <item>Wie viele Screenshots machst du so?</item>
-        <item>crDroid bietet viele nützliche Anpassungsmöglichkeiten.</item>
+        <item>Alphadroid bietet viele nützliche Anpassungsmöglichkeiten.</item>
         <item>Kein Bock auf Havoc.</item>
         <item>We didn’t start the fire!</item>
         <item>Zeit für gute Musik!</item>
         <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
-        <item>crDroid Premium benötigt, um diesen Text freizuschalten.</item>
+        <item>Alphadroid Premium benötigt, um diesen Text freizuschalten.</item>
         <item>Lineage &amp; Unicorn haben bei uns nichts verloren.</item>
         <item>Viel Spaß mit der „Xtended“ Akkulaufzeit</item>
         <item>Zu Ground Zero sag ich nie „No“.</item>
         <item>Wir haben dich lieb, mal 3 000</item>
         <item>Sehr schmackhaft, auch ohne Sushi!</item>
         <item>Eine gute Tat pro Tag.</item>
-        <item>crDroid bietet ’ne tolle Pixel-Experience, oder?</item>
-        <item>Keine Illusionen, willkommen in der crDroid-Realität!</item>
+        <item>Alphadroid bietet ’ne tolle Pixel-Experience, oder?</item>
+        <item>Keine Illusionen, willkommen in der Alphadroid-Realität!</item>
         <item>Danke für deine Unterstützung!</item>
-        <item>Kein DerpFest, sondern nur Perfektion hier bei crDroid!</item>
+        <item>Kein DerpFest, sondern nur Perfektion hier bei Alphadroid!</item>
         <item>Feinste Wahl vom Buildbot.</item>
-        <item>crDroid heilt deine Paranoia.</item>
         <item>Rising in Peace</item>
+        <item>Alphadroid heilt deine Paranoia.</item>
         <item>Was für ein schönes Betriebssystem, oder?</item>
         <item>Evolution ist doch nur ein Mythos, oder nicht?</item>
         <item>Du bist, was du flashst. Sei keine Potato.</item>
@@ -360,4 +363,10 @@
     <string name="quick_event_weather_text_title">Wetterlage in Worten</string>
     <string name="quick_event_weather_text_summary">Kurze schriftliche Übersicht der aktuellen Wetterlage anzeigen</string>
     <string name="intent_no_app_clock_found">Keine Kalender- oder Weckeraktivität gefunden</string>
+    <!-- App drawer scrollbar -->
+    <string name="drawer_scrollbar_title">Bildlaufleiste</string>
+    <string name="drawer_scrollbar_summary">Bildlaufleiste neben der App-Übersicht</string>
+    <!-- Force monochrome icons -->
+    <string name="force_monochrome_icons_title">Symboldesigns erzwingen</string>
+    <string name="force_monochrome_icons_summary">Einfarbige Symbole generieren, sofern von der App selbst nicht unterstützt (Symboldesigns müssen dabei deaktiviert und erneut aktiviert werden)</string>
 </resources>

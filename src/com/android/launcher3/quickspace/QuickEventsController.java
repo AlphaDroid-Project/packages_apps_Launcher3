@@ -46,6 +46,8 @@ import com.android.launcher3.LauncherFiles;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 
+import com.google.common.collect.ObjectArrays;
+
 import java.util.Calendar;
 import java.util.Random;
 
@@ -194,30 +196,36 @@ public class QuickEventsController {
 
     private void psonalityEvent() {
         if (mEventNowPlaying) return;
-	    mEventTitle = Utilities.formatDateTime(mContext);
+        mEventTitle = Utilities.formatDateTime(mContext);
         mEventTitleSubAction = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent calendarIntent = new Intent(Intent.ACTION_MAIN);
-                calendarIntent.addCategory(Intent.CATEGORY_APP_CALENDAR);
-
-                Intent clockIntent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
 
                 PackageManager packageManager = mContext.getPackageManager();
-                List<ResolveInfo> calendarApps = packageManager.queryIntentActivities(calendarIntent, PackageManager.MATCH_DEFAULT_ONLY);
-                List<ResolveInfo> clockApps = packageManager.queryIntentActivities(clockIntent, PackageManager.MATCH_DEFAULT_ONLY);
 
-                if (!calendarApps.isEmpty()) {
-                    calendarIntent.setPackage(calendarApps.get(0).activityInfo.packageName);
+                // Try to start calendar
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_CALENDAR);
+                List<ResolveInfo> appsList = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                if (!appsList.isEmpty()) {
+                    intent.setPackage(appsList.get(0).activityInfo.packageName);
                     try {
-                        mContext.startActivity(calendarIntent);
+                        mContext.startActivity(intent);
+                        return;
                     } catch (ActivityNotFoundException e) {
+                        // Ignore
                     }
-                } else if (!clockApps.isEmpty()) {
-                    clockIntent.setPackage(clockApps.get(0).activityInfo.packageName);
+                }
+
+                // Try to sto start clock if calendar attempt fails
+                intent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
+                appsList = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                if (!appsList.isEmpty()) {
+                    intent.setPackage(appsList.get(0).activityInfo.packageName);
                     try {
-                        mContext.startActivity(clockIntent);
+                        mContext.startActivity(intent);
                     } catch (ActivityNotFoundException e) {
+                        // Ignore
                     }
                 } else {
                     Toast.makeText(mContext, R.string.intent_no_app_clock_found, Toast.LENGTH_SHORT).show();
@@ -247,48 +255,25 @@ public class QuickEventsController {
             mClockExt = mResources.getString(R.string.quickspace_ext_two);
         }
 
-        if (!Utilities.isQuickspacePersonalityEnabled(mContext)) {
-            mIsQuickEvent = false;
-            return;
-        }
-
-        int luckNumber = getLuckyNumber(13);
-        if (luckNumber < 7) {
-            mIsQuickEvent = false;
-            return;
-        } else if (luckNumber == 7) {
-            mPSAStr = mResources.getStringArray(R.array.quickspace_psa_random);
-            mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
-            mEventSubIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_quickspace_pacman);
-            mIsQuickEvent = true;
-            return;
-        }
-
-        mEventSubIcon = null;
-
-        mPSAStr = getPSAStr(hourOfDay);
-
-        if (mPSAStr != null) {
-            mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
-            mIsQuickEvent = true;
-        } else {
-            mIsQuickEvent = false;
-        }
-    }
-
-    private String[] getPSAStr(int hour) {
-        if (hour >= 0 && hour <= 3) {
-            return mResources.getStringArray(R.array.quickspace_psa_midnight);
-        } else if (hour >= 5 && hour <= 9) {
-            return mResources.getStringArray(R.array.quickspace_psa_morning);
-        } else if (hour >= 12 && hour <= 15) {
-            return mResources.getStringArray(R.array.quickspace_psa_noon);
-        } else if (hour >= 16 && hour <= 18) {
-            return mResources.getStringArray(R.array.quickspace_psa_early_evening);
-        } else if (hour >= 19 && hour <= 21) {
-            return mResources.getStringArray(R.array.quickspace_psa_evening);
-        } else {
-            return null;
+        mIsQuickEvent = false;
+        if (Utilities.isQuickspacePersonalityEnabled(mContext)) {
+            int luckNumber = getLuckyNumber(13);
+            if (luckNumber == 7) {
+                mPSAStr = mResources.getStringArray(R.array.quickspace_psa_homer);
+                if (mPSAStr != null && mPSAStr.length > 0) {
+                    mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
+                    mEventSubIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_homer);
+                    mIsQuickEvent = true;
+                }
+            } else if (luckNumber == 13) {
+                mPSAStr = mResources.getStringArray(R.array.quickspace_psa_random);
+                if (mPSAStr != null && mPSAStr.length > 0) {
+                    mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
+                    mEventSubIcon = ContextCompat.getDrawable(
+                                mContext, R.drawable.ic_quickspace_pacman);
+                    mIsQuickEvent = true;
+                }
+            }
         }
     }
 

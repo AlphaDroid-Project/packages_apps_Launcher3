@@ -151,48 +151,25 @@ public class QuickEventsController {
             mClockExt = mResources.getString(R.string.quickspace_ext_two);
         }
 
-        if (!LauncherPrefs.SHOW_QUICKSPACE_PSONALITY.get(mContext)) {
-            mIsQuickEvent = false;
-            return;
-        }
-
-        mEventSubIcon = null;
-
-        int luckNumber = getLuckyNumber(13);
-        if (luckNumber < 7) {
-            mIsQuickEvent = false;
-            return;
-        } else if (luckNumber == 7) {
-            mPSAStr = mResources.getStringArray(R.array.quickspace_psa_random);
-            mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
-            mEventSubIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_quickspace_pacman);
-            mIsQuickEvent = true;
-            return;
-        }
-
-        mPSAStr = getPSAStr(hourOfDay);
-
-        if (mPSAStr != null) {
-            mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
-            mIsQuickEvent = true;
-        } else {
-            mIsQuickEvent = false;
-        }
-    }
-
-    private String[] getPSAStr(int hour) {
-        if (hour >= 0 && hour <= 3) {
-            return getCachedArray(R.array.quickspace_psa_midnight);
-        } else if (hour >= 5 && hour <= 9) {
-            return getCachedArray(R.array.quickspace_psa_morning);
-        } else if (hour >= 12 && hour <= 15) {
-            return getCachedArray(R.array.quickspace_psa_noon);
-        } else if (hour >= 16 && hour <= 18) {
-            return getCachedArray(R.array.quickspace_psa_early_evening);
-        } else if (hour >= 19 && hour <= 21) {
-            return getCachedArray(R.array.quickspace_psa_evening);
-        } else {
-            return null;
+        mIsQuickEvent = false;
+        if (LauncherPrefs.SHOW_QUICKSPACE_PSONALITY.get(mContext)) {
+            int luckNumber = getLuckyNumber(13);
+            if (luckNumber == 7) {
+                mPSAStr = mResources.getStringArray(R.array.quickspace_psa_homer);
+                if (mPSAStr != null && mPSAStr.length > 0) {
+                    mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
+                    mEventSubIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_homer);
+                    mIsQuickEvent = true;
+                }
+            } else if (luckNumber == 13) {
+                mPSAStr = mResources.getStringArray(R.array.quickspace_psa_random);
+                if (mPSAStr != null && mPSAStr.length > 0) {
+                    mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
+                    mEventSubIcon = ContextCompat.getDrawable(
+                                mContext, R.drawable.ic_quickspace_pacman);
+                    mIsQuickEvent = true;
+                }
+            }
         }
     }
 

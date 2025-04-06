@@ -84,8 +84,6 @@ import com.android.systemui.shared.system.QuickStepContract.SystemUiStateFlags;
 import com.android.systemui.unfold.UnfoldTransitionProgressProvider;
 import com.android.systemui.unfold.util.ScopedUnfoldTransitionProgressProvider;
 
-import lineageos.providers.LineageSettings;
-
 import java.io.PrintWriter;
 import java.util.StringJoiner;
 
@@ -124,11 +122,11 @@ public class TaskbarManager {
     public static final Uri NAV_BAR_LAYOUT = Settings.Secure.getUriFor(
             Settings.Secure.NAVBAR_LAYOUT_MODE);
 
-    public static final Uri ENABLE_TASKBAR = LineageSettings.System.getUriFor(
-            LineageSettings.System.ENABLE_TASKBAR);
+    public static final Uri ENABLE_TASKBAR = Settings.System.getUriFor(
+            Settings.System.ENABLE_TASKBAR);
 
-    public static final Uri NAVIGATION_BAR_HINT = LineageSettings.System.getUriFor(
-            LineageSettings.System.NAVIGATION_BAR_HINT);
+    public static final Uri NAVIGATION_BAR_HINT = Settings.System.getUriFor(
+            Settings.System.NAVIGATION_BAR_HINT);
 
     public static final Uri GESTURE_NAVBAR_LENGTH_MODE = Settings.System.getUriFor(
             Settings.System.GESTURE_NAVBAR_LENGTH_MODE);
@@ -136,8 +134,8 @@ public class TaskbarManager {
     public static final Uri GESTURE_NAVBAR_HEIGHT_MODE = Settings.System.getUriFor(
             Settings.System.GESTURE_NAVBAR_HEIGHT_MODE);
 
-    public static final Uri FORCE_SHOW_NAVBAR = LineageSettings.System.getUriFor(
-            LineageSettings.System.FORCE_SHOW_NAVBAR);
+    public static final Uri FORCE_SHOW_NAVBAR = Settings.System.getUriFor(
+            Settings.System.FORCE_SHOW_NAVBAR);
 
     private final Context mWindowContext;
     private final @Nullable Context mNavigationBarPanelContext;

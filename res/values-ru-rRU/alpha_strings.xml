@@ -1,363 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016-2023 crDroid Android Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
+     SPDX-FileCopyrightText: 2016-2025 crDroid Android Project
+     SPDX-FileCopyrightText: 2025 AlphaDroid
+     SPDX-License-Identifier: Apache-2.0
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Application name -->
     <!-- Folder titles -->
     <!-- General -->
-    <string name="settings_title">Настройки</string>
+    <string name="settings_title">Home settings</string>
     <!-- Categories -->
-    <string name="home_category_title">Рабочий стол</string>
-    <string name="home_category_summary">Панель Google now и другое</string>
+    <string name="home_category_title">Home screen</string>
+    <string name="home_category_summary">Set Google now panel and more</string>
     <string name="icons_category_title">Значки</string>
-    <string name="icons_category_summary">Установить размер значков и прочее</string>
-    <string name="app_drawer_category_title">Меню приложений</string>
-    <string name="app_drawer_category_summary">Настроить меню приложений</string>
-    <string name="recents_category_title">Недавние</string>
-    <string name="recents_category_summary">Настройки экрана недавних приложений</string>
-    <string name="misc_category_title">Разное</string>
-    <string name="misc_category_summary">Прочие настройки</string>
+    <string name="icons_category_summary">Set icon size and more</string>
+    <string name="app_drawer_category_title">App drawer</string>
+    <string name="app_drawer_category_summary">Customize your app drawer</string>
+    <string name="recents_category_title">Recents</string>
+    <string name="recents_category_summary">Revamp the overview screen</string>
+    <string name="misc_category_title">Прочее</string>
+    <string name="misc_category_summary">Other options</string>
     <string name="general_category_title">Общие</string>
     <string name="interface_category_title">Интерфейс</string>
-    <string name="quickspace_category_title">«С первого взгляда»</string>
-    <string name="search_bar_category_title">Панель поиска</string>
-    <string name="actions_category_title">Быстрые действия</string>
+    <string name="quickspace_category_title">Quickspace</string>
+    <string name="search_bar_category_title">Search bar</string>
+    <string name="actions_category_title">Quick actions</string>
     <!-- Developer options -->
-    <string name="dev_options_title">Параметры разработчика</string>
-    <string name="dev_options_summary">Включить некоторые скрытые функции на свой страх и риск</string>
+    <string name="dev_options_title">Developer options</string>
+    <string name="dev_options_summary">Enable some hidden features at your own risk</string>
     <!-- Edit workspace -->
-    <string name="settings_lock_layout_title">Блокировка изменений</string>
-    <string name="settings_lock_layout_summary_on">Значки и виджеты не могут быть добавлены, удалены или перемещены на рабочий стол</string>
-    <string name="settings_lock_layout_summary_off">Значки и виджеты могут быть добавлены, удалены и перемещены на рабочем столе</string>
-    <string name="settings_edit_widgets_error">Невозможно добавить виджеты на рабочий стол</string>
+    <string name="settings_lock_layout_title">Lock layout</string>
+    <string name="settings_lock_layout_summary_on">Icons and widgets can\'t be added, removed and moved on the homescreen</string>
+    <string name="settings_lock_layout_summary_off">Icons and widgets can be added, removed and moved on the homescreen</string>
+    <string name="settings_edit_widgets_error">It\'s not possible to add widgets to the home screen</string>
     <!-- Hide labels -->
-    <string name="desktop_show_labels">Показывать подписи значков</string>
-    <string name="drawer_show_labels">Показывать подписи значков</string>
+    <string name="desktop_show_labels">Icon labels on desktop</string>
+    <string name="drawer_show_labels">Icon labels in drawer</string>
     <!-- Settings title to show Google Now at -1 screen on launcher. [CHAR LIMIT=50] -->
-    <string name="title_show_google_app">Смахивание вправо - Google</string>
+    <string name="title_show_google_app">Swipe to access Google app</string>
     <!-- Settings message explaining when the -1 screen is available on an LTR device. [CHAR LIMIT=100] -->
-    <string name="msg_minus_one_on_left">Когда открываете рабочий стол слева</string>
+    <string name="msg_minus_one_on_left">When you swipe right from main home screen</string>
     <!-- Settings message explaining when the -1 screen is available on an RTL device. [CHAR LIMIT=100] -->
-    <string name="msg_minus_one_on_right">Когда открываете рабочий стол справа</string>
+    <string name="msg_minus_one_on_right">When you swipe left from main home screen</string>
     <!-- All apps themed icons -->
-    <string name="pref_themed_icons_title">Значок из темы</string>
-    <string name="pref_themed_icons_summary">Использовать значки из темы в меню приложений, такие же, как на рабочем столе</string>
+    <string name="pref_themed_icons_title">Themed icons</string>
+    <string name="pref_themed_icons_summary">Follow themed icons used on home screen</string>
     <!-- Trust apps -->
-    <string name="trust_apps_manager_name">Скрыть и защитить приложения</string>
-    <string name="trust_apps_auth_manager">Разблокируйте, чтобы управлять скрытыми и защищёнными приложениями</string>
-    <string name="trust_apps_auth_open_app">Авторизуйтесь, чтобы открыть %1$s</string>
-    <string name="trust_apps_loading">Загрузка\u2026</string>
-    <string name="trust_apps_no_lock_error">Пожалуйста, настройте блокировку экрана, чтобы ограничить доступ к приложениям</string>
-    <string name="trust_apps_help">Помощь</string>
-    <string name="trust_apps_info_hidden">Не показывать скрытые приложения и их виджеты в меню приложений</string>
-    <string name="trust_apps_info_protected">Для запуска защищённых приложений требуется авторизация</string>
+    <string name="trust_apps_manager_name">Hidden &amp; Protected apps</string>
+    <string name="trust_apps_auth_manager">Unlock to manage the hidden and protected apps</string>
+    <string name="trust_apps_auth_open_app">Authenticate to open %1$s</string>
+    <string name="trust_apps_loading">Loading\u2026</string>
+    <string name="trust_apps_no_lock_error">Please set up a secure lock screen to restrict app access</string>
+    <string name="trust_apps_help">Help</string>
+    <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
+    <string name="trust_apps_info_protected">Protected apps require authentication to be opened from the launcher</string>
     <!-- Suggestions -->
-    <string name="suggestion_pref_screen_title">Рекомендации</string>
-    <string name="suggestion_pref_screen_desc">Рекомендации в меню приложений и на рабочем столе</string>
+    <string name="suggestion_pref_screen_title">Suggestions</string>
+    <string name="suggestion_pref_screen_desc">For All Apps &amp; Home screen suggestions</string>
     <!-- Pause apps shortcut -->
-    <string name="pause">Пауза</string>
-    <string name="pause_apps_dialog_title">Приостановить %1$s?</string>
-    <string name="pause_apps_dialog_message">Уведомления для %1$s будут приостановлены</string>
-    <string name="paused_apps_dialog_title">Приложение приостановлено</string>
-    <string name="paused_apps_dialog_message">%1$s приостановлено из главного экрана</string>
-    <string name="paused_apps_drop_target_label">Приостановить приложение</string>
-    <string name="work_apps_paused_title_custom">Рабочие приложения отключены</string>
-    <string name="work_apps_pause_btn_text_custom">Отключить рабочие приложения</string>
-    <string name="work_apps_enable_btn_text_custom">Включить рабочие приложения</string>
-    <string name="work_apps_paused_info_body_custom">Рабочие приложения не могут отправлять уведомления, расходовать заряд батареи и получать доступ к данным о вашем местоположении.</string>
-    <string name="work_apps_paused_telephony_unavailable_body_custom">Ваши рабочие приложения не могут принимать телефонные звонки или текстовые сообщения, отправлять уведомления, использовать аккумулятор или получать доступ к вашему местоположению</string>
+    <string name="pause">Pause</string>
+    <string name="pause_apps_dialog_title">Pause %1$s?</string>
+    <string name="pause_apps_dialog_message">Notifications for %1$s will be paused</string>
+    <string name="paused_apps_dialog_title">App paused</string>
+    <string name="paused_apps_dialog_message">%1$s was directly paused from the launcher</string>
+    <string name="paused_apps_drop_target_label">Pause app</string>
+    <string name="work_apps_paused_title_custom">Work apps are off</string>
+    <string name="work_apps_pause_btn_text_custom">Turn off work apps</string>
+    <string name="work_apps_enable_btn_text_custom">Turn on work apps</string>
+    <string name="work_apps_paused_info_body_custom">Your work apps cannot send you notifications, use your battery, or access your location</string>
+    <string name="work_apps_paused_telephony_unavailable_body_custom">Your work apps cannot receive phone calls or text messages, send you notifications, use your battery, or access your location</string>
     <!-- Restart launcher -->
-    <string name="pref_restart_title">Перезапустить</string>
-    <string name="pref_restart_summary">Перезапустить главный экран вручную, чтобы применить все ожидающие настройки</string>
-    <string name="restarting_launcher">Перезапуск главного экрана...</string>
-    <string name="restarting_launcher_changes">Перезапуск главного экрана для применения изменений...</string>
-    <string name="updating_launcher_components">Перезапуск главного экрана для обновления компонентов...</string>
+    <string name="pref_restart_title">Restart</string>
+    <string name="pref_restart_summary">Restart the launcher manually to apply any pending settings</string>
+    <string name="restarting_launcher">Restarting launcher...</string>
+    <string name="restarting_launcher_changes">Restarting launcher to apply changes...</string>
+    <string name="updating_launcher_components">Restarting launcher to update launcher components...</string>
     <!-- DT2S -->
-    <string name="pref_sleep_gesture_title">Выкл. двойным нажатием</string>
-    <string name="pref_sleep_gesture_summary">Дважды коснитесь пустого места экрана для его выключения</string>
+    <string name="pref_sleep_gesture_title">Double tap to sleep</string>
+    <string name="pref_sleep_gesture_summary">Double tap on empty space for screen off</string>
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">Значение: <xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">по умолчанию</string>
     <string name="custom_seekbar_default_value_to_set">Значение по умолчанию: <xliff:g id="v">%s</xliff:g>\nУдерживайте для установки</string>
-    <string name="custom_seekbar_default_value_is_set">Установлено значение по умолчанию</string>
+    <string name="custom_seekbar_default_value_is_set">Значение по умолчанию установлено</string>
     <!-- Icon size -->
-    <string name="icon_size_title">Размер значка</string>
+    <string name="icon_size_title">Icon size</string>
     <!-- Font size -->
-    <string name="font_size_title">Размер шрифта</string>
+    <string name="font_size_title">Font size</string>
     <!-- App label -->
-    <string name="icon_two_lines_title">Название в две строки</string>
+    <string name="icon_two_lines_title">Use two lines for app label</string>
     <!-- Kill App recents action shortcut -->
-    <string name="recent_task_option_kill_app">Завершить</string>
-    <string name="recents_app_killed">Приложение закрыто</string>
+    <string name="recent_task_option_kill_app">Kill</string>
+    <string name="recents_app_killed">App killed</string>
     <!-- Row Height -->
-    <string name="row_height_title">Высота строки</string>
+    <string name="row_height_title">Row height</string>
     <!-- Hotseat searchbar -->
     <string name="label_search">Поиск</string>
-    <string name="label_lens">Google Объектив</string>
+    <string name="label_lens">Google Lens</string>
     <string name="label_voice_search">Голосовой поиск</string>
-    <string name="dock_music_search_title">Поиск музыки</string>
-    <string name="dock_music_search_summary">Поиск музыки при нажатии на микрофон</string>
-    <string name="dock_search_title">Поиск Google</string>
-    <string name="dock_search_summary">Показывать строку поиска снизу</string>
-    <string name="dock_theme_title">Значки из темы</string>
-    <string name="dock_theme_summary">Для панели поиска использовать значки из темы</string>
-    <string name="search_radius_title">Радиус закругления углов</string>
+    <string name="dock_music_search_title">Music search</string>
+    <string name="dock_music_search_summary">Start music search on pressing mic icon</string>
+    <string name="dock_search_title">Google search bar</string>
+    <string name="dock_search_summary">Search bar in the bottom dock</string>
+    <string name="dock_theme_title">Themed icons</string>
+    <string name="dock_theme_summary">Use themed icons for search bar</string>
+    <string name="search_radius_title">Corner radius</string>
     <!-- Hotseat Background -->
-    <string name="hotseat_bg_title">Фон нижней панели</string>
-    <string name="hotseat_bg_summary">Полупрозрачный фон нижней панели приложений</string>
+    <string name="hotseat_bg_title">Hotseat background</string>
+    <string name="hotseat_bg_summary">Add translucent background to the app dock</string>
     <!-- Background opacity -->
     <string name="background_opacity_title">Прозрачность фона</string>
     <!-- Stroke -->
-    <string name="stroke_width_title">Окантовка</string>
+    <string name="stroke_width_title">Stroke</string>
     <!-- Wallpaper scrolling -->
-    <string name="allow_wallpaper_scrolling">Прокрутка обоев</string>
-    <string name="allow_wallpaper_scrolling_summary">Эффект прокрутки обоев для нескольких экранов</string>
+    <string name="allow_wallpaper_scrolling">Wallpaper scrolling</string>
+    <string name="allow_wallpaper_scrolling_summary">Wallpaper scrolling effect for multiple screens</string>
     <!-- Wallpaper zooming -->
-    <string name="allow_wallpaper_zooming">Масштабирование обоев</string>
-    <string name="allow_wallpaper_zooming_summary">Увеличение или уменьшение обоев в меню приложений или в списке недавних приложений</string>
+    <string name="allow_wallpaper_zooming">Wallpaper zooming</string>
+    <string name="allow_wallpaper_zooming_summary">Zoom in or out the wallpaper when using drawer or recent apps</string>
     <!-- Homescreen Statusbar -->
-    <string name="show_statusbar_title">Строка состояния</string>
+    <string name="show_statusbar_title">Status Bar</string>
     <!-- Top shadow -->
-    <string name="show_top_shadow">Тень сверху</string>
+    <string name="show_top_shadow">Top shadow</string>
     <!-- Memory info -->
-    <string name="meminfo_text">Доступно: %1$s | Всего: %2$s</string>
-    <string name="recents_meminfo_title">Информация о памяти</string>
-    <string name="recents_meminfo_zram_title">Информация о ZRAM</string>
+    <string name="meminfo_text">%1$s available | %2$s</string>
+    <string name="recents_meminfo_title">Memory info</string>
+    <string name="recents_meminfo_zram_title">ZRAM info</string>
     <!-- Recents icons -->
     <string name="recents_screenshot_title">Снимок экрана</string>
-    <string name="recents_clear_all_title">Очистить всё</string>
-    <string name="recents_lens_title">Объектив</string>
+    <string name="recents_clear_all_title">Clear all</string>
+    <string name="recents_lens_title">Lens</string>
     <!-- Parallax -->
-    <string name="short_parallax_title">Разрешить короткое смещение</string>
-    <string name="short_parallax_summary">Включить эффект полной прокрутки обоев на меньшем количестве страниц вместо обрезки обоев</string>
-    <string name="single_page_center_title">Центр, если одна страница</string>
-    <string name="single_page_center_summary">Центрировать обои, если используется только одна страница</string>
+    <string name="short_parallax_title">Allow short parallax</string>
+    <string name="short_parallax_summary">Enable full wallpaper scroll effect on smaller numbers of pages instead of cropping the wallpaper</string>
+    <string name="single_page_center_title">Single page center</string>
+    <string name="single_page_center_summary">Center wallpaper if only using a single page</string>
     <!-- App drawer searchbar -->
-    <string name="drawer_search_title">Строка поиска</string>
-    <string name="drawer_search_summary">Строка поиска в верхней части меню приложений</string>
+    <string name="drawer_search_title">App search bar</string>
+    <string name="drawer_search_summary">Search bar on top of the app drawer</string>
     <!-- Auto keyboard -->
-    <string name="pref_auto_keyboard_title">Автоматическая клавиатура</string>
-    <string name="pref_auto_keyboard_summary">Начинать поиск, когда открыто меню приложений</string>
+    <string name="pref_auto_keyboard_title">Auto keyboard</string>
+    <string name="pref_auto_keyboard_summary">Start searching when the drawer is expanded</string>
     <!-- AppInfo -->
-    <string name="app_info_source">Источник</string>
-    <string name="app_info_source_system">Системное</string>
-    <string name="app_info_last_update">Последнее обновление</string>
-    <string name="app_info_version">Версия</string>
-    <string name="app_info_more">Дополнительно...</string>
+    <string name="app_info_source">Source</string>
+    <string name="app_info_source_system">System</string>
+    <string name="app_info_last_update">Last update</string>
+    <string name="app_info_version">Version</string>
+    <string name="app_info_more">More</string>
     <!-- Icon pack -->
     <string name="icon_pack_title">Набор значков</string>
-    <string name="icon_pack_default_label">По умолчанию</string>
-    <string name="icon_pack_add">Установить ещё</string>
-    <string name="icon_pack_no_market">Нет доступного магазина приложений</string>
+    <string name="icon_pack_default_label">Default</string>
+    <string name="icon_pack_add">Install more</string>
+    <string name="icon_pack_no_market">There\'s no available app store</string>
     <!-- App drawer scrollbar -->
-    <string name="drawer_scrollbar_title">Полоса прокрутки</string>
-    <string name="drawer_scrollbar_summary">Полоса прокрутки сбоку меню приложений</string>
+    <string name="drawer_scrollbar_title">Scrollbar</string>
+    <string name="drawer_scrollbar_summary">Scrollbar on side of the app drawer</string>
     <!-- QuickSpace -->
-    <string name="show_quickspace_title">Самое главное</string>
-    <string name="show_quickspace_summary">Показывать в верхней части рабочего стола</string>
+    <string name="show_quickspace_title">At A Glance</string>
+    <string name="show_quickspace_summary">Show at the top of your home screen</string>
     <!-- QuickSpace: QuickEvent: Device Intro Event -->
-    <string name="quick_event_rom_intro_welcome">Приветствуем в Alphadroid!</string>
-    <string name="quick_event_rom_intro_welcome_ext">Время Alphadroid!</string>
+    <string name="quick_event_rom_intro_welcome">Welcome to AlphaDroid!</string>
+    <string name="quick_event_rom_intro_welcome_ext">AlphaDroid time!</string>
     <string-array name="welcome_message_variants">
-        <item>Благодарим, что выбрали нас</item>
-        <item>Вы нас любите? Тогда отправьте нам на пиво</item>
-        <item>Лучший ROM всех времён!</item>
-        <item>Передайте привет нам в Telegram</item>
-        <item>Нажми здесь, чтобы начать</item>
-        <item>Мы любим тебя 3000</item>
+        <item>Thank you for choosing us</item>
+        <item>Loving us? Send us a beer</item>
+        <item>Best Rom Ever.</item>
+        <item>Say hi to us on Telegram</item>
+        <item>Tap here to begin</item>
+        <item>We love you 3000</item>
     </string-array>
     <!-- QuickSpace: QuickEvent: Greetings -->
-    <string name="quickspace_grt_morning">Доброго утра.</string>
-    <string name="quickspace_grt_evening">Доброго вечера.</string>
-    <string name="quickspace_grt_afternoon">Доброго дня.</string>
-    <string name="quickspace_grt_night">Доброй ночи.</string>
-    <string name="quickspace_grt_general">Хороший день.</string>
-    <string name="quickspace_ext_one">Вот и</string>
-    <string name="quickspace_ext_two">Сегодня</string>
+    <string name="quickspace_grt_morning">Good morning.</string>
+    <string name="quickspace_grt_evening">Good evening.</string>
+    <string name="quickspace_grt_afternoon">Good afternoon.</string>
+    <string name="quickspace_grt_night">Good night.</string>
+    <string name="quickspace_grt_general">Good day.</string>
+    <string name="quickspace_ext_one">Today is</string>
+    <string name="quickspace_ext_two">It\'s</string>
     <!-- QuickSpace: QuickEvent: Ambient Play -->
-    <string name="qe_now_playing_unknown_artist">Неизвестный исполнитель</string>
-    <string name="qe_now_playing_ext_one">Сейчас играет</string>
-    <string name="qe_now_playing_by">Автор</string>
+    <string name="qe_now_playing_unknown_artist">Unknown Artist</string>
+    <string name="qe_now_playing_ext_one">Now playing</string>
+    <string name="qe_now_playing_by">By</string>
     <!-- Quickspace Now Playing -->
-    <string name="quickspace_now_playing_title">Сейчас играет</string>
-    <string name="quickspace_now_playing_summary">Показать песню, которая проигрывается</string>
+    <string name="quickspace_now_playing_title">Now playing</string>
+    <string name="quickspace_now_playing_summary">Show the song you\'re playing</string>
     <!-- Quickspace alternative view -->
-    <string name="quickspace_alternate_style_title">Расширенный стиль</string>
-    <string name="quickspace_alternate_style_summary">Переключиться на расширенный стиль</string>
+    <string name="quickspace_alternate_style_title">Extended style</string>
+    <string name="quickspace_alternate_style_summary">Switch to extended style</string>
     <!-- Quickspace PSA - Custom messages for the glance -->
-    <string name="quickspace_psa_title">Случайные сообщения</string>
-    <string name="quickspace_psa_summary">Сделайте своего спутника более живым с помощью случайных сообщений</string>
-    <string-array name="quickspace_psa_morning">
-        <item>Доброго утра!</item>
-        <item>Доброго утра! Время зажигать!</item>
-        <item>Какой чудесный день!</item>
-        <item>Хорошего дня!</item>
-        <item>Как насчет небольшого 5-минутного перерыва?</item>
-        <item>Давайте сделаем это.</item>
-        <item>Утро — свежий холст для вашего ежедневного шедевра</item>
-        <item>Встречайте рассвет возможностей каждое утро</item>
-        <item>С ранним светом найдите силу, которая осветит ваш путь</item>
-        <item>Ваш день начинается с безграничных возможностей</item>
-        <item>Каждый восход солнца — это напоминание о том, что можно начать заново</item>
-        <item>Просыпайтесь с целью, победите предстоящий день</item>
-        <item>Ваши мысли могут стать основой великих достижений</item>
-        <item>Мир пробуждается, и ваш потенциал тоже</item>
-        <item>Первая глава вашего ежедневного приключения</item>
-        <item>Пусть ваша утренняя рутина станет стартовой площадкой для успеха</item>
-        <item>Восходит солнце или нет, но ваш потенциал всегда растёт</item>
-        <item>Пришло время для свежих идей и смелых действий</item>
-        <item>Ранняя пташка ловит червяка, а вы - ловите свои мечты</item>
-        <item>Найдите в себе смелость преследовать свои стремления</item>
-        <item>Восстаньте и сияйте, ибо величие ждёт</item>
-        <item>Лучшее время для начала – здесь и сейчас</item>
-    </string-array>
-    <string-array name="quickspace_psa_noon">
-        <item>Гоняйся за своей мечтой, а не за минутами</item>
-        <item>В каждый момент новая возможность</item>
-        <item>Охватите путешествие, а не только пункт назначения</item>
-        <item>Сегодня - это подарок, поэтому он и называется настоящим</item>
-        <item>Пусть твоя улыбка изменит мир</item>
-        <item>Жизнь — это история. Сделай каждую главу значимой</item>
-        <item>Находите радость в обычных моментах</item>
-        <item>Лучшее ещё впереди, так держать!</item>
-        <item>Ваш шанс превратить «что, если» в «то, что есть»</item>
-        <item>Ловите момент, начиная прямо сейчас</item>
-        <item>Счастье — это выбор, который вы можете сделать в любое время</item>
-        <item>Верьте в себя даже сонным днём</item>
-        <item>Пусть ваши действия говорят громче часов</item>
-        <item>Ваша жизнь — это то, что вы из неё делаете. Сделай это потрясающе</item>
-        <item>Мечтай о многом, работай усердно и никогда не сдавайся</item>
-        <item>Ты сильнее чем ты думаешь</item>
-        <item>Каждая неудача – это подготовка к возвращению</item>
-        <item>Создай путешествие, а не дорогу до пункта назначения</item>
-        <item>Преследуйте свои цели, а не свои страхи</item>
-        <item>Ваш потенциал безграничен. Разблокируйте его</item>
-    </string-array>
-    <string-array name="quickspace_psa_early_evening">
-        <item>Примите настоящий момент, независимо от часа</item>
-        <item>В каждом сумраке находите новый рассвет возможностей</item>
-        <item>Жизнь - это путешествие. Наслаждайтесь пейзажами по пути</item>
-        <item>Ваше отношение формирует вашу реальность</item>
-        <item>Ваша история всё ещё пишется, даже когда солнце садится</item>
-        <item>Сохраняйте красоту в обычных моментах</item>
-        <item>Пришло время задуматься и перезагрузиться</item>
-        <item>Выбирайте радость, независимо от времени на часах</item>
-        <item>Возможности не заканчиваются вечером</item>
-        <item>Будьте причиной улыбок</item>
-        <item>Ваш потенциал не знает границ</item>
-        <item>Моменты волшебства могут случиться в любой час</item>
-        <item>Ваша жизнь — это то, что вы из нее делаете. Сделайте её необычной</item>
-        <item>Оставайтесь любопытными, оставайтесь благодарными</item>
-        <item>Станьте тем изменением, которое вы хотите увидеть в мире</item>
-        <item>Верьте в себя. Вы способны на удивительные вещи</item>
-        <item>Единственный предел тот, который вы сами для себя установили</item>
-        <item>Успех начинается с первого шага</item>
-    </string-array>
-    <string-array name="quickspace_psa_evening">
-        <item>Ловите ночь, ведь она таит в себе свои тайны</item>
-        <item>В тишине этого вечера найдите безмятежность</item>
-        <item>Величайшие приключения в жизни могут начаться в темноте</item>
-        <item>Ваше путешествие продолжается даже после захода солнца</item>
-        <item>Пусть ночь будет вашим холстом. Нарисуйте его мечтами</item>
-        <item>В тишине этого вечера найдите свой внутренний покой</item>
-        <item>Звёзды сияют ярче в самые тёмные часы</item>
-        <item>Мечтайте о многом, даже в поздние часы дня</item>
-        <item>Ваша жизнь - история, ожидающая написания.</item>
-        <item>Пришло время для размышлений и обновления.</item>
-        <item>Ночные мысли могут привести к утренним откровениям.</item>
-        <item>Найди радость в тишине этого вечера.</item>
-        <item>Ночное небо — огромное полотно снов.</item>
-        <item>Ваш потенциал не знает времени сна; преследуйте свои увлечения</item>
-        <item>Сохраняйте надежду даже в самые мрачные часы</item>
-        <item>Посреди хаоса, найди свое внутреннее спокойствие</item>
-        <item>Сохраняйте позитивный настрой, усердно работайте, чтобы это произошло</item>
-    </string-array>
-    <string-array name="quickspace_psa_midnight">
-        <item>Ночи - это тихий шёпот возможностей</item>
-        <item>В ночной тиши найдите свою внутреннюю силу</item>
-        <item>Примите тьму, ведь она хранит ключи к вашим мечтам</item>
-        <item>Мир спит, но ваш потенциал бодрствует</item>
-        <item>Ночь может быть поздней, но ваши амбиции вечны</item>
-        <item>Оставайтесь любопытными, не спите, и пусть ночи ведут вас</item>
-        <item>Найдите в себе смелость следовать за своей мечтой</item>
-        <item>Великие дела никогда не приходят из зоны комфорта</item>
-        <item>У вас есть сила творить свою судьбу</item>
-        <item>Счастье это выбор. Выбирайте его каждый день.</item>
-        <item>Жизнь — это то, что вы делаете, поэтому примите это во внимание.</item>
-        <item>Оставайтесь сосредоточенными, оставайтесь решительными, оставайтесь неудержимыми</item>
-        <item>Вы автор своей истории</item>
-        <item>Стремитесь к прогрессу, а не к совершенству</item>
-        <item>Каждый день - это новое начало. Сделайте его отличным.</item>
-        <item>Вдохновляйте других, будучи самим собой</item>
-        <item>Ваше отношение определяет ваше направление</item>
-    </string-array>
+    <string name="quickspace_psa_title">Random messages</string>
+    <string name="quickspace_psa_summary">Make your companion more lively with random messages</string>
     <string-array name="quickspace_psa_random">
-        <item>Невежество — блаженство</item>
-        <item>Не пора ли уже прошить ещё одно обновление?</item>
-        <item>Цените мир</item>
-        <item>О, привет, что случилось?</item>
-        <item>Добро пожаловать в матрицу!</item>
-        <item>Сколько снимков экрана вы сделали?</item>
-        <item>Открой лучшее с Alphadroid</item>
-        <item>Распространяйте любовь, а не хаос</item>
-        <item>Не мы разожгли огонь!</item>
-        <item>Время хорошей музыки</item>
-        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C ГОЛОВА</item>
-        <item>Вам нужен Alphadroid Premium, чтобы видеть это</item>
-        <item>Помни родословную Lineage</item>
-        <item>Наслаждайтесь долгим сроком службы батареи</item>
-        <item>Начинайте с нуля</item>
-        <item>Мы любим тебя 3000</item>
-        <item>Вкусно даже без Суши</item>
-        <item>Сделайте сегодня кому-то что-то приятное</item>
-        <item>Это же лучше Pixel Experience, не так ли?</item>
-        <item>Никаких иллюзий, добро пожаловать в реальность!</item>
-        <item>Спасибо за вашу поддержку!</item>
-        <item>Никакого праздника для сумасшедших – только совершенство!</item>
-        <item>Одна из лучших сборок</item>
-        <item>Безопасность для вашей паранойи</item>
-        <item>Восхождение в мире</item>
-        <item>Какой прекрасный опыт, не правда ли?</item>
-        <item>Эволюция - это миф, правда?</item>
-        <item>Ты - это то, что прошиваешь, не будь картошкой</item>
-        <item>Что у тебя на уме?</item>
-        <item>Я жду опекуна (лат.)</item>
-        <item>Тили-тили, трали-вали...</item>
-        <item>Победитель, Победитель ....?</item>
+        <item>Ignorance is Bliss</item>
+        <item>Make peace, not war</item>
+        <item>Oh hey, what\'s up?</item>
+        <item>We love you 3000</item>
+        <item>Thank you for your support</item>
+        <item>One of the buildbot\'s best picks</item>
+        <item>Wubba Lubba Dub Dub</item>
+        <item>Winner winner...</item>
         <item>rm -rf \/</item>
-        <item>Pringles, на самом деле, не картофельные чипсы..</item>
-        <item>Не забудьте проверить уровень заряда батареи своих устройств!</item>
-        <item>Проверьте свою электронную почту/сообщения.</item>
-        <item>Проверьте свой список дел, если он у вас есть.</item>
-        <item>Вы можете отключить «С первого взгляда» в настройках рабочего стола.</item>
+        <item>Pringles aren\'t actually potato chips..</item>
+        <item>You can disable quickspace via home settings</item>
+        <item>mv bro bollywood</item>
+        <item>no log, no bug</item>
+        <item>find bug; kill bug</item>
+        <item>I got nothing ¯\\_(ツ)_/¯</item>
+    </string-array>
+    <string-array name="quickspace_psa_homer">
+        <item>I never apologize. I\'m sorry but that\'s the way I am.</item>
+        <item>All my life, I\'ve had one dream: to achieve my many goals.</item>
+        <item>Good drink... good meat... good God, let\'s eat!</item>
+        <item>You\'ll have to speak up. I\'m wearing a towel.</item>
+        <item>Change the channel, Marge...</item>
+        <item>Roads are just a suggestion Marge, just like pants.</item>
+        <item>It takes two to lie - one to lie and one to listen.</item>
+        <item>Shut up, Flanders!</item>
+        <item>I\'m not normally a praying man, but if \nyou\'re up there, please save me, Superman.</item>
+        <item>It\'s so simple to be wise... just think \nof something stupid to say and then don\'t say it.</item>
+        <item>Stupid sexy Flanders...</item>
+        <item>I hope I didn\'t brain my damage.</item>
+        <item>Operator, give me the number for 911!</item>
+        <item>Don\'t blame me, I voted for Kodos.</item>
     </string-array>
     <!-- QuickSpace: QuickEvent: Weather -->
     <string name="quick_event_ambient_weather_title">Обновление погоды</string>
     <string name="quick_event_ambient_weather_summary">Показывать текущее обновление погоды</string>
-    <string name="quick_event_ambient_weather_enabled_info">Требуется, чтобы служба погоды была запущена</string>
-    <string name="quick_event_weather_clouds">Пасмурно</string>
-    <string name="quick_event_weather_rain">Дождь</string>
-    <string name="quick_event_weather_clear">Ясная погода</string>
-    <string name="quick_event_weather_storm">Гроза</string>
-    <string name="quick_event_weather_snow">Снег</string>
-    <string name="quick_event_weather_wind">Ветер</string>
-    <string name="quick_event_weather_mist">Туман</string>
+    <string name="quick_event_ambient_weather_enabled_info">Requires weather service to be enabled</string>
+    <string name="quick_event_weather_clouds">Cloudy</string>
+    <string name="quick_event_weather_rain">Rainy</string>
+    <string name="quick_event_weather_clear">Clear Sky</string>
+    <string name="quick_event_weather_storm">Stormy</string>
+    <string name="quick_event_weather_snow">Snowy</string>
+    <string name="quick_event_weather_wind">Windy</string>
+    <string name="quick_event_weather_mist">Misty</string>
     <string name="quick_event_weather_city_title">Текущее местоположение</string>
     <string name="quick_event_weather_city_summary">Показывать текущее местоположение</string>
     <string name="quick_event_weather_text_title">Текущее состояние</string>
     <string name="quick_event_weather_text_summary">Показывать информацию о текущих погодных условиях</string>
-    <string name="intent_no_app_clock_found">Невозможно найти календарь или часы</string>
+    <string name="intent_no_app_clock_found">Unable to find calendar or clock activity</string>
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
 </resources>

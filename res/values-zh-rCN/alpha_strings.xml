@@ -5,36 +5,34 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Lock -->
-    <string name="action_lock">Lock/Unlock app</string>
-    <string name="unlock_app">Unlocked app in recents</string>
-    <string name="lock_app">Locked app in recents</string>
+    <string name="action_lock">锁定/解锁应用</string>
+    <string name="unlock_app">在最近任务中解锁应用</string>
+    <string name="lock_app">在最近任务中锁定应用</string>
     <string-array name="quickspace_psa_random">
-        <item>Ignorance is Bliss</item>
-        <item>Make love, not war</item>
-        <item>Oh hey, what\'s up?</item>
-        <item>We love you 3000</item>
-        <item>Thank you for your support</item>
-        <item>One of the buildbot\'s best picks</item>
-        <item>Winner winner..</item>
-        <item>rm -rf \/</item>
+        <item>无知是福</item>
+        <item>要和平不要战争</item>
+        <item>你还好吗？我很好。</item>
+        <item>我们爱你 3000 遍</item>
+        <item>感谢您的支持</item>
+        <item>自动构建工具的最佳选择之一</item>
         <item>Pringles aren\'t actually potato chips..</item>
         <item>You can disable quickspace via home settings.</item>
         <item>I got nothing ¯\\_(ツ)_/¯</item>
     </string-array>
     <string-array name="quickspace_psa_homer">
-        <item>I never apologize. I\'m sorry but that\'s the way I am.</item>
-        <item>All my life, I\'ve had one dream: to achieve my many goals.</item>
-        <item>Good drink... good meat... good God, let\'s eat!</item>
-        <item>You\'ll have to speak up. I\'m wearing a towel.</item>
-        <item>Change the channel, Marge...</item>
-        <item>Roads are just a suggestion Marge, just like pants.</item>
-        <item>It takes two to lie - one to lie and one to listen.</item>
-        <item>Shut up, Flanders!</item>
-        <item>I\'m not normally a praying man, but if you\'re up there, please save me, Superman.</item>
-        <item>It\'s so simple to be wise... just think of something stupid to say and then don\'t say it.</item>
-        <item>Stupid sexy Flanders...</item>
-        <item>I hope I didn\'t brain my damage.</item>
-        <item>Operator, give me the number for 911!</item>
+        <item>我永远也不道歉。很抱歉，我就是这样一个人</item>
+        <item>我一生都有一个梦想：要实现我的许多目标</item>
+        <item>好酒……好肉……好……上帝，让我们开吃吧！</item>
+        <item>你必须说快点，我穿好浴袍了。</item>
+        <item>换个频道，玛姬...</item>
+        <item>公路只是一个建议标志，就像裤子一样。</item>
+        <item>谎言需要两个人——一个人说谎，一个人相信。</item>
+        <item>闭嘴，佛兰德！</item>
+        <item>我通常不是一个祈祷者，但如果你在那里，请拯救我。</item>
+        <item>想变聪明很简单……只要想一想愚蠢的话，然后不要说出来。</item>
+        <item>愚蠢又性感的弗兰德</item>
+        <item>我希望我没有大脑我的损伤</item>
+        <item>接线员，给我 911 的号码！</item>
         <item>不要怪我，我投票支持科多兽。</item>
     </string-array>
 </resources>

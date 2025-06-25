@@ -5,34 +5,34 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Lock -->
-    <string name="action_lock">Lock/Unlock app</string>
-    <string name="unlock_app">Unlocked app in recents</string>
-    <string name="lock_app">Locked app in recents</string>
+    <string name="action_lock">Bloquear/Desbloquear</string>
+    <string name="unlock_app">Aplicação desbloqueada</string>
+    <string name="lock_app">Aplicação bloqueada</string>
     <string-array name="quickspace_psa_random">
-        <item>Ignorance is Bliss</item>
-        <item>Make love, not war</item>
-        <item>Oh hey, what\'s up?</item>
-        <item>We love you 3000</item>
-        <item>Thank you for your support</item>
-        <item>One of the buildbot\'s best picks</item>
-        <item>Pringles aren\'t actually potato chips..</item>
-        <item>You can disable quickspace via home settings.</item>
-        <item>I got nothing ¯\\_(ツ)_/¯</item>
+        <item>Ignorância é felicidade</item>
+        <item>Façam amor, não a guerra</item>
+        <item>Olá! Tudo bem?</item>
+        <item>Nós gostamos 3000 de ti</item>
+        <item>Obrigado pelo teu apoio!</item>
+        <item>Uma das escolhas recomendadas pelo buildbot</item>
+        <item>As Pringles não são batatas fritas..</item>
+        <item>Pode desativar o espaço rápido nas definições.</item>
+        <item>Népias ¯\\_(ツ)_/¯</item>
     </string-array>
     <string-array name="quickspace_psa_homer">
-        <item>I never apologize. I\'m sorry but that\'s the way I am.</item>
-        <item>All my life, I\'ve had one dream: to achieve my many goals.</item>
-        <item>Good drink... good meat... good God, let\'s eat!</item>
-        <item>You\'ll have to speak up. I\'m wearing a towel.</item>
-        <item>Change the channel, Marge...</item>
-        <item>Roads are just a suggestion Marge, just like pants.</item>
-        <item>It takes two to lie - one to lie and one to listen.</item>
-        <item>Shut up, Flanders!</item>
-        <item>I\'m not normally a praying man, but if you\'re up there, please save me, Superman.</item>
-        <item>It\'s so simple to be wise... just think of something stupid to say and then don\'t say it.</item>
-        <item>Stupid sexy Flanders...</item>
-        <item>I hope I didn\'t brain my damage.</item>
-        <item>Operator, give me the number for 911!</item>
-        <item>Don\'t blame me, I voted for Kodos.</item>
+        <item>Eu nunca peço desculpa. Desculpem, mas é assim que eu sou.</item>
+        <item>Durante toda a minha vida, tive um sonho: realizar os meus muitos objetivos.</item>
+        <item>Boa bebida... boa carne... bom Deus, vamos comer!</item>
+        <item>Tens de falar mais alto. Eu estou de toalha.</item>
+        <item>Muda o canal, Marge...</item>
+        <item>Estradas são apenas uma sugestão, Marge. É como usar calças.</item>
+        <item>São precisos dois para mentir - um para mentir e outro para ouvir.</item>
+        <item>Cala a boca, Flanders!</item>
+        <item>Normalmente eu não sou um homem crente, mas se estás aí em cima, por favor salva-me, super-homem.</item>
+        <item>É muito simples ser sábio... basta pensar em algo estúpido para dizer e não dizer.</item>
+        <item>Estúpido Flanders sensual...</item>
+        <item>Espero não tem cerebrado os meus danos.</item>
+        <item>Operadora, dê-me o número do 112!</item>
+        <item>Não me culpem a mim, eu votei no Kodos.</item>
     </string-array>
 </resources>

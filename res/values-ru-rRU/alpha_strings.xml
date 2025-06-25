@@ -5,15 +5,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Lock -->
-    <string name="action_lock">Lock/Unlock app</string>
-    <string name="unlock_app">Unlocked app in recents</string>
-    <string name="lock_app">Locked app in recents</string>
+    <string name="action_lock">Заблокировать/Разблокировать приложение</string>
+    <string name="unlock_app">Разблокировано приложение в недавних</string>
+    <string name="lock_app">Заблокировано приложение в недавних</string>
     <string-array name="quickspace_psa_random">
         <item>Ignorance is Bliss</item>
         <item>Make love, not war</item>
-        <item>Oh hey, what\'s up?</item>
-        <item>We love you 3000</item>
-        <item>Thank you for your support</item>
+        <item>О, привет, как дела?</item>
+        <item>Мы любим тебя 3000</item>
+        <item>Спасибо за вашу поддержку</item>
         <item>One of the buildbot\'s best picks</item>
         <item>Pringles aren\'t actually potato chips..</item>
         <item>You can disable quickspace via home settings.</item>
@@ -27,7 +27,7 @@
         <item>Change the channel, Marge...</item>
         <item>Roads are just a suggestion Marge, just like pants.</item>
         <item>It takes two to lie - one to lie and one to listen.</item>
-        <item>Shut up, Flanders!</item>
+        <item>Заткнись, Фландерс!</item>
         <item>I\'m not normally a praying man, but if you\'re up there, please save me, Superman.</item>
         <item>It\'s so simple to be wise... just think of something stupid to say and then don\'t say it.</item>
         <item>Stupid sexy Flanders...</item>

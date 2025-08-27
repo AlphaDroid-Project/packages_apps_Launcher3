@@ -127,8 +127,6 @@ import com.android.systemui.shared.system.QuickStepContract.SystemUiStateFlags;
 import com.android.systemui.unfold.UnfoldTransitionProgressProvider;
 import com.android.systemui.unfold.util.ScopedUnfoldTransitionProgressProvider;
 
-import lineageos.providers.LineageSettings;
-
 import kotlinx.coroutines.CoroutineDispatcher;
 
 import java.io.PrintWriter;
@@ -176,14 +174,14 @@ public class TaskbarManagerImpl implements DisplayDecorationListener {
     private static final Uri NAV_BAR_KIDS_MODE = Settings.Secure.getUriFor(
             Settings.Secure.NAV_BAR_KIDS_MODE);
 
-    public static final Uri ENABLE_TASKBAR_URI = LineageSettings.System.getUriFor(
-            LineageSettings.System.ENABLE_TASKBAR);
+    public static final Uri ENABLE_TASKBAR_URI = Settings.System.getUriFor(
+            Settings.System.ENABLE_TASKBAR);
 
-    public static final Uri NAVIGATION_BAR_HINT_URI = LineageSettings.System.getUriFor(
-            LineageSettings.System.NAVIGATION_BAR_HINT);
+    public static final Uri NAVIGATION_BAR_HINT_URI = Settings.System.getUriFor(
+            Settings.System.NAVIGATION_BAR_HINT);
 
-    public static final Uri FORCE_SHOW_NAVBAR_URI = LineageSettings.System.getUriFor(
-            LineageSettings.System.FORCE_SHOW_NAVBAR);
+    public static final Uri FORCE_SHOW_NAVBAR_URI = Settings.System.getUriFor(
+            Settings.System.FORCE_SHOW_NAVBAR);
 
     public static final Uri NAVIGATIONBAR_KEY_ORDER_URI = Settings.Secure.getUriFor(
             Settings.Secure.NAVIGATIONBAR_KEY_ORDER);

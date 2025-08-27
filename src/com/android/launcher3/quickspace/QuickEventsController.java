@@ -165,7 +165,7 @@ public class QuickEventsController {
         } else if (luckNumber == 7) {
             mPSAStr = mResources.getStringArray(R.array.quickspace_psa_random);
             mEventTitleSub = mPSAStr[getLuckyNumber(0, mPSAStr.length - 1)];
-            mEventSubIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_quickspace_crdroid);
+            mEventSubIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_quickspace_pacman);
             mIsQuickEvent = true;
             return;
         }

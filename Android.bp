@@ -458,7 +458,6 @@ android_library {
         "launcher-executors-module",
         "libGoogleFeed",
         "SettingsLib",
-        "org.lineageos.platform",
         "chaldea.seraphixgoogle",
     ],
     manifest: "AndroidManifest-common.xml",

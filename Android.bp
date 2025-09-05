@@ -411,7 +411,6 @@ android_library {
         "com_android_systemui_shared_flags_lib",
         "libGoogleFeed",
         "SettingsLib",
-        "org.lineageos.platform",
         "chaldea.seraphixgoogle",
     ],
     manifest: "AndroidManifest-common.xml",

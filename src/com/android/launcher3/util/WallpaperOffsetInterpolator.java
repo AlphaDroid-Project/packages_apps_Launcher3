@@ -42,6 +42,7 @@ public class WallpaperOffsetInterpolator implements
 
     private boolean mLockedToDefaultPage;
     private int mNumScreens;
+    private SharedPreferences mPrefs;
 
     private boolean mAllowScrolling;
 
@@ -52,8 +53,8 @@ public class WallpaperOffsetInterpolator implements
         mIsRtl = Utilities.isRtl(workspace.getResources());
         mHandler = new OffsetHandler(workspace.getContext());
         mAllowScrolling = LauncherPrefs.WALLPAPER_SCROLLING.get(workspace.getContext());
-        SharedPreferences prefs = LauncherPrefs.getPrefs(workspace.getContext());
-        prefs.registerOnSharedPreferenceChangeListener(this);
+        mPrefs = LauncherPrefs.getPrefs(workspace.getContext());
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     /**
@@ -65,6 +66,15 @@ public class WallpaperOffsetInterpolator implements
 
     public boolean isLockedToDefaultPage() {
         return mLockedToDefaultPage;
+    }
+
+    public void destroy() {
+        if (mRegistered) {
+            mWallpaperChangeReceiver.unregisterReceiverSafely();
+            mRegistered = false;
+        }
+        mHandler.removeCallbacksAndMessages(null);
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -224,6 +234,7 @@ public class WallpaperOffsetInterpolator implements
         if (mWindowToken == null && mRegistered) {
             mWallpaperChangeReceiver.unregisterReceiverSafely();
             mRegistered = false;
+            mHandler.removeCallbacksAndMessages(null);
         } else if (mWindowToken != null && !mRegistered) {
             mWallpaperChangeReceiver.register(ACTION_WALLPAPER_CHANGED);
             onWallpaperChanged();

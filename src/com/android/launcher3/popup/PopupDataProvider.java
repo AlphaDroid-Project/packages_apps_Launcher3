@@ -155,6 +155,12 @@ public class PopupDataProvider implements NotificationListener.NotificationsChan
         }
     }
 
+    @Override
+    public void clear() {
+        mPackageUserToDotInfos.clear();
+        mDeepShortcutMap.clear();
+    }
+
     public void setDeepShortcutMap(HashMap<ComponentKey, Integer> deepShortcutMapCopy) {
         mDeepShortcutMap = deepShortcutMapCopy;
         if (LOGD) Log.d(TAG, "bindDeepShortcutMap: " + mDeepShortcutMap);

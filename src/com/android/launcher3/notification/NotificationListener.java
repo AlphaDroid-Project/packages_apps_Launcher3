@@ -34,6 +34,7 @@ import android.util.ArraySet;
 import android.util.Log;
 import android.util.Pair;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
@@ -92,6 +93,7 @@ public class NotificationListener extends NotificationListenerService {
         return sIsConnected ? sNotificationListenerInstance : null;
     }
 
+    @MainThread
     public static void addNotificationsChangedListener(NotificationsChangedListener listener) {
         if (listener == null) {
             return;
@@ -109,8 +111,10 @@ public class NotificationListener extends NotificationListenerService {
         }
     }
 
+    @MainThread
     public static void removeNotificationsChangedListener(NotificationsChangedListener listener) {
         if (listener != null) {
+            listener.clear();
             sNotificationsChangedListeners.remove(listener);
         }
     }
@@ -239,6 +243,7 @@ public class NotificationListener extends NotificationListenerService {
     }
 
     private void onNotificationFullRefresh() {
+        mWorkerHandler.removeMessages(MSG_NOTIFICATION_FULL_REFRESH);
         mWorkerHandler.obtainMessage(MSG_NOTIFICATION_FULL_REFRESH).sendToTarget();
     }
 
@@ -247,7 +252,13 @@ public class NotificationListener extends NotificationListenerService {
         super.onListenerDisconnected();
         Log.i(TAG, "onListenerDisconnected");
         sIsConnected = false;
-        mSettingsCache.unregister(NOTIFICATION_BADGING_URI, mNotificationSettingsChangedListener);
+        if (mSettingsCache != null && mNotificationSettingsChangedListener != null) {
+            mSettingsCache.unregister(NOTIFICATION_BADGING_URI, mNotificationSettingsChangedListener);
+        }
+        mWorkerHandler.removeCallbacksAndMessages(null);
+        mUiHandler.removeCallbacksAndMessages(null);
+        mNotificationGroupMap.clear();
+        mNotificationGroupKeyMap.clear();
         onNotificationFullRefresh();
     }
 
@@ -337,6 +348,7 @@ public class NotificationListener extends NotificationListenerService {
     }
 
     public interface NotificationsChangedListener {
+        void clear();
         void onNotificationPosted(PackageUserKey postedPackageUserKey,
                 NotificationKeyData notificationKey);
         void onNotificationRemoved(PackageUserKey removedPackageUserKey,

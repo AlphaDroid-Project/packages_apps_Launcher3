@@ -17,6 +17,7 @@
 
 package com.android.quickstep.views;
 
+import static com.android.launcher3.util.Executors.MAIN_EXECUTOR;
 import static com.android.launcher3.util.Executors.MODEL_EXECUTOR;
 
 import android.app.ActivityManager;
@@ -36,8 +37,6 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.android.internal.util.MemInfoReader;
-
-import com.android.settingslib.utils.ThreadUtils;
 
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.LauncherPrefs;
@@ -245,7 +244,6 @@ public class MemInfoView extends TextView implements Insettable {
     }
 
     private void startMemoryMonitoring() {
-        stopMemoryMonitoring();
         if (mHandler == null) {
             mHandler = MODEL_EXECUTOR.getHandler();
         }
@@ -253,11 +251,9 @@ public class MemInfoView extends TextView implements Insettable {
     }
 
     private void stopMemoryMonitoring() {
-        synchronized (this) {
-            if (mHandler != null) {
-                mHandler.removeCallbacksAndMessages(mWorker);
-                mHandler = null;
-            }
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(mWorker);
+            mHandler = null;
         }
     }
 
@@ -290,10 +286,11 @@ public class MemInfoView extends TextView implements Insettable {
                 text = String.format(Locale.getDefault(), view.mMemInfoText, availResult, view.mTotalResult);
             }
 
-            ThreadUtils.postOnMainThread(() -> view.setText(text));
+            MAIN_EXECUTOR.getHandler().post(() -> view.setText(text));
 
             if (view.mHandler != null) {
-                view.mHandler.postDelayed(this, 1000);
+                view.mHandler.removeCallbacksAndMessages(this);
+                view.mHandler.postDelayed(this, 1500);
             }
         }
     }

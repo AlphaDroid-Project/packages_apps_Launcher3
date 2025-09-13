@@ -112,19 +112,22 @@ public class MemInfoView extends TextView implements Insettable {
     }
 
     @Override
-    public void setVisibility(int visibility) {
-        if (visibility == VISIBLE) {
-            boolean showMeminfo = LauncherPrefs.RECENTS_MEMINFO.get(getContext());
-            if (!showMeminfo) visibility = GONE;
-        }
-
-        super.setVisibility(visibility);
-
-        if (visibility == VISIBLE) {
-            startMemoryMonitoring();
-        } else {
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        boolean showMeminfo = LauncherPrefs.RECENTS_MEMINFO.get(getContext());
+        if (!showMeminfo) {
+            setVisibility(GONE);
             stopMemoryMonitoring();
+        } else {
+            startMemoryMonitoring();
+            setVisibility(VISIBLE);
         }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        stopMemoryMonitoring();
     }
 
     @Override
@@ -296,10 +299,4 @@ public class MemInfoView extends TextView implements Insettable {
     }
 
     private final MemoryWorker mWorker = new MemoryWorker(this);
-
-    @Override
-    protected void onDetachedFromWindow() {
-        stopMemoryMonitoring();
-        super.onDetachedFromWindow();
-    }
 }

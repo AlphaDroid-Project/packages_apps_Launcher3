@@ -1118,9 +1118,13 @@ public class Launcher extends StatefulActivity<LauncherState>
         if (mQuickSpace != null) {
             mQuickSpace.onPause();
         }
+        if (mAppsView != null && mAppsView.getActiveRecyclerView() != null) {
+            mAppsView.getActiveRecyclerView().getRecycledViewPool().clear();
+        }
         hideKeyboard();
         logStopAndResume(false /* isResume */);
         mAppWidgetHolder.setActivityStarted(false);
+        mModelCallbacks.clearPendingBinds();
         NotificationListener.removeNotificationsChangedListener(getPopupDataProvider());
         FloatingIconView.resetIconLoadResult();
         AccessibilityManagerCompat.sendTestProtocolEventToTest(
@@ -2230,13 +2234,14 @@ public class Launcher extends StatefulActivity<LauncherState>
     @Override
     public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-        if (level >= ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
-            // The widget preview db can result in holding onto over
-            // 3MB of memory for caching which isn't necessary.
-            SQLiteDatabase.releaseMemory();
+        SQLiteDatabase.releaseMemory();
 
-            // This clears all widget bitmaps from the widget tray
-            // TODO(hyunyoungs)
+        if (level >= ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN
+                || level == ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL) {
+            if (getViewCache() != null) getViewCache().clear();
+            if (mAppsView != null && mAppsView.getActiveRecyclerView() != null) {
+                mAppsView.getActiveRecyclerView().getRecycledViewPool().clear();
+            }
         }
     }
 

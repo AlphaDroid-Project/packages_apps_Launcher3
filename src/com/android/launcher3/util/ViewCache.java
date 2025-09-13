@@ -69,6 +69,10 @@ public class ViewCache {
         }
     }
 
+    public void clear() {
+        mCache.clear();
+    }
+
     @VisibleForTesting
     static class CacheEntry {
 

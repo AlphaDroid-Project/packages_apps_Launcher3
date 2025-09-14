@@ -22,6 +22,7 @@ import android.os.Bundle;
 
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherPrefs;
+import com.android.launcher3.Utilities;
 import com.android.systemui.plugins.shared.LauncherOverlayManager;
 import com.android.systemui.plugins.shared.LauncherOverlayManager.LauncherOverlay;
 import com.android.systemui.plugins.shared.LauncherOverlayManager.LauncherOverlayCallbacks;
@@ -50,12 +51,13 @@ public class OverlayCallbackImpl
     private LauncherOverlayCallbacks mLauncherOverlayCallbacks;
     private boolean mWasOverlayAttached = false;
 
-    public OverlayCallbackImpl(Launcher launcher) {
-        SharedPreferences prefs = LauncherPrefs.getPrefs(launcher);
+    private final SharedPreferences mPrefs;
 
+    public OverlayCallbackImpl(Launcher launcher) {
         mLauncher = launcher;
-        mClient = new LauncherClient(mLauncher, this, getClientOptions(prefs));
-        prefs.registerOnSharedPreferenceChangeListener(this);
+        mPrefs = LauncherPrefs.getPrefs(launcher);
+        mClient = new LauncherClient(mLauncher, this, getClientOptions(mPrefs));
+        mPrefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -115,14 +117,16 @@ public class OverlayCallbackImpl
 
     @Override
     public void onActivityDestroyed() {
+        mLauncherOverlayCallbacks = null;
         mClient.onDestroy();
-        mLauncher.getSharedPrefs().unregisterOnSharedPreferenceChangeListener(this);
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
         if (KEY_ENABLE_MINUS_ONE.equals(key)) {
             mClient.setClientOptions(getClientOptions(prefs));
+            mClient.reattachOverlay();
         }
     }
 
@@ -130,6 +134,7 @@ public class OverlayCallbackImpl
     public void onServiceStateChanged(boolean overlayAttached, boolean hotwordActive) {
         if (overlayAttached != mWasOverlayAttached) {
             mWasOverlayAttached = overlayAttached;
+            if (!overlayAttached) mLauncherOverlayCallbacks = null;
             mLauncher.setLauncherOverlay(overlayAttached ? this : null);
         }
     }
@@ -162,8 +167,10 @@ public class OverlayCallbackImpl
     }
 
     private LauncherClient.ClientOptions getClientOptions(SharedPreferences prefs) {
+        boolean enabledByUser = prefs.getBoolean(KEY_ENABLE_MINUS_ONE, true);
+        boolean gsaAvailable = Utilities.isGSAEnabled(mLauncher);
         return new LauncherClient.ClientOptions(
-                prefs.getBoolean(KEY_ENABLE_MINUS_ONE, true),
+                enabledByUser && gsaAvailable,
                 true, /* enableHotword */
                 true /* enablePrewarming */
         );

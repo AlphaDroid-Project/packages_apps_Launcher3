@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016-2023 crDroid Android Project
+     Copyright (C) 2016-2025 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@
     <string name="app_drawer_category_summary">Настроить меню приложений</string>
     <string name="recents_category_title">Недавние</string>
     <string name="recents_category_summary">Настройки экрана недавних приложений</string>
-    <string name="misc_category_title">Разное</string>
+    <string name="misc_category_title">Прочее</string>
     <string name="misc_category_summary">Прочие настройки</string>
     <string name="general_category_title">Общие</string>
     <string name="interface_category_title">Интерфейс</string>
@@ -59,7 +59,7 @@
     <string name="trust_apps_manager_name">Скрыть и защитить приложения</string>
     <string name="trust_apps_auth_manager">Разблокируйте, чтобы управлять скрытыми и защищёнными приложениями</string>
     <string name="trust_apps_auth_open_app">Авторизуйтесь, чтобы открыть %1$s</string>
-    <string name="trust_apps_loading">Загрузка\u2026</string>
+    <string name="trust_apps_loading">Loading\u2026</string>
     <string name="trust_apps_no_lock_error">Пожалуйста, настройте блокировку экрана, чтобы ограничить доступ к приложениям</string>
     <string name="trust_apps_help">Помощь</string>
     <string name="trust_apps_info_hidden">Не показывать скрытые приложения и их виджеты в меню приложений</string>
@@ -92,7 +92,7 @@
     <string name="custom_seekbar_value">Значение: <xliff:g id="v">%s</xliff:g></string>
     <string name="custom_seekbar_default_value">по умолчанию</string>
     <string name="custom_seekbar_default_value_to_set">Значение по умолчанию: <xliff:g id="v">%s</xliff:g>\nУдерживайте для установки</string>
-    <string name="custom_seekbar_default_value_is_set">Установлено значение по умолчанию</string>
+    <string name="custom_seekbar_default_value_is_set">Значение по умолчанию установлено</string>
     <!-- Icon size -->
     <string name="icon_size_title">Размер значка</string>
     <!-- Font size -->
@@ -112,7 +112,7 @@
     <string name="dock_music_search_summary">Поиск музыки при нажатии на микрофон</string>
     <string name="dock_search_title">Поиск Google</string>
     <string name="dock_search_summary">Показывать строку поиска снизу</string>
-    <string name="dock_theme_title">Значки из темы</string>
+    <string name="dock_theme_title">Значок из темы</string>
     <string name="dock_theme_summary">Для панели поиска использовать значки из темы</string>
     <string name="search_radius_title">Радиус закругления углов</string>
     <!-- Hotseat Background -->
@@ -122,6 +122,9 @@
     <string name="background_opacity_title">Прозрачность фона</string>
     <!-- Stroke -->
     <string name="stroke_width_title">Окантовка</string>
+    <!-- App drawer searchbar -->
+    <string name="drawer_search_title">Строка поиска</string>
+    <string name="drawer_search_summary">Строка поиска в верхней части меню приложений</string>
     <!-- Wallpaper scrolling -->
     <string name="allow_wallpaper_scrolling">Прокрутка обоев</string>
     <string name="allow_wallpaper_scrolling_summary">Эффект прокрутки обоев для нескольких экранов</string>
@@ -140,28 +143,26 @@
     <string name="recents_screenshot_title">Снимок экрана</string>
     <string name="recents_clear_all_title">Очистить всё</string>
     <string name="recents_lens_title">Объектив</string>
-    <!-- Parallax -->
-    <string name="short_parallax_title">Разрешить короткое смещение</string>
-    <string name="short_parallax_summary">Включить эффект полной прокрутки обоев на меньшем количестве страниц вместо обрезки обоев</string>
-    <string name="single_page_center_title">Центр, если одна страница</string>
-    <string name="single_page_center_summary">Центрировать обои, если используется только одна страница</string>
-    <!-- App drawer searchbar -->
-    <string name="drawer_search_title">Строка поиска</string>
-    <string name="drawer_search_summary">Строка поиска в верхней части меню приложений</string>
-    <!-- Auto keyboard -->
-    <string name="pref_auto_keyboard_title">Автоматическая клавиатура</string>
-    <string name="pref_auto_keyboard_summary">Начинать поиск, когда открыто меню приложений</string>
     <!-- AppInfo -->
+    <string name="app_info_title">Application info</string>
     <string name="app_info_source">Источник</string>
-    <string name="app_info_source_system">Системное</string>
+    <string name="app_info_source_system">System</string>
     <string name="app_info_last_update">Последнее обновление</string>
     <string name="app_info_version">Версия</string>
     <string name="app_info_more">Дополнительно...</string>
     <!-- Icon pack -->
     <string name="icon_pack_title">Набор значков</string>
-    <string name="icon_pack_default_label">По умолчанию</string>
+    <string name="icon_pack_default_label">Default</string>
     <string name="icon_pack_add">Установить ещё</string>
     <string name="icon_pack_no_market">Нет доступного магазина приложений</string>
+    <!-- Parallax -->
+    <string name="short_parallax_title">Разрешить короткое смещение</string>
+    <string name="short_parallax_summary">Включить эффект полной прокрутки обоев на меньшем количестве страниц вместо обрезки обоев</string>
+    <string name="single_page_center_title">Центр, если одна страница</string>
+    <string name="single_page_center_summary">Центрировать обои, если используется только одна страница</string>
+    <!-- Open keyboard -->
+    <string name="drawer_open_keyboard_title">Swipe to start search</string>
+    <string name="drawer_open_keyboard_summary">Open keyboard whenever app drawer becomes visible</string>
     <!-- App drawer scrollbar -->
     <string name="drawer_scrollbar_title">Полоса прокрутки</string>
     <string name="drawer_scrollbar_summary">Полоса прокрутки сбоку меню приложений</string>
@@ -189,155 +190,12 @@
     <!-- Quickspace PSA - Custom messages for the glance -->
     <string name="quickspace_psa_title">Случайные сообщения</string>
     <string name="quickspace_psa_summary">Сделайте своего спутника более живым с помощью случайных сообщений</string>
-    <string-array name="quickspace_psa_morning">
-        <item>Доброго утра!</item>
-        <item>Доброго утра! Время зажигать!</item>
-        <item>Какой чудесный день!</item>
-        <item>Хорошего дня!</item>
-        <item>Как насчет небольшого 5-минутного перерыва?</item>
-        <item>Давайте сделаем это.</item>
-        <item>Утро — свежий холст для вашего ежедневного шедевра</item>
-        <item>Встречайте рассвет возможностей каждое утро</item>
-        <item>С ранним светом найдите силу, которая осветит ваш путь</item>
-        <item>Ваш день начинается с безграничных возможностей</item>
-        <item>Каждый восход солнца — это напоминание о том, что можно начать заново</item>
-        <item>Просыпайтесь с целью, победите предстоящий день</item>
-        <item>Ваши мысли могут стать основой великих достижений</item>
-        <item>Мир пробуждается, и ваш потенциал тоже</item>
-        <item>Первая глава вашего ежедневного приключения</item>
-        <item>Пусть ваша утренняя рутина станет стартовой площадкой для успеха</item>
-        <item>Восходит солнце или нет, но ваш потенциал всегда растёт</item>
-        <item>Пришло время для свежих идей и смелых действий</item>
-        <item>Ранняя пташка ловит червяка, а вы - ловите свои мечты</item>
-        <item>Найдите в себе смелость преследовать свои стремления</item>
-        <item>Восстаньте и сияйте, ибо величие ждёт</item>
-        <item>Лучшее время для начала – здесь и сейчас</item>
-    </string-array>
-    <string-array name="quickspace_psa_noon">
-        <item>Гоняйся за своей мечтой, а не за минутами</item>
-        <item>В каждый момент новая возможность</item>
-        <item>Охватите путешествие, а не только пункт назначения</item>
-        <item>Сегодня - это подарок, поэтому он и называется настоящим</item>
-        <item>Пусть твоя улыбка изменит мир</item>
-        <item>Жизнь — это история. Сделай каждую главу значимой</item>
-        <item>Находите радость в обычных моментах</item>
-        <item>Лучшее ещё впереди, так держать!</item>
-        <item>Ваш шанс превратить «что, если» в «то, что есть»</item>
-        <item>Ловите момент, начиная прямо сейчас</item>
-        <item>Счастье — это выбор, который вы можете сделать в любое время</item>
-        <item>Верьте в себя даже сонным днём</item>
-        <item>Пусть ваши действия говорят громче часов</item>
-        <item>Ваша жизнь — это то, что вы из неё делаете. Сделай это потрясающе</item>
-        <item>Мечтай о многом, работай усердно и никогда не сдавайся</item>
-        <item>Ты сильнее чем ты думаешь</item>
-        <item>Каждая неудача – это подготовка к возвращению</item>
-        <item>Создай путешествие, а не дорогу до пункта назначения</item>
-        <item>Преследуйте свои цели, а не свои страхи</item>
-        <item>Ваш потенциал безграничен. Разблокируйте его</item>
-    </string-array>
-    <string-array name="quickspace_psa_early_evening">
-        <item>Примите настоящий момент, независимо от часа</item>
-        <item>В каждом сумраке находите новый рассвет возможностей</item>
-        <item>Жизнь - это путешествие. Наслаждайтесь пейзажами по пути</item>
-        <item>Ваше отношение формирует вашу реальность</item>
-        <item>Ваша история всё ещё пишется, даже когда солнце садится</item>
-        <item>Сохраняйте красоту в обычных моментах</item>
-        <item>Пришло время задуматься и перезагрузиться</item>
-        <item>Выбирайте радость, независимо от времени на часах</item>
-        <item>Возможности не заканчиваются вечером</item>
-        <item>Будьте причиной улыбок</item>
-        <item>Ваш потенциал не знает границ</item>
-        <item>Моменты волшебства могут случиться в любой час</item>
-        <item>Ваша жизнь — это то, что вы из нее делаете. Сделайте её необычной</item>
-        <item>Оставайтесь любопытными, оставайтесь благодарными</item>
-        <item>Станьте тем изменением, которое вы хотите увидеть в мире</item>
-        <item>Верьте в себя. Вы способны на удивительные вещи</item>
-        <item>Единственный предел тот, который вы сами для себя установили</item>
-        <item>Успех начинается с первого шага</item>
-    </string-array>
-    <string-array name="quickspace_psa_evening">
-        <item>Ловите ночь, ведь она таит в себе свои тайны</item>
-        <item>В тишине этого вечера найдите безмятежность</item>
-        <item>Величайшие приключения в жизни могут начаться в темноте</item>
-        <item>Ваше путешествие продолжается даже после захода солнца</item>
-        <item>Пусть ночь будет вашим холстом. Нарисуйте его мечтами</item>
-        <item>В тишине этого вечера найдите свой внутренний покой</item>
-        <item>Звёзды сияют ярче в самые тёмные часы</item>
-        <item>Мечтайте о многом, даже в поздние часы дня</item>
-        <item>Ваша жизнь - история, ожидающая написания.</item>
-        <item>Пришло время для размышлений и обновления.</item>
-        <item>Ночные мысли могут привести к утренним откровениям.</item>
-        <item>Найди радость в тишине этого вечера.</item>
-        <item>Ночное небо — огромное полотно снов.</item>
-        <item>Ваш потенциал не знает времени сна; преследуйте свои увлечения</item>
-        <item>Сохраняйте надежду даже в самые мрачные часы</item>
-        <item>Посреди хаоса, найди свое внутреннее спокойствие</item>
-        <item>Сохраняйте позитивный настрой, усердно работайте, чтобы это произошло</item>
-    </string-array>
-    <string-array name="quickspace_psa_midnight">
-        <item>Ночи - это тихий шёпот возможностей</item>
-        <item>В ночной тиши найдите свою внутреннюю силу</item>
-        <item>Примите тьму, ведь она хранит ключи к вашим мечтам</item>
-        <item>Мир спит, но ваш потенциал бодрствует</item>
-        <item>Ночь может быть поздней, но ваши амбиции вечны</item>
-        <item>Оставайтесь любопытными, не спите, и пусть ночи ведут вас</item>
-        <item>Найдите в себе смелость следовать за своей мечтой</item>
-        <item>Великие дела никогда не приходят из зоны комфорта</item>
-        <item>У вас есть сила творить свою судьбу</item>
-        <item>Счастье это выбор. Выбирайте его каждый день.</item>
-        <item>Жизнь — это то, что вы делаете, поэтому примите это во внимание.</item>
-        <item>Оставайтесь сосредоточенными, оставайтесь решительными, оставайтесь неудержимыми</item>
-        <item>Вы автор своей истории</item>
-        <item>Стремитесь к прогрессу, а не к совершенству</item>
-        <item>Каждый день - это новое начало. Сделайте его отличным.</item>
-        <item>Вдохновляйте других, будучи самим собой</item>
-        <item>Ваше отношение определяет ваше направление</item>
-    </string-array>
-    <string-array name="quickspace_psa_random">
-        <item>Невежество — блаженство</item>
-        <item>Не пора ли уже прошить ещё одно обновление?</item>
-        <item>Цените мир</item>
-        <item>О, привет, что случилось?</item>
-        <item>Добро пожаловать в матрицу!</item>
-        <item>Сколько снимков экрана вы сделали?</item>
-        <item>Открой лучшее с AlphaDroid</item>
-        <item>Распространяйте любовь, а не хаос</item>
-        <item>Не мы разожгли огонь!</item>
-        <item>Время хорошей музыки</item>
-        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C ГОЛОВА</item>
-        <item>Вам нужен AlphaDroid Premium, чтобы видеть это</item>
-        <item>Помни родословную Lineage</item>
-        <item>Наслаждайтесь долгим сроком службы батареи</item>
-        <item>Начинайте с нуля</item>
-        <item>Мы любим тебя 3000</item>
-        <item>Вкусно даже без Суши</item>
-        <item>Сделайте сегодня кому-то что-то приятное</item>
-        <item>Это же лучше Pixel Experience, не так ли?</item>
-        <item>Никаких иллюзий, добро пожаловать в реальность!</item>
-        <item>Спасибо за вашу поддержку!</item>
-        <item>Никакого праздника для сумасшедших – только совершенство!</item>
-        <item>Одна из лучших сборок</item>
-        <item>Безопасность для вашей паранойи</item>
-        <item>Восхождение в мире</item>
-        <item>Какой прекрасный опыт, не правда ли?</item>
-        <item>Эволюция - это миф, правда?</item>
-        <item>Ты - это то, что прошиваешь, не будь картошкой</item>
-        <item>Что у тебя на уме?</item>
-        <item>Я жду опекуна (лат.)</item>
-        <item>Тили-тили, трали-вали...</item>
-        <item>Победитель, Победитель ....?</item>
-        <item>rm -rf \/</item>
-        <item>Pringles, на самом деле, не картофельные чипсы..</item>
-        <item>Не забудьте проверить уровень заряда батареи своих устройств!</item>
-        <item>Проверьте свою электронную почту/сообщения.</item>
-        <item>Проверьте свой список дел, если он у вас есть.</item>
-        <item>Вы можете отключить «С первого взгляда» в настройках рабочего стола.</item>
-        <item>Нравится прошивка? Можете нас проспонсировать</item>
-        <item>Лучшая прошивка на свете</item>
-        <item>Поздоровайтесь с нами в Telegram</item>
-        <item>Мы любим вас, нас уже больше 3000</item>
-    </string-array>
+    <string name="intent_no_app_clock_found">Невозможно найти календарь или часы</string>
     <!-- QuickSpace: QuickEvent: Weather -->
+    <string name="quickspace_weather_provider_title">Weather provider</string>
+    <string name="quickspace_weather_provider_entry_auto">Auto</string>
+    <string name="quickspace_weather_provider_entry_seraphix">Google Smartspace</string>
+    <string name="quickspace_weather_provider_entry_omnijaws">OmniJaws</string>
     <string name="quick_event_ambient_weather_title">Обновление погоды</string>
     <string name="quick_event_ambient_weather_summary">Показывать текущее обновление погоды</string>
     <string name="quick_event_ambient_weather_enabled_info">Требуется, чтобы служба погоды была запущена</string>
@@ -352,5 +210,10 @@
     <string name="quick_event_weather_city_summary">Показывать текущее местоположение</string>
     <string name="quick_event_weather_text_title">Текущее состояние</string>
     <string name="quick_event_weather_text_summary">Показывать информацию о текущих погодных условиях</string>
-    <string name="intent_no_app_clock_found">Невозможно найти календарь или часы</string>
+    <!-- Dark Status Bar -->
+    <string name="perf_dark_status_bar_title">Dark status bar</string>
+    <string name="perf_dark_status_bar_summary">Always use dark status bar on home screen</string>
+    <!-- Background blur -->
+    <string name="background_blur_title">Background blur depth</string>
+    <string name="background_blur_summary">Set blur depth level for recents and app drawer</string>
 </resources>

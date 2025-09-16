@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 AlphaDroid
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Lock -->
+    <string name="action_lock">锁定/解锁应用</string>
+    <string name="unlock_app">在最近任务中解锁应用</string>
+    <string name="lock_app">在最近任务中锁定应用</string>
+    <string-array name="quickspace_psa_random">
+        <item>无知是福</item>
+        <item>要和平不要战争</item>
+        <item>你还好吗？我很好。</item>
+        <item>我们爱你 3000 遍</item>
+        <item>感谢您的支持</item>
+        <item>自动构建工具的最佳选择之一</item>
+        <item>品客其实不是薯片……</item>
+        <item>您可以通过主页设置禁用速览。</item>
+        <item>我什么也没有 ¯\\_(ツ)_/¯</item>
+    </string-array>
+    <string-array name="quickspace_psa_homer">
+        <item>我永远也不道歉。很抱歉，我就是这样一个人</item>
+        <item>我一生都有一个梦想：要实现我的许多目标</item>
+        <item>好酒……好肉……好……上帝，让我们开吃吧！</item>
+        <item>你必须说快点，我穿好浴袍了。</item>
+        <item>换个频道，玛姬...</item>
+        <item>公路只是一个建议标志，就像裤子一样。</item>
+        <item>谎言需要两个人——一个人说谎，一个人相信。</item>
+        <item>闭嘴，佛兰德！</item>
+        <item>我通常不是一个祈祷者，但如果你在那里，请拯救我。</item>
+        <item>想变聪明很简单……只要想一想愚蠢的话，然后不要说出来。</item>
+        <item>愚蠢又性感的弗兰德</item>
+        <item>我希望我没有大脑我的损伤</item>
+        <item>接线员，给我 911 的号码！</item>
+        <item>不要怪我，我投票支持科多兽。</item>
+    </string-array>
+</resources>

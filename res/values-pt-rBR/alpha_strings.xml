@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 AlphaDroid
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Lock -->
+    <string name="action_lock">Bloquear/Desbloquear app</string>
+    <string name="unlock_app">Aplicativo desbloqueado nos recentes</string>
+    <string name="lock_app">Bloqueado app nos recentes</string>
+    <string-array name="quickspace_psa_random">
+        <item>É melhor não saber</item>
+        <item>Faça amor, não faça guerra</item>
+        <item>E aí, beleza?</item>
+        <item>Te amamos 3000</item>
+        <item>Obrigado pelo seu apoio</item>
+        <item>Uma das melhores escolhas do buildbot</item>
+        <item>Pringles na verdade não são batatas fritas...</item>
+        <item>Você pode desativar o Quickspace nas configurações da tela inicial.</item>
+        <item>Não sei de nada ¯\\_(ツ)_/¯</item>
+    </string-array>
+    <string-array name="quickspace_psa_homer">
+        <item>Eu nunca peço desculpas. Desculpa, mas é assim que eu sou.</item>
+        <item>A minha vida toda, eu tive um sonho: alcançar meus muitos objetivos.</item>
+        <item>Boa bebida... boa carne... meu Deus, bora comer!</item>
+        <item>Vai ter que falar mais alto. Tô de toalha aqui.</item>
+        <item>Muda o canal, Marge...</item>
+        <item>Estradas são só uma sugestão, Marge, assim como calças.</item>
+        <item>São precisos dois para mentir — um para mentir e outro para ouvir.</item>
+        <item>Cala a boca, Flanders!</item>
+        <item>Eu geralmente não sou de rezar, mas se estiver aí em cima, por favor, me salve, Superman.</item>
+        <item>É tão simples ser sábio... basta pensar em algo idiota para falar e aí não falar.</item>
+        <item>Estúpido sexy Flanders...</item>
+        <item>Espero não ter estragado meu cérebro.</item>
+        <item>Operadora, me passe o número do 190!</item>
+        <item>Não me culpe, eu votei no Kodos.</item>
+    </string-array>
+</resources>

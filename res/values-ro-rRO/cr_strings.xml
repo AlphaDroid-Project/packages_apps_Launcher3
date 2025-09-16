@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016-2023 crDroid Android Project
+     Copyright (C) 2016-2025 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
     <!-- Categories -->
     <string name="home_category_title">Ecranul principal</string>
     <string name="home_category_summary">Setează panoul Google Now și altele</string>
-    <string name="icons_category_title">Pictograme</string>
+    <string name="icons_category_title">Iconiţe</string>
     <string name="icons_category_summary">Setează forma pictogramei și mai multe</string>
     <string name="app_drawer_category_title">Sertar aplicații</string>
     <string name="app_drawer_category_summary">Personalizați sertarul de aplicații</string>
@@ -59,7 +59,7 @@
     <string name="trust_apps_manager_name">Aplicații ascunse &amp; protejate</string>
     <string name="trust_apps_auth_manager">Deblochează pentru a gestiona aplicațiile ascunse și protejate</string>
     <string name="trust_apps_auth_open_app">Autentifică-te pentru a deschide %1$s</string>
-    <string name="trust_apps_loading">Încărcare\u2026</string>
+    <string name="trust_apps_loading">Loading\u2026</string>
     <string name="trust_apps_no_lock_error">Vă rugăm să configurați un ecran de blocare securizat pentru a restricționa accesul aplicației</string>
     <string name="trust_apps_help">Ajutor</string>
     <string name="trust_apps_info_hidden">Aplicațiile ascunse și widget-urile lor sunt ascunse din sertar</string>
@@ -122,6 +122,9 @@
     <string name="background_opacity_title">Opacitate fundal</string>
     <!-- Stroke -->
     <string name="stroke_width_title">Contur</string>
+    <!-- App drawer searchbar -->
+    <string name="drawer_search_title">Bara de căutare aplicaţii</string>
+    <string name="drawer_search_summary">Bara de căutare în partea de sus a sertarului de aplicații</string>
     <!-- Wallpaper scrolling -->
     <string name="allow_wallpaper_scrolling">Derulare fundal</string>
     <string name="allow_wallpaper_scrolling_summary">Efect de derulare fundal pentru mai multe ecrane</string>
@@ -140,28 +143,26 @@
     <string name="recents_screenshot_title">Captură ecran</string>
     <string name="recents_clear_all_title">Stergeti toate</string>
     <string name="recents_lens_title">Obiectiv</string>
-    <!-- Parallax -->
-    <string name="short_parallax_title">Permite parallax scurt</string>
-    <string name="short_parallax_summary">Activează efectul complet de defilare a imaginii de fundal pe un număr mic de pagini în loc să fie decupată imaginea de fundal</string>
-    <string name="single_page_center_title">Centrare pagină unică</string>
-    <string name="single_page_center_summary">Se centrează imaginea de fundal dacă se utilizează doar o singură pagină</string>
-    <!-- App drawer searchbar -->
-    <string name="drawer_search_title">Bara de căutare aplicaţii</string>
-    <string name="drawer_search_summary">Bara de căutare în partea de sus a sertarului de aplicații</string>
-    <!-- Auto keyboard -->
-    <string name="pref_auto_keyboard_title">Automat tastatura</string>
-    <string name="pref_auto_keyboard_summary">Începe căutarea când sertarul este extins</string>
     <!-- AppInfo -->
+    <string name="app_info_title">Application info</string>
     <string name="app_info_source">Sursa</string>
-    <string name="app_info_source_system">Sistem</string>
+    <string name="app_info_source_system">System</string>
     <string name="app_info_last_update">Ultima actualizare</string>
     <string name="app_info_version">Versiune</string>
     <string name="app_info_more">Mai mult</string>
     <!-- Icon pack -->
     <string name="icon_pack_title">Pachet de pictograme</string>
-    <string name="icon_pack_default_label">Prestabilit</string>
+    <string name="icon_pack_default_label">Default</string>
     <string name="icon_pack_add">Instalează mai multe</string>
     <string name="icon_pack_no_market">Nu există niciun magazin de aplicații disponibil</string>
+    <!-- Parallax -->
+    <string name="short_parallax_title">Permite parallax scurt</string>
+    <string name="short_parallax_summary">Activează efectul complet de defilare a imaginii de fundal pe un număr mic de pagini în loc să fie decupată imaginea de fundal</string>
+    <string name="single_page_center_title">Centrare pagină unică</string>
+    <string name="single_page_center_summary">Se centrează imaginea de fundal dacă se utilizează doar o singură pagină</string>
+    <!-- Open keyboard -->
+    <string name="drawer_open_keyboard_title">Swipe to start search</string>
+    <string name="drawer_open_keyboard_summary">Open keyboard whenever app drawer becomes visible</string>
     <!-- App drawer scrollbar -->
     <string name="drawer_scrollbar_title">Bara de derulare</string>
     <string name="drawer_scrollbar_summary">Bara de căutare în partea de sus a sertarului de aplicații</string>
@@ -189,155 +190,12 @@
     <!-- Quickspace PSA - Custom messages for the glance -->
     <string name="quickspace_psa_title">Mesaje aleatorii</string>
     <string name="quickspace_psa_summary">Fă-ți prietenul tău mai viu cu mesaje aleatoare</string>
-    <string-array name="quickspace_psa_morning">
-        <item>Bună dimineața!</item>
-        <item>Bună dimineața, timpul de rock!</item>
-        <item>Ce zi frumoasă!</item>
-        <item>O zi bună!</item>
-        <item>Ce zici de o pauză de 5 minute?</item>
-        <item>Hai să obținem această pâine.</item>
-        <item>Dimineațele sunt o pânză nouă pentru capodopera zilnică.</item>
-        <item>Încurajează răsărirea oportunităţilor în fiecare dimineaţă.</item>
-        <item>În lumina timpurie, găsește puterea de a vă ilumina calea.</item>
-        <item>Ziua ta începe cu posibilități nesfârșite.</item>
-        <item>Fiecare răsărit este un memento că poți începe din nou.</item>
-        <item>Urmează cu scopul, cucerește ziua următoare.</item>
-        <item>Gândurile tale pot sta la baza marilor realizări.</item>
-        <item>Lumea se trezește, la fel și potențialul tău.</item>
-        <item>Primul capitol din aventura ta zilnică.</item>
-        <item>Lăsați rutina de dimineață să fie panoul de lansare pentru succes.</item>
-        <item>Potențialul tău este mereu în creștere.</item>
-        <item>Este timpul pentru idei noi și acțiuni îndrăznețe.</item>
-        <item>Pasărea timpurie prinde viermi, dar îți poți prinde visele.</item>
-        <item>Găsește curajul de a-ți urmări aspirațiile.</item>
-        <item>Ridicați și străluciți, pentru măreție așteaptă.</item>
-        <item>Cel mai bun moment de început este acum.</item>
-    </string-array>
-    <string-array name="quickspace_psa_noon">
-        <item>Parcurge-ți visele, nu minutele.</item>
-        <item>În fiecare moment, o nouă oportunitate.</item>
-        <item>Încurajați călătoria, nu doar destinația.</item>
-        <item>Azi e un cadou, de aceea se numeşte prezent.</item>
-        <item>Lasa zâmbetul tau sa schimbe lumea.</item>
-        <item>Viața e o poveste; fiecare capitol contează.</item>
-        <item>Găsește bucurie în momentele obișnuite.</item>
-        <item>Cel mai bun este încă de venit, țineți-l sus.</item>
-        <item>Șansa dvs. de a transforma \"ce” în \"ce”</item>
-        <item>Porniți ziua, începând chiar acum.</item>
-        <item>Fericirea este o alegere pe care o poți face oricând.</item>
-        <item>Credeți-vă singuri, chiar și după-amiaza somnoroasă.</item>
-        <item>Lasă acțiunile tale să vorbească mai tare decât ceasul.</item>
-        <item>Viața ta este ceea ce o creezi; o faci uimitoare.</item>
-        <item>Visează mare, munceşte din greu şi nu renunţă niciodată.</item>
-        <item>Ești mai puternic decât crezi.</item>
-        <item>Fiecare eșec este o configurație pentru o revenire.</item>
-        <item>Încurajați călătoria, nu doar destinația.</item>
-        <item>Urmăriți-vă obiectivele, nu temerile.</item>
-        <item>Potențialul tău este nesfârșit; deblochează-l.</item>
-    </string-array>
-    <string-array name="quickspace_psa_early_evening">
-        <item>Embracați momentul, indiferent de oră.</item>
-        <item>În fiecare bănuţ, găseşte un nou zori al oportunităţii.</item>
-        <item>Viața e o călătorie; bucură-te de peisajul pe parcurs.</item>
-        <item>Atitudinea ta vă modelează realitatea.</item>
-        <item>Povestea ta încă este scrisă, chiar dacă apare soarele.</item>
-        <item>Capturează frumusețea în momentele obișnuite.</item>
-        <item>Este timpul să reflectăm şi să resetăm.</item>
-        <item>Alege bucuria, indiferent de timpul din ceas.</item>
-        <item>Oportunitățile nu se petrec seara.</item>
-        <item>Fii motivul pentru care cineva zâmbește.</item>
-        <item>Potențialul tău nu cunoaște limite.</item>
-        <item>Momentele de magie se pot întâmpla la orice oră.</item>
-        <item>Viaţa ta este ceea ce o creezi; o faci extraordinară.</item>
-        <item>Stai curios, fii recunoscător.</item>
-        <item>Fii schimbarea pe care vrei să o vezi în lume.</item>
-        <item>Credeți-vă în voi; sunteți capabili de lucruri uimitoare.</item>
-        <item>Singura limită este cea pe care ți-ai stabilit-o.</item>
-        <item>Succesul începe cu un singur pas.</item>
-    </string-array>
-    <string-array name="quickspace_psa_evening">
-        <item>Capturează noaptea, pentru că îşi ţine propriile mistere.</item>
-        <item>În tăcerea din această seară, găsește liniștea.</item>
-        <item>Cele mai mari aventuri ale vieţii pot începe în întuneric.</item>
-        <item>Călătoria ta continuă chiar și după ce soarele a fost setat.</item>
-        <item>Să lăsăm noaptea să fie pânza ta; să o pictezi cu vise.</item>
-        <item>În această seară, găsiţi-vă pacea interioară.</item>
-        <item>Stelele strălucesc în cele mai întunecate ore.</item>
-        <item>Visează mare, chiar şi în ultimele ore ale zilei.</item>
-        <item>Viața ta este o poveste care așteaptă să fie scrisă.</item>
-        <item>Este timpul pentru reflecție și reînnoire.</item>
-        <item>Gândurile tarziu in noapte pot duce la revelatii dimineata devreme.</item>
-        <item>Găseşte bucuria în această seară.</item>
-        <item>Cerul nopţii este o pânză vastă de vise.</item>
-        <item>Potențialul tău nu cunoaște culcare; urmărește pasiunile tale.</item>
-        <item>Rămâi optimist, chiar şi în cele mai întunecate ore.</item>
-        <item>În mijlocul haosului, găsește-ți calmul interior.</item>
-        <item>Rămâi pozitiv, muncește din greu, face acest lucru să se întâmple.</item>
-    </string-array>
-    <string-array name="quickspace_psa_midnight">
-        <item>Noaptea sunt şoimii tăcuţi ai oportunităţilor.</item>
-        <item>În perioada nopţii, găsiţi-vă puterea interioară.</item>
-        <item>Dezvoltă întunericul, pentru că ţine cheile viselor tale.</item>
-        <item>Lumea doarme dar potențialul tău este foarte treaz.</item>
-        <item>Noaptea poate fi târzie, dar ambiţiile dumneavoastră sunt inoportune.</item>
-        <item>Stai curios, stai treaz, și lasă nopțile să te ghideze.</item>
-        <item>Găsește curajul de a-ți urmări visele.</item>
-        <item>Lucruri grozave nu vin niciodată din zonele de confort.</item>
-        <item>Ai puterea să îți creezi propriul destin.</item>
-        <item>Fericirea este o alegere; alege-o în fiecare zi.</item>
-        <item>Viața e ceea ce o faci, așa că fă-o să număre.</item>
-        <item>Rămâi concentrat, rămâi determinat, stai de neoprit.</item>
-        <item>Ești autorul propriei povești.</item>
-        <item>Eforturile pentru progres, nu perfecțiunea.</item>
-        <item>Fiecare zi este un nou început; transformă-l într-unul grozav.</item>
-        <item>Inspiră-i pe ceilalți prin a fi sinele tău autentic.</item>
-        <item>Atitudinea dumneavoastră vă determină direcţia.</item>
-    </string-array>
-    <string-array name="quickspace_psa_random">
-        <item>Ignoranta este Bliss</item>
-        <item>Este timpul să instalezi o nouă actualizare deja?</item>
-        <item>Fă pace, nu război</item>
-        <item>Oh, hei, ce se întâmplă?</item>
-        <item>Bine ai venit in Matrixul real!</item>
-        <item>Câte capturi de ecran faceți?</item>
-        <item>Deschide bunătatea cu AlphaDroid</item>
-        <item>Dragostea răsunătoare, nu haos</item>
-        <item>Nu am început focul!</item>
-        <item>Timp pentru muzica buna</item>
-        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
-        <item>Ai nevoie de AlphaDroid Premium pentru a vedea asta</item>
-        <item>Amintiți-vă Lineage of the Unicorn</item>
-        <item>Bucură-te de durata bateriei Xtended</item>
-        <item>Pornind de la zero</item>
-        <item>Te iubim 3000</item>
-        <item>Delicios chiar și fără Sushi</item>
-        <item>Fă ceva drăguț astăzi</item>
-        <item>Aceasta este cea mai bună experiență Pixel, nu-i așa?</item>
-        <item>Nicio iluzie, bun venit în realitate!</item>
-        <item>Vă mulțumim pentru sprijin</item>
-        <item>Niciun festival pentru Derps - doar perfecţiune!</item>
-        <item>Una dintre cele mai bune alegeri ale buildbot-ului</item>
-        <item>Sanitatea ta pentru Paranoia</item>
-        <item>Intensificarea păcii</item>
-        <item>Ce experiență minunată, nu-i așa?</item>
-        <item>Evoluția e un mit, nu?</item>
-        <item>Ești ceea ce flash-ui, nu fii Cartofor</item>
-        <item>La ce te gandesti?</item>
-        <item>Expecto Patronum</item>
-        <item>Wubba Lubba Dub Dub</item>
-        <item>Câștigător ....?</item>
-        <item>rm -rf \/</item>
-        <item>Pringles nu sunt de fapt chipsuri de cartofi..</item>
-        <item>Nu uita să verifici nivelul bateriei dispozitivului!</item>
-        <item>Verifică-ți e-mailul/mesajele.</item>
-        <item>Verifică lista de lucruri de făcut dacă ai una.</item>
-        <item>Poți dezactiva spațiul rapid în setările lansatorului.</item>
-        <item>Ne iubiti? Trimite-ne o bere</item>
-        <item>Cel mai bun Rom din totdeauna.</item>
-        <item>Spune-ne salut pe Telegram</item>
-        <item>Te iubim 3000</item>
-    </string-array>
+    <string name="intent_no_app_clock_found">Nu s-a găsit activitatea calendar sau ceas</string>
     <!-- QuickSpace: QuickEvent: Weather -->
+    <string name="quickspace_weather_provider_title">Weather provider</string>
+    <string name="quickspace_weather_provider_entry_auto">Auto</string>
+    <string name="quickspace_weather_provider_entry_seraphix">Google Smartspace</string>
+    <string name="quickspace_weather_provider_entry_omnijaws">OmniJaws</string>
     <string name="quick_event_ambient_weather_title">Actualizare meteo</string>
     <string name="quick_event_ambient_weather_summary">Afișează actualizarea meteo curentă</string>
     <string name="quick_event_ambient_weather_enabled_info">Necesită activarea serviciului meteo</string>
@@ -352,5 +210,10 @@
     <string name="quick_event_weather_city_summary">Afişare locaţie meteo curentă</string>
     <string name="quick_event_weather_text_title">Starea curentă</string>
     <string name="quick_event_weather_text_summary">Afişează rezumatul stării meteo curente</string>
-    <string name="intent_no_app_clock_found">Nu s-a găsit activitatea calendar sau ceas</string>
+    <!-- Dark Status Bar -->
+    <string name="perf_dark_status_bar_title">Dark status bar</string>
+    <string name="perf_dark_status_bar_summary">Always use dark status bar on home screen</string>
+    <!-- Background blur -->
+    <string name="background_blur_title">Background blur depth</string>
+    <string name="background_blur_summary">Set blur depth level for recents and app drawer</string>
 </resources>

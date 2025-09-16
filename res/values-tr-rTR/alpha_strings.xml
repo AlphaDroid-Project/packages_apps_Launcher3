@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 AlphaDroid
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Lock -->
+    <string name="action_lock">Uygulama kilitle/kilidi aç</string>
+    <string name="unlock_app">Son kullanılanlarda uygulamanın kilidini açıldı</string>
+    <string name="lock_app">Son kullanılanlarda uygulama kilitlendi</string>
+    <string-array name="quickspace_psa_random">
+        <item>Cehalet mutluluktur</item>
+        <item>Savaşma, seviş</item>
+        <item>Hey, nasıl gidiyor?</item>
+        <item>Seni seviyoruz 3000</item>
+        <item>Desteğiniz için teşekkürler</item>
+        <item>Buildbot\'un en iyi seçimlerinden biri</item>
+        <item>Pringles aslında patates cipsi değil..</item>
+        <item>Quickspace\'i ana ekran ayarlarından devre dışı bırakabilirsiniz.</item>
+        <item>Hiçbir şeyim yok ¯\\_(ツ)_/¯</item>
+    </string-array>
+    <string-array name="quickspace_psa_homer">
+        <item>Ben asla özür dilemem. Üzgünüm ama ben böyleyim.</item>
+        <item>Hayatım boyunca tek bir hayalim vardı: Birçok hedefime ulaşmak.</item>
+        <item>Güzel içecek... güzel et... aman Tanrım, yiyelim!</item>
+        <item>Konuşman gerekecek. Üzerimde havlu var.</item>
+        <item>Kanalı değiştir, Marge...</item>
+        <item>Yollar sadece birer öneri Marge, tıpkı pantolonlar gibi.</item>
+        <item>Yalan söylemek için iki kişi gerekir; biri yalan söyler, biri dinler.</item>
+        <item>Sus artık, Flanders!</item>
+        <item>Ben normalde dua eden bir adam değilim ama eğer oradaysan lütfen beni kurtar Süperman.</item>
+        <item>Akıllı olmak çok basit... sadece söyleyebileceğin aptalca bir şey düşün ve sonra onu söyleme.</item>
+        <item>Aptal seksi Flanders...</item>
+        <item>Umarım verdiğim zararı kafama takmamışımdır.</item>
+        <item>Operatör, bana 911\'in numarasını ver!</item>
+        <item>Beni suçlamayın, ben Kodos\'a oy verdim.</item>
+    </string-array>
+</resources>

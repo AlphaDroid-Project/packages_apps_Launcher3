@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2016-2023 crDroid Android Project
+     Copyright (C) 2016-2025 crDroid Android Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@
     <string name="trust_apps_manager_name">Aplicaciones ocultas &amp; y protegidas</string>
     <string name="trust_apps_auth_manager">Desbloquea para gestionar las aplicaciones ocultas y protegidas</string>
     <string name="trust_apps_auth_open_app">Autenticar para abrir %1$s</string>
-    <string name="trust_apps_loading">Cargando\u2026</string>
+    <string name="trust_apps_loading">Cargando</string>
     <string name="trust_apps_no_lock_error">Por favor, configura un bloqueo de pantalla seguro para restringir el acceso a las aplicaciones</string>
     <string name="trust_apps_help">Ayuda</string>
     <string name="trust_apps_info_hidden">Las aplicaciones ocultas y sus widgets están ocultos del cajón</string>
@@ -90,8 +90,9 @@
     <string name="pref_sleep_gesture_summary">Doble toque en un espacio vacío para apagar la pantalla</string>
     <!-- Custom seekbar -->
     <string name="custom_seekbar_value">Valor: <xliff:g id="v">%s</xliff:g></string>
-    <string name="custom_seekbar_default_value">predefinido</string>
-    <string name="custom_seekbar_default_value_to_set">Valor predeterminado: <xliff:g id="v">%s</xliff:g>\nMantén presionado para establecer</string>
+    <string name="custom_seekbar_default_value">predeterminado</string>
+    <string name="custom_seekbar_default_value_to_set">Valor predeterminado: <xliff:g id="v">%s</xliff:g>\n
+Mantén presionado para establecer</string>
     <string name="custom_seekbar_default_value_is_set">Está establecido el valor predeterminado</string>
     <!-- Icon size -->
     <string name="icon_size_title">Tamaño del icono</string>
@@ -122,6 +123,9 @@
     <string name="background_opacity_title">Opacidad del fondo</string>
     <!-- Stroke -->
     <string name="stroke_width_title">Trazo</string>
+    <!-- App drawer searchbar -->
+    <string name="drawer_search_title">Barra de búsqueda</string>
+    <string name="drawer_search_summary">Barra de búsqueda encima del cajón de aplicaciones</string>
     <!-- Wallpaper scrolling -->
     <string name="allow_wallpaper_scrolling">Desplazamiento de fondo de pantalla</string>
     <string name="allow_wallpaper_scrolling_summary">Efecto de desplazamiento de fondo de pantalla para múltiples pantallas</string>
@@ -140,18 +144,8 @@
     <string name="recents_screenshot_title">Captura de pantalla</string>
     <string name="recents_clear_all_title">Borrar todo</string>
     <string name="recents_lens_title">Lens</string>
-    <!-- Parallax -->
-    <string name="short_parallax_title">Permitir paralax corto</string>
-    <string name="short_parallax_summary">Activar efecto de desplazamiento del fondo de pantalla completo en un número menor de páginas en lugar de recortar el fondo de pantalla</string>
-    <string name="single_page_center_title">Título de página única centrado</string>
-    <string name="single_page_center_summary">Centrar fondo de pantalla si hay una sola página</string>
-    <!-- App drawer searchbar -->
-    <string name="drawer_search_title">Barra de búsqueda</string>
-    <string name="drawer_search_summary">Barra de búsqueda encima del cajón de aplicaciones</string>
-    <!-- Auto keyboard -->
-    <string name="pref_auto_keyboard_title">Teclado automático</string>
-    <string name="pref_auto_keyboard_summary">Comenzar la búsqueda cuando el cajón se expanda</string>
     <!-- AppInfo -->
+    <string name="app_info_title">Application info</string>
     <string name="app_info_source">Fuente</string>
     <string name="app_info_source_system">Sistema</string>
     <string name="app_info_last_update">Última actualización</string>
@@ -159,9 +153,17 @@
     <string name="app_info_more">Más</string>
     <!-- Icon pack -->
     <string name="icon_pack_title">Paquete de iconos</string>
-    <string name="icon_pack_default_label">Predeterminado</string>
+    <string name="icon_pack_default_label">Default</string>
     <string name="icon_pack_add">Instalar más</string>
     <string name="icon_pack_no_market">No hay una tienda de aplicaciones disponible</string>
+    <!-- Parallax -->
+    <string name="short_parallax_title">Permitir paralax corto</string>
+    <string name="short_parallax_summary">Activar efecto de desplazamiento del fondo de pantalla completo en un número menor de páginas en lugar de recortar el fondo de pantalla</string>
+    <string name="single_page_center_title">Título de página única centrado</string>
+    <string name="single_page_center_summary">Centrar fondo de pantalla si hay una sola página</string>
+    <!-- Open keyboard -->
+    <string name="drawer_open_keyboard_title">Swipe to start search</string>
+    <string name="drawer_open_keyboard_summary">Open keyboard whenever app drawer becomes visible</string>
     <!-- App drawer scrollbar -->
     <string name="drawer_scrollbar_title">Barra de desplazamiento</string>
     <string name="drawer_scrollbar_summary">Barra de desplazamiento al lado del cajón de aplicaciones</string>
@@ -189,157 +191,14 @@
     <!-- Quickspace PSA - Custom messages for the glance -->
     <string name="quickspace_psa_title">Mensajes aleatorios</string>
     <string name="quickspace_psa_summary">Hazte mejor compañía con mensajes aleatorios</string>
-    <string-array name="quickspace_psa_morning">
-        <item>¡Buenos días!</item>
-        <item>¡Buenos días, hora de actuar!</item>
-        <item>¡Qué bonito día!</item>
-        <item>¡Que tengas un buen día!</item>
-        <item>¿Qué tal una pequeña siesta de 5 minutos?</item>
-        <item>Vamos a ganarnos el pan.</item>
-        <item>Las mañanas son un lienzo fresco para tu obra maestra diaria.</item>
-        <item>Abraza el amanecer de la oportunidad cada mañana.</item>
-        <item>En las primeras luces, encuentra el poder para iluminar tu camino.</item>
-        <item>Tu día comienza con infinitas posibilidades.</item>
-        <item>Cada amanecer es un recordatorio de que puedes empezar de nuevo.</item>
-        <item>Despierta con un propósito, conquista el día que te espera.</item>
-        <item>Tus pensamientos pueden ser la base de grandes logros.</item>
-        <item>El mundo despierta y tu potencial también.</item>
-        <item>El primer capítulo de tu aventura diaria.</item>
-        <item>Deje que su rutina matutina sea la plataforma de despegue hacia el éxito.</item>
-        <item>Amaneciendo o no, tu potencial siempre está en aumento.</item>
-        <item>Es hora de nuevas ideas y acciones audaces.</item>
-        <item>El madrugador atrapa al gusano, pero tú puedes atrapar tus sueños.</item>
-        <item>Encuentra el valor para perseguir tus aspiraciones.</item>
-        <item>Levántate y brilla, porque la grandeza te espera.</item>
-        <item>El mejor momento para empezar es ahora.</item>
-    </string-array>
-    <string-array name="quickspace_psa_noon">
-        <item>Persigue tus sueños, no los minutos.</item>
-        <item>En cada momento, una nueva oportunidad.</item>
-        <item>Acepta el viaje, no sólo el destino.</item>
-        <item>Hoy es un regalo, por eso se llama presente.</item>
-        <item>Deja que tu sonrisa cambie el mundo.</item>
-        <item>La vida es una historia; haz que cada capítulo cuente.</item>
-        <item>Encuentra alegría en los momentos ordinarios.</item>
-        <item>Lo mejor está por llegar, sigue así.</item>
-        <item>Tu oportunidad de convertir el \"qué pasaría si\" en \"lo que es\"</item>
-        <item>Aprovecha el día, empezando ahora mismo.</item>
-        <item>La felicidad es una elección que puedes tomar en cualquier momento.</item>
-        <item>Cree en ti mismo, incluso en una tarde de sueño.</item>
-        <item>Deja que tus acciones hablen más que el reloj.</item>
-        <item>Tu vida es lo que haces con ella; hazla increíble.</item>
-        <item>Sueña en grande, trabaja duro y nunca te rindas.</item>
-        <item>Eres más fuerte de lo que piensas.</item>
-        <item>Cada revés es una preparación para una remontada.</item>
-        <item>Acepta el viaje, no sólo el destino.</item>
-        <item>Busca tus objetivos, no tus miedos.</item>
-        <item>Tu potencial es interminable; desbloquéalo.</item>
-    </string-array>
-    <string-array name="quickspace_psa_early_evening">
-        <item>Abraze el momento actual, no importa la hora.</item>
-        <item>En cada atardecer, encuentra un nuevo amanecer de oportunidad.</item>
-        <item>La vida es un viaje; disfruta del escenario a lo largo del camino.</item>
-        <item>Tu actitud da forma a tu realidad.</item>
-        <item>Tu historia todavía está siendo escrita, incluso cuando el sol se pone.</item>
-        <item>Captura la belleza en los momentos ordinarios.</item>
-        <item>Es hora de reflexionar y reiniciar.</item>
-        <item>Elige la alegría, no importa el tiempo en el reloj.</item>
-        <item>Las oportunidades no terminan por la noche.</item>
-        <item>Sé la razón por la que alguien sonríe.</item>
-        <item>Tu potencial no conoce límites.</item>
-        <item>Momentos de magia pueden ocurrir a cualquier hora.</item>
-        <item>Tu vida es lo que haces de ella; hazla extraordinaria.</item>
-        <item>Manténgase curioso, manténgase saludable.</item>
-        <item>Sé el cambio que deseas ver en el mundo.</item>
-        <item>Creé en ti mismo; eres capaz de hacer cosas increíbles.</item>
-        <item>El único límite es el que tú mismo te fijas.</item>
-        <item>El éxito comienza dando un solo pazo.</item>
-    </string-array>
-    <string-array name="quickspace_psa_evening">
-        <item>Aprovecha de la noche, ya que contiene sus propios misterios.</item>
-        <item>En la tranquilidad de esta noche, encuentra la serenidad.</item>
-        <item>Las más grandes aventuras de la vida pueden comenzar en la oscuridad.</item>
-        <item>Tu viaje continúa incluso después del que sol se haya ocultado.</item>
-        <item>Deja que la noche sea tu lienzo; píntala en tus sueños.</item>
-        <item>En la tranquilidad de la noche, encuentra tu fuerza interior.</item>
-        <item>Las estrellas más brillantes brillan en las horas más oscuras.</item>
-        <item>Sueña grande, incluso en las horas más cortas del día.</item>
-        <item>Tu vida es una historia esperando a ser escrita.</item>
-        <item>Es hora para reflexionar y renovar.</item>
-        <item>Los pensamientos de madrugada pueden llevar a revelaciones en la mañana.</item>
-        <item>Regocíjate en la tranquilidad del ocaso.</item>
-        <item>El cielo nocturno es un vasto lienzo de sueños.</item>
-        <item>Tu potencial no conoce el descanso, persigue tus pasiones.</item>
-        <item>Mantente esperanzado, incluso en las horas más oscuras.</item>
-        <item>En medio del caos, encuentra la calma.</item>
-        <item>Mantente positivo, trabaja duro, y haz que ocurra.</item>
-    </string-array>
-    <string-array name="quickspace_psa_midnight">
-        <item>Las tranquilas noches son los susurros de la oportunidad.</item>
-        <item>En la tranquilidad de la noche, encuentra tu fuerza interna.</item>
-        <item>Abraza la oscuridad, porque esta tiene las llaves de tus sueños.</item>
-        <item>El mundo duerme, pero tu potencial está muy despierto.</item>
-        <item>La noche puede llegar tarde, pero sus ambiciones son eternas.</item>
-        <item>Mantente curioso, quédate despierto y que las noches te guíen.</item>
-        <item>Encuentra el coraje para perseguir tus aspiraciones.</item>
-        <item>Las grandes cosas no provienen de las zonas de confort.</item>
-        <item>Tienes el poder de crear tu propio destino.</item>
-        <item>La felicidad es una elección; elegida cada día.</item>
-        <item>La vida es lo que haces con ella, así que hazla contar.</item>
-        <item>Mantente enfocado, mantente determinado, permanece imparable.</item>
-        <item>Tú eres el autor de tu propia historia.</item>
-        <item>Esfuérzate por progresar, no por ser perfecto.</item>
-        <item>Todos los días son un nuevo comienzo, que tengas hoy uno bueno.</item>
-        <item>Inspira a otros a ser su \"yo\" verdadero.</item>
-        <item>Tu actitud determina la dirección.</item>
-    </string-array>
-    <string-array name="quickspace_psa_random">
-        <item>La ignorancia es una virtud</item>
-        <item>¿Es hora de instalar otra actualización ya?</item>
-        <item>Haz la paz, no la guerra</item>
-        <item>Hola, ¿qué pasa?</item>
-        <item>¡Bienvenidos a la verdadera Matrix!</item>
-        <item>¿Cuántas capturas de pantalla haces?</item>
-        <item>Descubre lo mejor con AlphaDroid</item>
-        <item>Esparce amor, no la mierda</item>
-        <item>¡No iniciamos el fuego!</item>
-        <item>Hora de un poco de buena música</item>
-        <item>\u003C\u003C\u003C\u003C\u003C\u003C\u003C HEAD</item>
-        <item>Necesitas AlphaDroid Premium para ver esto</item>
-        <item>Recuerda el Linaje (Lineage) del Unicornio (Unicorn)</item>
-        <item>Disfruta la vida extendida de batería</item>
-        <item>Empezando de cero</item>
-        <item>Te amamos 3000</item>
-        <item>Delicioso incluso sin Sushi</item>
-        <item>Haz algo bueno hoy</item>
-        <item>Esta es la mejor experiencia Pixel (Pixel experience), ¿verdad?</item>
-        <item>Ilusiones no,! bienvenido a la realidad!</item>
-        <item>Gracias por su apoyo</item>
-        <item>No hay festival para Derps - !sólo perfección!</item>
-        <item>Una de las mejores elecciones del buildbot</item>
-        <item>Cordura para tu paranoia</item>
-        <item>Levantarse en paz</item>
-        <item>Qué experiencia tan encantadora, ¿no?</item>
-        <item>La evolución es un mito, ¿verdad?</item>
-        <item>Eres lo que flasheas, no seas patata</item>
-        <item>¿En que estas pensando?</item>
-        <item>Expecto Patronum</item>
-        <item>Wubba Lubba Dub Dub</item>
-        <item>Ganador Ganador ....?</item>
-        <item>rm -rf \/</item>
-        <item>Las Pringles no son patatas fritas de verdad..</item>
-        <item>¡Recuerda comprobar el nivel de batería del dispositivo!</item>
-        <item>Revisa tu correo electrónico/mensajes.</item>
-        <item>Comprueba tu lista de tareas, si es que tienes una.</item>
-        <item>Puedes desactivar el espacio rápido en la configuración de inicio.</item>
-        <item>¿Nos amas? Envíanos una cerveza</item>
-        <item>La mejor ROM del mundo.</item>
-        <item>Dinos \"hola\" en Telegram</item>
-        <item>Te queremos 3000</item>
-    </string-array>
+    <string name="intent_no_app_clock_found">No se puede encontrar el calendario o la actividad del reloj</string>
     <!-- QuickSpace: QuickEvent: Weather -->
-    <string name="quick_event_ambient_weather_title">Actualización del tiempo</string>
-    <string name="quick_event_ambient_weather_summary">Mostrar actualización actual del tiempo</string>
+    <string name="quickspace_weather_provider_title">Weather provider</string>
+    <string name="quickspace_weather_provider_entry_auto">Auto</string>
+    <string name="quickspace_weather_provider_entry_seraphix">Google Smartspace</string>
+    <string name="quickspace_weather_provider_entry_omnijaws">OmniJaws</string>
+    <string name="quick_event_ambient_weather_title">Actualización del clima</string>
+    <string name="quick_event_ambient_weather_summary">Mostrar actualización del tiempo actual</string>
     <string name="quick_event_ambient_weather_enabled_info">Requiere que el servicio meteorológico esté habilitado</string>
     <string name="quick_event_weather_clouds">Nublado</string>
     <string name="quick_event_weather_rain">Lluvioso</string>
@@ -349,8 +208,13 @@
     <string name="quick_event_weather_wind">Ventoso</string>
     <string name="quick_event_weather_mist">Neblina</string>
     <string name="quick_event_weather_city_title">Ubicación actual</string>
-    <string name="quick_event_weather_city_summary">Mostrar ubicación meteorológica actual</string>
+    <string name="quick_event_weather_city_summary">Mostrar la localización del tiempo meteorológico</string>
     <string name="quick_event_weather_text_title">Condición actual</string>
-    <string name="quick_event_weather_text_summary">Mostrar el resumen actual de la condición meteorológica</string>
-    <string name="intent_no_app_clock_found">No se puede encontrar el calendario o la actividad del reloj</string>
+    <string name="quick_event_weather_text_summary">Mostrar resumen de la condición meteorológica actual</string>
+    <!-- Dark Status Bar -->
+    <string name="perf_dark_status_bar_title">Dark status bar</string>
+    <string name="perf_dark_status_bar_summary">Always use dark status bar on home screen</string>
+    <!-- Background blur -->
+    <string name="background_blur_title">Background blur depth</string>
+    <string name="background_blur_summary">Set blur depth level for recents and app drawer</string>
 </resources>

@@ -5,34 +5,34 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Lock -->
-    <string name="action_lock">Lock/Unlock app</string>
-    <string name="unlock_app">Unlocked app in recents</string>
-    <string name="lock_app">Locked app in recents</string>
+    <string name="action_lock">Bloquear/Desbloquear aplicación</string>
+    <string name="unlock_app">Aplicación desbloqueada en recientes</string>
+    <string name="lock_app">Aplicación bloqueada en recientes</string>
     <string-array name="quickspace_psa_random">
-        <item>Ignorance is Bliss</item>
-        <item>Make love, not war</item>
-        <item>Oh hey, what\'s up?</item>
-        <item>We love you 3000</item>
-        <item>Thank you for your support</item>
-        <item>One of the buildbot\'s best picks</item>
-        <item>Pringles aren\'t actually potato chips..</item>
-        <item>You can disable quickspace via home settings.</item>
-        <item>I got nothing ¯\\_(ツ)_/¯</item>
+        <item>La ignorancia es una bendición</item>
+        <item>Haz el amor, no la guerra</item>
+        <item>Oh, hola, ¿qué pasa?</item>
+        <item>Nosotros te amamos 3000</item>
+        <item>Gracias por tu apoyo</item>
+        <item>Una de las mejores elecciones del buildbot</item>
+        <item>Las Pringles en realidad no son patatas fritas...</item>
+        <item>Puedes desactivar el espacio rápido en la configuración de inicio.</item>
+        <item>No tengo nada ¯\\_(ツ)_/¯</item>
     </string-array>
     <string-array name="quickspace_psa_homer">
-        <item>I never apologize. I\'m sorry but that\'s the way I am.</item>
-        <item>All my life, I\'ve had one dream: to achieve my many goals.</item>
-        <item>Good drink... good meat... good God, let\'s eat!</item>
-        <item>You\'ll have to speak up. I\'m wearing a towel.</item>
-        <item>Change the channel, Marge...</item>
-        <item>Roads are just a suggestion Marge, just like pants.</item>
-        <item>It takes two to lie - one to lie and one to listen.</item>
-        <item>Shut up, Flanders!</item>
-        <item>I\'m not normally a praying man, but if you\'re up there, please save me, Superman.</item>
-        <item>It\'s so simple to be wise... just think of something stupid to say and then don\'t say it.</item>
-        <item>Stupid sexy Flanders...</item>
-        <item>I hope I didn\'t brain my damage.</item>
-        <item>Operator, give me the number for 911!</item>
-        <item>Don\'t blame me, I voted for Kodos.</item>
+        <item>Nunca me disculpo. Lo siento pero así soy.</item>
+        <item>Toda mi vida he tenido un sueño: alcanzar mis muchas metas.</item>
+        <item>Buena bebida...buena carne...buen Dios, ¡a comer!</item>
+        <item>Tendrás que hablar más alto. Llevo una toalla.</item>
+        <item>Cambia de canal, Marge...</item>
+        <item>Los caminos son sólo una sugerencia, Marge, igual que los pantalones.</item>
+        <item>Para mentir se necesitan dos: uno que mienta y otro que escuche.</item>
+        <item>¡Cállate, Flandes!</item>
+        <item>Normalmente no soy un hombre de oración, pero si estás ahí arriba, por favor sálvame, Superman.</item>
+        <item>Es tan sencillo ser sabio... sólo piensa en algo estúpido que decir y luego no lo digas.</item>
+        <item>Estúpido y sensual Flandes...</item>
+        <item>Espero no haberme hecho daño cerebral.</item>
+        <item>Operador, dame el número para el 911!</item>
+        <item>No me culpes, voté por Kodos.</item>
     </string-array>
 </resources>

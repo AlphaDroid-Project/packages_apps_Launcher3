@@ -41,6 +41,7 @@ import static com.android.launcher3.Flags.enableDesktopExplodedView;
 import static com.android.launcher3.Flags.enableDesktopTaskAlphaAnimation;
 import static com.android.launcher3.Flags.enableGridOnlyOverview;
 import static com.android.launcher3.Flags.enableLargeDesktopWindowingTile;
+import static com.android.launcher3.Flags.enableOverviewBackgroundWallpaperBlur;
 import static com.android.launcher3.Flags.enableRefactorTaskThumbnail;
 import static com.android.launcher3.Flags.enableSeparateExternalDisplayTasks;
 import static com.android.launcher3.LauncherAnimUtils.SCALE_PROPERTY;
@@ -1210,7 +1211,7 @@ public abstract class RecentsView<
     protected void onWindowVisibilityChanged(int visibility) {
         super.onWindowVisibilityChanged(visibility);
         updateTaskStackListenerState();
-        if (visibility != VISIBLE) {
+        if (visibility != VISIBLE && enableOverviewBackgroundWallpaperBlur()) {
             mBlurUtils.setDrawLiveTileBelowRecents(false);
         }
     }
@@ -5996,7 +5997,8 @@ public abstract class RecentsView<
                     finishRecentsAnimation(false /* toRecents */, null);
                     onTaskLaunchAnimationEnd(true /* success */);
                 } else {
-                    taskView.launchWithoutAnimation(this::onTaskLaunchAnimationEnd);
+                    finishRecentsAnimation(true /* toRecents */,
+                            () -> taskView.launchWithoutAnimation(this::onTaskLaunchAnimationEnd));
                 }
                 mContainer.getStatsLogManager().logger().withItemInfo(taskView.getItemInfo())
                         .log(LAUNCHER_TASK_LAUNCH_SWIPE_DOWN);
@@ -6252,7 +6254,9 @@ public abstract class RecentsView<
         mRecentsAnimationController = null;
         mSplitSelectStateController.setRecentsAnimationRunning(false);
         executeSideTaskLaunchCallback();
-        mBlurUtils.setDrawLiveTileBelowRecents(false);
+        if (enableOverviewBackgroundWallpaperBlur()) {
+            mBlurUtils.setDrawLiveTileBelowRecents(false);
+        }
     }
 
     public void setDisallowScrollToClearAll(boolean disallowScrollToClearAll) {

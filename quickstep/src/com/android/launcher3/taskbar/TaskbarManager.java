@@ -110,8 +110,6 @@ import com.android.systemui.shared.system.TaskStackChangeListeners;
 import com.android.systemui.unfold.UnfoldTransitionProgressProvider;
 import com.android.systemui.unfold.util.ScopedUnfoldTransitionProgressProvider;
 
-import android.provider.Settings;
-
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;

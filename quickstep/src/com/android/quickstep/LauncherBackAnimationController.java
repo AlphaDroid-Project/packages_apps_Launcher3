@@ -96,8 +96,7 @@ public class LauncherBackAnimationController {
     private static final int SCRIM_FADE_DURATION = 233;
     private static final float MIN_WINDOW_SCALE =
             Flags.predictiveBackToHomePolish() ? 0.75f : 0.85f;
-    private static final float MAX_SCRIM_ALPHA_DARK = 0.8f;
-    private static final float MAX_SCRIM_ALPHA_LIGHT = 0.2f;
+    private static final float MAX_SCRIM_ALPHA = 0.8f;
     private static final int MAX_BLUR_RADIUS = 20;
     private static final int MIN_BLUR_RADIUS_PRE_COMMIT = 10;
 
@@ -115,10 +114,12 @@ public class LauncherBackAnimationController {
     private final Interpolator mProgressInterpolator = Interpolators.BACK_GESTURE;
     private final Interpolator mVerticalMoveInterpolator = new DecelerateInterpolator();
     private final PointF mInitialTouchPos = new PointF();
+    private final boolean predictiveBackToHomeBlur = false;
 
     private RemoteAnimationTarget mBackTarget;
     private RemoteAnimationTarget mLauncherTarget;
     private View mLauncherTargetView;
+    private final SurfaceControl.Transaction mTransaction = new SurfaceControl.Transaction();
     private float mBackProgress = 0;
     private boolean mBackInProgress = false;
     private boolean mWaitStartTransition = false;
@@ -366,8 +367,8 @@ public class LauncherBackAnimationController {
             return;
         }
 
-        final SurfaceControl.Transaction t = new SurfaceControl.Transaction();
-        t.show(mBackTarget.leash)
+        mTransaction
+                .show(mBackTarget.leash)
                 .setAnimationTransaction();
         mStartRect.set(mBackTarget.windowConfiguration.getMaxBounds());
 
@@ -385,7 +386,7 @@ public class LauncherBackAnimationController {
                 && !mLauncher.isInState(LauncherState.ALL_APPS)) {
             Animations.cancelOngoingAnimation(mLauncher.getWorkspace());
             Animations.cancelOngoingAnimation(mLauncher.getHotseat());
-            if (Flags.predictiveBackToHomeBlur()) {
+            if (predictiveBackToHomeBlur) {
                 mLauncher.getDepthController().pauseBlursOnWindows(true);
             }
             mLauncher.getDepthController().stateDepth.setValue(
@@ -393,10 +394,9 @@ public class LauncherBackAnimationController {
             setLauncherScale(ScalingWorkspaceRevealAnim.MIN_SIZE);
         }
         if (mScrimLayer == null) {
-            addScrimLayer(t);
+            addScrimLayer();
         }
-        t.setFrameTimelineVsync(Choreographer.getInstance().getVsyncId());
-        t.apply();
+        applyTransaction();
     }
 
     private void setLauncherTargetViewVisible(boolean isVisible) {
@@ -414,7 +414,7 @@ public class LauncherBackAnimationController {
         mLauncher.getHotseat().setScaleY(scale);
     }
 
-    void addScrimLayer(SurfaceControl.Transaction t) {
+    void addScrimLayer() {
         SurfaceControl parent = mLauncherTarget != null ? mLauncherTarget.leash : null;
         if (parent == null || !parent.isValid()) {
             // Parent surface is not ready at the moment. Retry later.
@@ -430,10 +430,10 @@ public class LauncherBackAnimationController {
                 .setHidden(false)
                 .build();
         final float[] colorComponents = new float[] { 0f, 0f, 0f };
-        mScrimAlpha = (isDarkTheme)
-                ? MAX_SCRIM_ALPHA_DARK : MAX_SCRIM_ALPHA_LIGHT;
-        setBlur(t, MAX_BLUR_RADIUS);
-        t.setColor(mScrimLayer, colorComponents)
+        mScrimAlpha = MAX_SCRIM_ALPHA;
+        setBlur(MAX_BLUR_RADIUS);
+        mTransaction
+                .setColor(mScrimLayer, colorComponents)
                 .setAlpha(mScrimLayer, mScrimAlpha)
                 .show(mScrimLayer)
                 // Ensure the scrim layer occludes opening task & wallpaper
@@ -445,10 +445,8 @@ public class LauncherBackAnimationController {
             return;
         }
         if (mScrimLayer.isValid()) {
-            final SurfaceControl.Transaction t = new SurfaceControl.Transaction();
-            t.remove(mScrimLayer);
-            t.setFrameTimelineVsync(Choreographer.getInstance().getVsyncId());
-            t.apply();
+            mTransaction.remove(mScrimLayer);
+            applyTransaction();
         }
         mScrimLayer = null;
     }
@@ -457,13 +455,12 @@ public class LauncherBackAnimationController {
         if (!mBackInProgress || mBackTarget == null) {
             return;
         }
-        final SurfaceControl.Transaction t = new SurfaceControl.Transaction();
         if (mScrimLayer == null) {
             // Scrim hasn't been attached yet. Let's attach it.
-            addScrimLayer(t);
+            addScrimLayer();
         } else {
             mLastBlurRadius = (int) lerp(MAX_BLUR_RADIUS, MIN_BLUR_RADIUS_PRE_COMMIT, progress);
-            setBlur(t, mLastBlurRadius);
+            setBlur(mLastBlurRadius);
         }
         float screenWidth = mStartRect.width();
         float screenHeight = mStartRect.height();
@@ -490,31 +487,35 @@ public class LauncherBackAnimationController {
         mCurrentRect.set(left, top, left + width, top + height);
         float cornerRadius = Utilities.mapRange(
                 progress, mWindowScaleStartCornerRadius, mWindowScaleEndCornerRadius);
-        applyTransform(t, mCurrentRect, cornerRadius);
-        t.setFrameTimelineVsync(Choreographer.getInstance().getVsyncId());
-        t.apply();
+        applyTransform(mCurrentRect, cornerRadius);
 
         customizeStatusBarAppearance(top > mStatusBarHeight / 2);
     }
 
-    private void setBlur(SurfaceControl.Transaction t, int blurRadius) {
-        if (Flags.predictiveBackToHomeBlur()) {
-            t.setBackgroundBlurRadius(mScrimLayer, blurRadius);
+    private void setBlur(int blurRadius) {
+        if (predictiveBackToHomeBlur) {
+            mTransaction.setBackgroundBlurRadius(mScrimLayer, blurRadius);
         }
     }
 
     /** Transform the target window to match the target rect. */
-    private void applyTransform(SurfaceControl.Transaction t, RectF targetRect, float cornerRadius) {
+    private void applyTransform(RectF targetRect, float cornerRadius) {
         final float scale = targetRect.width() / mStartRect.width();
         mTransformMatrix.reset();
         mTransformMatrix.setScale(scale, scale);
         mTransformMatrix.postTranslate(targetRect.left, targetRect.top);
 
         if (mBackTarget.leash.isValid()) {
-            t.setMatrix(mBackTarget.leash, mTransformMatrix, new float[9]);
-            t.setWindowCrop(mBackTarget.leash, mStartRect);
-            t.setCornerRadius(mBackTarget.leash, cornerRadius);
+            mTransaction.setMatrix(mBackTarget.leash, mTransformMatrix, new float[9]);
+            mTransaction.setWindowCrop(mBackTarget.leash, mStartRect);
+            mTransaction.setCornerRadius(mBackTarget.leash, cornerRadius);
         }
+        applyTransaction();
+    }
+
+    private void applyTransaction() {
+        mTransaction.setFrameTimelineVsync(Choreographer.getInstance().getVsyncId());
+        mTransaction.apply();
     }
 
     private void startTransition() {
@@ -604,7 +605,7 @@ public class LauncherBackAnimationController {
         if (mScrimLayer != null) {
             removeScrimLayer();
         }
-        if (Flags.predictiveBackToHomePolish() && Flags.predictiveBackToHomeBlur()
+        if (Flags.predictiveBackToHomePolish() && predictiveBackToHomeBlur
                 && !mLauncher.getWorkspace().isOverlayShown()
                 && !mLauncher.isInState(LauncherState.ALL_APPS)) {
             mLauncher.getDepthController().pauseBlursOnWindows(false);
@@ -614,21 +615,17 @@ public class LauncherBackAnimationController {
 
     private void startTransitionAnimations(BackAnimState backAnim) {
         backAnim.addOnAnimCompleteCallback(this::finishAnimation);
-        final SurfaceControl.Transaction t = new SurfaceControl.Transaction();
         if (mScrimLayer == null) {
             // Scrim hasn't been attached yet. Let's attach it.
-            addScrimLayer(t);
+            addScrimLayer();
         }
-        t.apply(); // Apply the addScrimLayer transaction if it happened
         mScrimAlphaAnimator = new ValueAnimator().ofFloat(1, 0);
         mScrimAlphaAnimator.addUpdateListener(animation -> {
             float value = (Float) animation.getAnimatedValue();
             if (mScrimLayer != null && mScrimLayer.isValid()) {
-                final SurfaceControl.Transaction animT = new SurfaceControl.Transaction();
-                animT.setAlpha(mScrimLayer, value * mScrimAlpha);
-                setBlur(animT, (int) lerp(mLastBlurRadius, 0, 1f - value));
-                animT.setFrameTimelineVsync(Choreographer.getInstance().getVsyncId());
-                animT.apply();
+                mTransaction.setAlpha(mScrimLayer, value * mScrimAlpha);
+                setBlur((int) lerp(mLastBlurRadius, 0, 1f - value));
+                applyTransaction();
             }
         });
         mScrimAlphaAnimator.addListener(new AnimatorListenerAdapter() {

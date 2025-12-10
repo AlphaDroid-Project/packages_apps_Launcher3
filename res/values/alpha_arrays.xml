@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 AlphaDroid
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <string-array name="recents_styles_entries">
+        <item>@string/recents_style_stock</item>
+        <item>@string/recents_style_staple</item>
+        <item>@string/recents_style_ios</item>
+        <item>@string/recents_style_oxygen</item>
+    </string-array>
+
+    <string-array name="recents_styles_values">
+        <item>0</item> <!-- Stock -->
+        <item>1</item> <!-- Staple/Kami -->
+        <item>2</item> <!-- iOS -->
+        <item>3</item> <!-- Oxygen -->
+    </string-array>
+</resources>

@@ -8,31 +8,37 @@
     <string name="action_lock">Заблокировать/Разблокировать приложение</string>
     <string name="unlock_app">Разблокировано приложение в недавних</string>
     <string name="lock_app">Заблокировано приложение в недавних</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_stock">Stock</string>
+    <string name="recents_style_staple">Kami Style</string>
+    <string name="recents_style_ios">iOS Style</string>
+    <string name="recents_style_oxygen">OxygenOS Style</string>
     <string-array name="quickspace_psa_random">
-        <item>Ignorance is Bliss</item>
-        <item>Make love, not war</item>
+        <item>Невежество — это блаженство</item>
+        <item>Занимайтесь любовью, а не войной</item>
         <item>О, привет, как дела?</item>
         <item>Мы любим тебя 3000</item>
         <item>Спасибо за вашу поддержку</item>
-        <item>One of the buildbot\'s best picks</item>
-        <item>Pringles aren\'t actually potato chips..</item>
-        <item>You can disable quickspace via home settings.</item>
-        <item>I got nothing ¯\\_(ツ)_/¯</item>
+        <item>Один из лучших выборов билдбота</item>
+        <item>Pringles на самом деле не являются картофельными чипсами.</item>
+        <item>Вы можете отключить QuickSpace в домашних настройках.</item>
+        <item>У меня ничего нет ¯\\_(ツ)_/¯</item>
     </string-array>
     <string-array name="quickspace_psa_homer">
-        <item>I never apologize. I\'m sorry but that\'s the way I am.</item>
-        <item>All my life, I\'ve had one dream: to achieve my many goals.</item>
-        <item>Good drink... good meat... good God, let\'s eat!</item>
-        <item>You\'ll have to speak up. I\'m wearing a towel.</item>
-        <item>Change the channel, Marge...</item>
-        <item>Roads are just a suggestion Marge, just like pants.</item>
-        <item>It takes two to lie - one to lie and one to listen.</item>
+        <item>Я никогда не извиняюсь. Мне жаль, но я такой.</item>
+        <item>Всю жизнь у меня была одна мечта: достичь своих многочисленных целей.</item>
+        <item>Хороший напиток... хорошее мясо... Боже мой, давайте есть!</item>
+        <item>Тебе придётся говорить громче. Я в полотенце.</item>
+        <item>Переключи канал, Мардж...</item>
+        <item>Дороги - это всего лишь предположение, Мардж, как и штаны.</item>
+        <item>Чтобы лгать, нужны двое: один, чтобы лгать, и один, чтобы слушать.</item>
         <item>Заткнись, Фландерс!</item>
-        <item>I\'m not normally a praying man, but if you\'re up there, please save me, Superman.</item>
-        <item>It\'s so simple to be wise... just think of something stupid to say and then don\'t say it.</item>
-        <item>Stupid sexy Flanders...</item>
-        <item>I hope I didn\'t brain my damage.</item>
-        <item>Operator, give me the number for 911!</item>
-        <item>Don\'t blame me, I voted for Kodos.</item>
+        <item>Я обычно не молюсь, но если ты там, наверху, пожалуйста, спаси меня, Супермен.</item>
+        <item>Быть мудрым так просто... просто придумайте какую-нибудь глупость, которую можно было бы сказать, и не говорите ее.</item>
+        <item>Глупый сексуальный Фландерс...</item>
+        <item>Надеюсь, я не нанес себе увечья.</item>
+        <item>Оператор, дайте мне номер 911!</item>
+        <item>Не вините меня, я голосовал за Кодоса.</item>
     </string-array>
 </resources>

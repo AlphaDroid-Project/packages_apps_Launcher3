@@ -8,6 +8,12 @@
     <string name="action_lock">Bloquear/Desbloquear</string>
     <string name="unlock_app">Aplicação desbloqueada</string>
     <string name="lock_app">Aplicação bloqueada</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_stock">Stock</string>
+    <string name="recents_style_staple">Kami Style</string>
+    <string name="recents_style_ios">iOS Style</string>
+    <string name="recents_style_oxygen">OxygenOS Style</string>
     <string-array name="quickspace_psa_random">
         <item>Ignorância é felicidade</item>
         <item>Façam amor, não a guerra</item>

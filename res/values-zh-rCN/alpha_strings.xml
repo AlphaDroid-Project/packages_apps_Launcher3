@@ -8,6 +8,12 @@
     <string name="action_lock">锁定/解锁应用</string>
     <string name="unlock_app">在最近任务中解锁应用</string>
     <string name="lock_app">在最近任务中锁定应用</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_stock">Stock</string>
+    <string name="recents_style_staple">Kami Style</string>
+    <string name="recents_style_ios">iOS Style</string>
+    <string name="recents_style_oxygen">OxygenOS Style</string>
     <string-array name="quickspace_psa_random">
         <item>无知是福</item>
         <item>要和平不要战争</item>

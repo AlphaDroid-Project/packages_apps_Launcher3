@@ -9,11 +9,11 @@
     <string name="unlock_app">Aplikasi yang tidak terkunci baru - baru ini</string>
     <string name="lock_app">Kunci aplikasi di baru - baru ini</string>
     <!-- Recents style -->
-    <string name="recents_style_title">Recents layout style</string>
-    <string name="recents_style_stock">Stock</string>
-    <string name="recents_style_staple">Kami Style</string>
-    <string name="recents_style_ios">iOS Style</string>
-    <string name="recents_style_oxygen">OxygenOS Style</string>
+    <string name="recents_style_title">Gaya tata letak Terbaru</string>
+    <string name="recents_style_stock">Bawaan</string>
+    <string name="recents_style_staple">Gaya Kami</string>
+    <string name="recents_style_ios">Gaya iOS</string>
+    <string name="recents_style_oxygen">Gaya OxygenOS</string>
     <string-array name="quickspace_psa_random">
         <item>Ketidaktahuan adalah kebahagiaan</item>
         <item>Bercinta, bukan perang</item>

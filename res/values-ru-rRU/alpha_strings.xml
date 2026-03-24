@@ -9,11 +9,11 @@
     <string name="unlock_app">Разблокировано приложение в недавних</string>
     <string name="lock_app">Заблокировано приложение в недавних</string>
     <!-- Recents style -->
-    <string name="recents_style_title">Recents layout style</string>
-    <string name="recents_style_stock">Stock</string>
-    <string name="recents_style_staple">Kami Style</string>
-    <string name="recents_style_ios">iOS Style</string>
-    <string name="recents_style_oxygen">OxygenOS Style</string>
+    <string name="recents_style_title">Стиль недавних приложений</string>
+    <string name="recents_style_stock">Сток</string>
+    <string name="recents_style_staple">Дух стиль</string>
+    <string name="recents_style_ios">Стиль iOS</string>
+    <string name="recents_style_oxygen">Стиль OxygenOS</string>
     <string-array name="quickspace_psa_random">
         <item>Невежество — это блаженство</item>
         <item>Занимайтесь любовью, а не войной</item>

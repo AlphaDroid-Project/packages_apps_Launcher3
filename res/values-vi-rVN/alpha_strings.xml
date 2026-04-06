@@ -5,9 +5,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Lock -->
-    <string name="action_lock">Lock/Unlock app</string>
-    <string name="unlock_app">Unlocked app in recents</string>
-    <string name="lock_app">Locked app in recents</string>
+    <string name="action_lock">Khóa/Mở khóa ứng dụng</string>
+    <string name="unlock_app">Ứng dụng đã mở khóa gần đây</string>
+    <string name="lock_app">Ứng dụng bị khóa gần đây</string>
     <!-- Recents style -->
     <string name="recents_style_title">Recents layout style</string>
     <string name="recents_style_stock">Stock</string>
@@ -17,11 +17,11 @@
     <string-array name="quickspace_psa_random">
         <item>Ignorance is Bliss</item>
         <item>Make love, not war</item>
-        <item>Oh hey, what\'s up?</item>
+        <item>Oh này, có chuyện gì thế?</item>
         <item>We love you 3000</item>
-        <item>Thank you for your support</item>
+        <item>Cảm ơn sự giúp đỡ của bạn</item>
         <item>One of the buildbot\'s best picks</item>
-        <item>Pringles aren\'t actually potato chips..</item>
+        <item>Pringles không thực sự là khoai tây chiên..</item>
         <item>You can disable quickspace via home settings.</item>
         <item>I got nothing ¯\\_(ツ)_/¯</item>
     </string-array>

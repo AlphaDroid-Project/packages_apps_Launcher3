@@ -34,7 +34,6 @@ import com.android.launcher3.PagedView;
 import com.android.launcher3.R;
 import com.android.launcher3.model.data.AppInfo;
 import com.android.launcher3.pageindicators.PageIndicatorDots;
-import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ActivityContext;
 
 import java.util.ArrayList;
@@ -256,11 +255,7 @@ public class OneUiPagedAllAppsView extends PagedView<PageIndicatorDots> {
         PageAdapter(List<AppInfo> pageApps, int cellHeight) {
             mPageApps = pageApps;
             mCellHeight = cellHeight;
-            boolean forceDarkText = LauncherPrefs.ALL_APPS_DARK_TEXT.get(mActivityContext.asContext());
-            mTextColor = forceDarkText
-                    ? mActivityContext.asContext().getResources().getColor(
-                            R.color.all_apps_label_color_dark_forced, null)
-                    : Themes.getAttrColor(mActivityContext.asContext(), android.R.attr.textColorPrimary);
+            mTextColor = mActivityContext.asContext().getColor(R.color.launcher_foreground_primary);
             mLayoutRes = LauncherPrefs.ENABLE_TWOLINE_ALLAPPS_TOGGLE.get(mActivityContext.asContext())
                     ? R.layout.all_apps_icon_twoline : R.layout.all_apps_icon;
         }

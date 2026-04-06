@@ -82,4 +82,6 @@
     <color name="materialColorSecondaryFixedDim">@color/system_secondary_fixed_dim</color>
     <color name="materialColorTertiaryFixed">@color/system_tertiary_fixed</color>
     <color name="materialColorTertiaryFixedDim">@color/system_tertiary_fixed_dim</color>
+
+    <color name="launcher_foreground_primary">#E3E3E3</color>
 </resources>

@@ -93,6 +93,7 @@ import com.android.launcher3.model.data.AppInfo;
 import com.android.launcher3.model.data.ItemInfo;
 import com.android.launcher3.pm.UserCache;
 import com.android.launcher3.recyclerview.AllAppsRecyclerViewPool;
+import com.android.launcher3.util.BerryBlackTheme;
 import com.android.launcher3.util.ItemInfoMatcher;
 import com.android.launcher3.util.Preconditions;
 import com.android.launcher3.util.Themes;
@@ -985,6 +986,9 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
         } else {
             color = Themes.getAttrColor(mContext, R.attr.allAppsScrimColor);
         }
+        if (BerryBlackTheme.isActive(mContext)) {
+            color = Color.BLACK;
+        }
         return ColorUtils.setAlphaComponent(
                 color,
                 LauncherPrefs.APP_DRAWER_OPACITY.get(mContext) * 255 / 100);
@@ -1005,6 +1009,9 @@ public class ActivityAllAppsContainerView<T extends Context & ActivityContext>
             } else {
                 bgColor = mBottomSheetBackgroundColorOverBlur;
             }
+        }
+        if (BerryBlackTheme.isActive(mContext)) {
+            bgColor = Color.BLACK;
         }
         return ColorUtils.setAlphaComponent(
                 bgColor, LauncherPrefs.APP_DRAWER_OPACITY.get(mContext) * 255 / 100);

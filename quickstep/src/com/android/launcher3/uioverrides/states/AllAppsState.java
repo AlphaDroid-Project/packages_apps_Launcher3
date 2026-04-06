@@ -31,6 +31,7 @@ import com.android.launcher3.LauncherPrefs;
 import com.android.launcher3.LauncherState;
 import com.android.launcher3.LauncherUiState;
 import com.android.launcher3.R;
+import com.android.launcher3.util.BerryBlackTheme;
 import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ActivityContext;
 import com.android.launcher3.views.ScrimColors;
@@ -219,6 +220,9 @@ public class AllAppsState extends LauncherState {
             backgroundColor = launcher.getResources().getColor(R.color.widgets_picker_scrim);
         } else {
             backgroundColor = Themes.getAttrColor(launcher, R.attr.allAppsScrimColor);
+        }
+        if (BerryBlackTheme.isActive(launcher)) {
+            backgroundColor = Color.BLACK;
         }
         scrimColor = ColorUtils.setAlphaComponent(
                 backgroundColor, LauncherPrefs.APP_DRAWER_OPACITY.get(launcher) * 255 / 100);

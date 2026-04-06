@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -134,7 +135,10 @@ public class InfoBottomSheet extends WidgetsBottomSheet {
         @Override
         public RecyclerView onCreateRecyclerView(LayoutInflater inflater, ViewGroup parent,
                                                  Bundle savedInstanceState) {
-            RecyclerView view = super.onCreateRecyclerView(inflater, parent, savedInstanceState);
+            Context themedCtx = new ContextThemeWrapper(
+                    getActivity(), R.style.AppInfoBottomSheet_PreferenceContext);
+            RecyclerView view = super.onCreateRecyclerView(
+                    inflater.cloneInContext(themedCtx), parent, savedInstanceState);
             view.setOverScrollMode(View.OVER_SCROLL_NEVER);
             return view;
         }

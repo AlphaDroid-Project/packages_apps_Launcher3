@@ -381,6 +381,13 @@
             @color/widget_cell_subtitle_color_dark</item>
     </style>
 
+    <!-- App info preferences: inflater uses this style so rows resolve @color/launcher_foreground_primary. -->
+    <style name="AppInfoBottomSheet.PreferenceContext" parent="@style/WidgetContainerTheme">
+        <item name="android:textColorPrimary">@color/launcher_foreground_primary</item>
+        <item name="android:textColorSecondary">@color/launcher_foreground_primary</item>
+        <item name="android:colorControlNormal">@color/launcher_foreground_primary</item>
+    </style>
+
     <style name="WidgetsTitle" parent="">
         <item name="android:fontFamily">variable-headline-small-emphasized</item>
         <item name="android:textSize">@dimen/widget_picker_title_font_size</item>
@@ -522,7 +529,7 @@
         <item name="android:stateListAnimator">@animator/all_apps_fastscroll_icon_anim</item>
         <item name="android:paddingLeft">@dimen/dynamic_grid_cell_padding_x</item>
         <item name="android:paddingRight">@dimen/dynamic_grid_cell_padding_x</item>
-        <item name="android:textColor">@color/materialColorOnSurface</item>
+        <item name="android:textColor">@color/launcher_foreground_primary</item>
         <item name="android:fontFamily">variable-title-small</item>
     </style>
 
@@ -683,7 +690,7 @@
 
     <style name="PrivateSpaceHeaderTextStyle">
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/materialColorOnSurface</item>
+        <item name="android:textColor">@color/launcher_foreground_primary</item>
         <item name="android:fontFamily">variable-title-medium</item>
         <item name="android:ellipsize">end</item>
     </style>

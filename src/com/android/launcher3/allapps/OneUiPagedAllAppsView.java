@@ -36,6 +36,7 @@ import com.android.launcher3.PagedView;
 import com.android.launcher3.R;
 import com.android.launcher3.model.data.AppInfo;
 import com.android.launcher3.pageindicators.PageIndicatorDots;
+import com.android.launcher3.util.Themes;
 import com.android.launcher3.views.ActivityContext;
 
 import java.util.ArrayList;

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.LauncherPrefs;
 import com.android.launcher3.R;
+import com.android.launcher3.icons.AxIconsHelper;
 import com.android.launcher3.util.ComponentKey;
 
 public class IconDatabase {
@@ -17,7 +18,12 @@ public class IconDatabase {
     public static final String VALUE_DEFAULT = "";
 
     public static String getGlobal(Context context) {
-        return LauncherPrefs.getPrefs(context).getString(KEY_ICON_PACK, VALUE_DEFAULT);
+        String local = LauncherPrefs.getPrefs(context).getString(KEY_ICON_PACK, VALUE_DEFAULT);
+        if (local == null || local.isEmpty()) {
+            String themeEnginePack = AxIconsHelper.getActiveIconPackPackage(context);
+            if (themeEnginePack != null) return themeEnginePack;
+        }
+        return local != null ? local : VALUE_DEFAULT;
     }
 
     public static String getGlobalLabel(Context context) {
@@ -39,10 +45,12 @@ public class IconDatabase {
 
     public static void setGlobal(Context context, String value) {
         LauncherPrefs.getPrefs(context).edit().putString(KEY_ICON_PACK, value).apply();
+        AxIconsHelper.setActiveIconPackPackage(context, value);
     }
 
     public static void resetGlobal(Context context) {
         LauncherPrefs.getPrefs(context).edit().remove(KEY_ICON_PACK).apply();
+        AxIconsHelper.setActiveIconPackPackage(context, "");
     }
 
     public static String getByComponent(Context context, ComponentKey key) {

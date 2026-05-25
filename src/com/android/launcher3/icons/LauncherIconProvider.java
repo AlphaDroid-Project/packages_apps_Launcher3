@@ -15,9 +15,13 @@
  */
 package com.android.launcher3.icons;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ComponentInfo;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.ArrayMap;
@@ -68,10 +72,25 @@ public class LauncherIconProvider extends IconProvider {
     }
 
     @Override
+    public Drawable getIcon(ComponentInfo info, int iconDpi) {
+        if (info instanceof ActivityInfo) {
+            ActivityInfo activityInfo = (ActivityInfo) info;
+            ComponentName cn = new ComponentName(activityInfo.packageName, activityInfo.name);
+            Drawable iconPackIcon = AxIconsHelper.loadIconPackDrawable(mContext, cn, iconDpi);
+            if (iconPackIcon != null) {
+                return iconPackIcon;
+            }
+        }
+        return super.getIcon(info, iconDpi);
+    }
+
+    @Override
     public void updateSystemState() {
         super.updateSystemState();
+        String iconPack = AxIconsHelper.getActiveIconPackPackage(mContext);
         mSystemState += "," + mThemeManager.getIconState().toUniqueId()
-            + Build.VERSION.INCREMENTAL;
+            + Build.VERSION.INCREMENTAL
+            + "," + (iconPack != null ? iconPack : "");
     }
 
     private Map<String, ThemeData> getThemedIconMap() {

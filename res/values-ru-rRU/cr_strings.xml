@@ -77,7 +77,7 @@
     <string name="restarting_launcher_changes">Перезапуск главного экрана для применения изменений...</string>
     <string name="updating_launcher_components">Перезапуск главного экрана для обновления компонентов...</string>
     <!-- DT2S -->
-    <string name="pref_sleep_gesture_title">Выключение экрана двойным касанием</string>
+    <string name="pref_sleep_gesture_title">Выкл. двойным касанием</string>
     <string name="pref_sleep_gesture_summary">Дважды коснитесь пустой области главного экрана, чтобы выключить его</string>
     <string name="pref_sleep_gesture_haptic_title">Вибрировать при двойном нажатии для сна</string>
     <string name="pref_sleep_gesture_haptic_summary">Вибрировать при выполнении жеста двойного нажатия для перехода в спящий режим</string>
@@ -414,6 +414,7 @@
     <!-- Pixel style search bar -->
     <string name="dock_search_pixel_style_title">Панель поиска Pixel</string>
     <string name="dock_search_pixel_style_summary">Обновлённая панель поиска с многослойным фоном</string>
+    <string name="qsb_outer_opacity_title">Прозрачность внешнего слоя</string>
     <!-- Trust apps -->
     <string name="trust_apps_manager_name">Скрыть и защитить приложения</string>
     <string name="trust_apps_auth_manager">Разблокируйте, чтобы управлять скрытыми и защищёнными приложениями</string>
@@ -423,4 +424,17 @@
     <string name="trust_apps_help">Помощь</string>
     <string name="trust_apps_info_hidden">Не показывать скрытые приложения и их виджеты в меню приложений</string>
     <string name="trust_apps_info_protected">Для запуска защищённых приложений требуется авторизация</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Стиль недавних приложений</string>
+    <string name="recents_style_default">По умолчанию</string>
+    <string name="recents_style_stock">Эффект масштабирования</string>
+    <string name="recents_style_staple">Ками стиль</string>
+    <string name="recents_style_ios">iOS стиль</string>
+    <string name="recents_style_oxygen">Стиль OxygenOS</string>
+    <!-- Lock -->
+    <string name="action_lock">Блокировать/разблокировать</string>
+    <string name="unlock_app">Разблокировано в недавних</string>
+    <string name="lock_app">Заблокировано в недавних</string>
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Вибрация прокрутки</string>
 </resources>

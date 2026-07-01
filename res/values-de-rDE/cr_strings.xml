@@ -414,6 +414,7 @@
     <!-- Pixel style search bar -->
     <string name="dock_search_pixel_style_title">Suchleiste im Pixel-Stil</string>
     <string name="dock_search_pixel_style_summary">Überarbeitete Suchleiste mit mehrschichtigem Hintergrund</string>
+    <string name="qsb_outer_opacity_title">Deckkraft der äußeren Ebene</string>
     <!-- Trust apps -->
     <string name="trust_apps_manager_name">Versteckte &amp; geschützte Apps</string>
     <string name="trust_apps_auth_manager">Entsperren, um versteckte und geschützte Apps zu verwalten</string>
@@ -423,4 +424,17 @@
     <string name="trust_apps_help">Hilfe</string>
     <string name="trust_apps_info_hidden">Versteckte Apps und ihre Widgets werden in der App-Übersicht nicht angezeigt</string>
     <string name="trust_apps_info_protected">Geschützte Apps erfordern eine Authentifizierung, um gestartet werden zu können</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Stil des Anwendungsverlaufslayouts</string>
+    <string name="recents_style_default">Standard</string>
+    <string name="recents_style_stock">Skalierungseffekt</string>
+    <string name="recents_style_staple">Kami-Stil</string>
+    <string name="recents_style_ios">iOS-Stil</string>
+    <string name="recents_style_oxygen">OxygenOS-Stil</string>
+    <!-- Lock -->
+    <string name="action_lock">App sperren/entsperren</string>
+    <string name="unlock_app">Entsperrte App im Anwendungsverlauf</string>
+    <string name="lock_app">Gesperrte App im Anwendungsverlauf</string>
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Scroll-Vibration</string>
 </resources>

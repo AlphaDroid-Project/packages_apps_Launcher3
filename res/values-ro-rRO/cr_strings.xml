@@ -414,6 +414,7 @@
     <!-- Pixel style search bar -->
     <string name="dock_search_pixel_style_title">Bară de căutare stiluri Pixel</string>
     <string name="dock_search_pixel_style_summary">Bara de căutare redimensionată cu fundal strat</string>
+    <string name="qsb_outer_opacity_title">Outer layer opacity</string>
     <!-- Trust apps -->
     <string name="trust_apps_manager_name">Aplicații ascunse &amp; protejate</string>
     <string name="trust_apps_auth_manager">Deblochează pentru a gestiona aplicațiile ascunse și protejate</string>
@@ -423,4 +424,17 @@
     <string name="trust_apps_help">Ajutor</string>
     <string name="trust_apps_info_hidden">Aplicațiile ascunse și widget-urile lor sunt ascunse din sertar</string>
     <string name="trust_apps_info_protected">Aplicațiile protejate necesită autentificare pentru a fi deschise din launcher</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_default">Prestabilit</string>
+    <string name="recents_style_stock">Scale effect</string>
+    <string name="recents_style_staple">Kami style</string>
+    <string name="recents_style_ios">iOS style</string>
+    <string name="recents_style_oxygen">OxygenOS style</string>
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Scroll vibration</string>
 </resources>

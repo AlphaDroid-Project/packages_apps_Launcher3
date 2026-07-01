@@ -365,7 +365,7 @@ Remember the Lineage of the Unicorn</item>
     <string name="icon_pack_add">نصب بیشتر</string>
     <string name="icon_pack_no_market">هیچ فروشگاه برنامه در دسترس نیست</string>
     <!-- Wallpaper carousel -->
-    <string name="wallpaper_carousel_title">Wallpaper carousel</string>
+    <string name="wallpaper_carousel_title">تصویر زمینه چرخشی</string>
     <string name="wallpaper_carousel_summary">Quickly switch wallpapers from the long-press menu</string>
     <string name="wallpaper_carousel_lockscreen_title">Apply to lock screen</string>
     <string name="wallpaper_carousel_lockscreen_summary">Set the same wallpaper on the lock screen</string>
@@ -420,6 +420,7 @@ Remember the Lineage of the Unicorn</item>
     <!-- Pixel style search bar -->
     <string name="dock_search_pixel_style_title">Pixel style search bar</string>
     <string name="dock_search_pixel_style_summary">Revamped search bar with layered background</string>
+    <string name="qsb_outer_opacity_title">Outer layer opacity</string>
     <!-- Trust apps -->
     <string name="trust_apps_manager_name">برنامه‌های پنهان &amp; محافظت شده</string>
     <string name="trust_apps_auth_manager">برای مدیریت برنامه‌های پنهان و محافظت شده قفل را باز کنید</string>
@@ -429,4 +430,17 @@ Remember the Lineage of the Unicorn</item>
     <string name="trust_apps_help">کمک</string>
     <string name="trust_apps_info_hidden">برنامه‌های مخفی و ویجت‌هایشان از فهرست برنامه ها پنهان هستند</string>
     <string name="trust_apps_info_protected">برای باز کردن برنامه‌های محافظت شده از صفحه اصلی نیاز به احراز هویت می‌باشد</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_default">پیش‌فرض</string>
+    <string name="recents_style_stock">Scale effect</string>
+    <string name="recents_style_staple">Kami style</string>
+    <string name="recents_style_ios">iOS style</string>
+    <string name="recents_style_oxygen">OxygenOS style</string>
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Scroll vibration</string>
 </resources>

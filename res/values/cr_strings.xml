@@ -336,4 +336,29 @@
     <string name="trust_apps_help">Help</string>
     <string name="trust_apps_info_hidden">Hidden apps and their widgets are hidden from the drawer</string>
     <string name="trust_apps_info_protected">Protected apps require authentication to be opened from the launcher</string>
+
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_default">Default</string>
+    <string name="recents_style_stock">Scale effect</string>
+    <string name="recents_style_staple">Kami style</string>
+    <string name="recents_style_ios">iOS style</string>
+    <string name="recents_style_oxygen">OxygenOS style</string>
+
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
+
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Scroll vibration</string>
+
+    <!-- Rename app shortcut -->
+    <string name="rename_app_label">Rename</string>
+    <string name="rename_app_title">Enter app name</string>
+    <string name="app_renamed_successfully">App renamed</string>
+    <string name="rename_app_empty_error">App name cannot be empty</string>
+    <string name="rename_app_length_error">App name must be %1$d characters or less</string>
+    <string name="rename_app_reset">Reset</string>
+    <string name="rename_app_reset_message">Name reset to original</string>
 </resources>

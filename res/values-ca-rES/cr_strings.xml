@@ -414,6 +414,7 @@
     <!-- Pixel style search bar -->
     <string name="dock_search_pixel_style_title">Pixel style search bar</string>
     <string name="dock_search_pixel_style_summary">Revamped search bar with layered background</string>
+    <string name="qsb_outer_opacity_title">Outer layer opacity</string>
     <!-- Trust apps -->
     <string name="trust_apps_manager_name">Aplicacions amagades i protegides</string>
     <string name="trust_apps_auth_manager">Desbloqueja per gestionar les aplicacions amagades i protegides</string>
@@ -423,4 +424,17 @@
     <string name="trust_apps_help">Ajuda</string>
     <string name="trust_apps_info_hidden">Les aplicacions amagades i els seus widgets estan amagades del calaix</string>
     <string name="trust_apps_info_protected">Les aplicacions protegides requereixen autentificació per poder ser obertes des del llançador</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_default">Per defecte</string>
+    <string name="recents_style_stock">Scale effect</string>
+    <string name="recents_style_staple">Kami style</string>
+    <string name="recents_style_ios">iOS style</string>
+    <string name="recents_style_oxygen">OxygenOS style</string>
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Scroll vibration</string>
 </resources>

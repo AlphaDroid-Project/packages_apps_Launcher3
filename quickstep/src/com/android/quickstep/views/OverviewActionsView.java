@@ -31,6 +31,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
@@ -61,6 +62,7 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         implements OnClickListener, Insettable, SharedPreferences.OnSharedPreferenceChangeListener {
 
     public static final String TAG = "OverviewActionsView";
+    private static final boolean DEBUG = false;
     private final Rect mInsets = new Rect();
 
     /**
@@ -183,6 +185,10 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
     private SharedPreferences mPrefs;
     private boolean mPrefsRegistered;
 
+    private View mLockPillContainer;
+    private TextView mLockPillText;
+    private boolean mLockPillShowing = false;
+
     public OverviewActionsView(Context context) {
         this(context, null);
     }
@@ -252,7 +258,27 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
                 }
             }, 1f /* initialValue */);
         }
+        mLockPillContainer = findViewById(R.id.lock_pill_container);
+        mLockPillText = findViewById(R.id.lock_pill_text);
         updateVisibilities();
+    }
+
+    public void showLockPill(boolean isCurrentlyLocked) {
+        if (mLockPillContainer == null || mLockPillShowing) return;
+        mLockPillShowing = true;
+        mLockPillText.setText(isCurrentlyLocked ? R.string.unlock_app : R.string.lock_app);
+        mLockPillContainer.setAlpha(0f);
+        mLockPillContainer.setVisibility(VISIBLE);
+        mLockPillContainer.animate().alpha(1f).setDuration(150).start();
+        mActionButtons.animate().alpha(0f).setDuration(150).start();
+    }
+
+    public void hideLockPill() {
+        if (mLockPillContainer == null || !mLockPillShowing) return;
+        mLockPillShowing = false;
+        mLockPillContainer.animate().alpha(0f).setDuration(150).withEndAction(() ->
+                mLockPillContainer.setVisibility(GONE)).start();
+        mActionButtons.animate().alpha(1f).setDuration(150).start();
     }
 
     private void updateVisibilities() {
@@ -370,8 +396,10 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
      *                      pair.
      */
     public void updateForGroupedTask(boolean isGroupedTask, boolean canSaveAppPair) {
-        Log.d(TAG, "updateForGroupedTask() called with: isGroupedTask = [" + isGroupedTask
-                + "], canSaveAppPair = [" + canSaveAppPair + "]");
+        if (DEBUG) {
+            Log.d(TAG, "updateForGroupedTask() called with: isGroupedTask = [" + isGroupedTask
+                    + "], canSaveAppPair = [" + canSaveAppPair + "]");
+        }
         mIsGroupedTask = isGroupedTask;
         mCanSaveAppPair = canSaveAppPair;
         updateActionButtonsVisibility();
@@ -397,8 +425,10 @@ public class OverviewActionsView<T extends OverlayUICallbacks> extends FrameLayo
         boolean showGroupActions = mIsGroupedTask && mDp.getDeviceProperties().isTablet() &&
                 mCanSaveAppPair &&
                 !getContext().getSystemService(ActivityManager.class).isLowRamDevice();
-        Log.d(TAG, "updateActionButtonsVisibility() called: showSingleTaskActions = ["
-                + showSingleTaskActions + "], showGroupActions = [" + showGroupActions + "]");
+        if (DEBUG) {
+            Log.d(TAG, "updateActionButtonsVisibility() called: showSingleTaskActions = ["
+                    + showSingleTaskActions + "], showGroupActions = [" + showGroupActions + "]");
+        }
         getActionsAlphas().get(INDEX_GROUPED_ALPHA).setValue(showSingleTaskActions ? 1 : 0);
         getGroupActionsAlphas().get(INDEX_GROUPED_ALPHA).setValue(showGroupActions ? 1 : 0);
     }

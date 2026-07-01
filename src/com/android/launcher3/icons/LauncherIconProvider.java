@@ -90,7 +90,7 @@ public class LauncherIconProvider extends IconProvider {
         String iconPack = AxIconsHelper.getActiveIconPackPackage(mContext);
         mSystemState += "," + mThemeManager.getIconState().toUniqueId()
             + Build.VERSION.INCREMENTAL
-            + "," + (iconPack != null ? iconPack : "");
+            + "," + (iconPack != null ? iconPack : "") + ",icon-pack-shape-v2";
     }
 
     private Map<String, ThemeData> getThemedIconMap() {

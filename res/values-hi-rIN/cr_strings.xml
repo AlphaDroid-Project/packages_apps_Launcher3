@@ -414,6 +414,7 @@
     <!-- Pixel style search bar -->
     <string name="dock_search_pixel_style_title">Pixel style search bar</string>
     <string name="dock_search_pixel_style_summary">Revamped search bar with layered background</string>
+    <string name="qsb_outer_opacity_title">Outer layer opacity</string>
     <!-- Trust apps -->
     <string name="trust_apps_manager_name">छिपा हुआ &amp; संरक्षित ऐप्स</string>
     <string name="trust_apps_auth_manager">छिपे हुए और संरक्षित ऐप्स को प्रबंधित करने के लिए अनलॉक करें</string>
@@ -423,4 +424,17 @@
     <string name="trust_apps_help">सहायता</string>
     <string name="trust_apps_info_hidden">छिपे हुए एप्लिकेशन और उनके विजेट दराज से छिपे हुए हैं</string>
     <string name="trust_apps_info_protected">संरक्षित ऐप्स को लॉन्चर से खोले जाने के लिए प्रमाणीकरण की आवश्यकता होती है</string>
+    <!-- Recents style -->
+    <string name="recents_style_title">Recents layout style</string>
+    <string name="recents_style_default">डिफॉल्ट</string>
+    <string name="recents_style_stock">Scale effect</string>
+    <string name="recents_style_staple">Kami style</string>
+    <string name="recents_style_ios">iOS style</string>
+    <string name="recents_style_oxygen">OxygenOS style</string>
+    <!-- Lock -->
+    <string name="action_lock">Lock/Unlock app</string>
+    <string name="unlock_app">Unlocked app in recents</string>
+    <string name="lock_app">Locked app in recents</string>
+    <!-- Recents style -->
+    <string name="recents_scroll_vibrate_title">Scroll vibration</string>
 </resources>

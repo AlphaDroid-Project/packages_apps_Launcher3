@@ -41,8 +41,6 @@ import androidx.preference.PreferenceGroup.PreferencePositionCallback;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.crdroid.utils.IconTinterUtils;
-
 import com.android.launcher3.BuildConfig;
 import com.android.launcher3.Flags;
 import com.android.launcher3.LauncherFiles;
@@ -189,8 +187,6 @@ public class SettingsActivity extends CollapsingToolbarBaseActivity
             if (getActivity() != null && !TextUtils.isEmpty(getPreferenceScreen().getTitle())) {
                 getActivity().setTitle(getPreferenceScreen().getTitle());
             }
-
-            IconTinterUtils.tintIcons(getPreferenceScreen(), getContext());
         }
 
         private boolean isKeyInPreferenceGroup(String targetKey, PreferenceGroup parent) {

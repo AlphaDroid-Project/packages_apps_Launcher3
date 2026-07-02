@@ -602,7 +602,7 @@ public interface TaskShortcutFactory {
         private Context mContext;
 
         public LockAppSystemShortcut(Context context, RecentsViewContainer target, TaskContainer taskContainer, String packageName) {
-            super(R.drawable.recents_locked, R.string.action_lock,
+            super(R.drawable.ic_lock_recent, R.string.action_lock,
                     target, taskContainer.getItemInfo(), taskContainer.getTaskView());
             mTask = taskContainer.getTask();
             mPackageName = packageName;
@@ -615,7 +615,13 @@ public interface TaskShortcutFactory {
                 LockedTaskManager ltm = LockedTaskManager.getInstance(mContext);
                 boolean wasLocked = ltm.isPackageLocked(mPackageName);
                 ltm.setPackageLocked(mPackageName, !wasLocked);
-                ((TaskView) mOriginalView).updateLockState(mPackageName);
+                TaskView taskView = (TaskView) mOriginalView;
+                taskView.updateLockState(mPackageName);
+                // Keep the overview actions lock button in sync when it reflects this task.
+                RecentsView recentsView = taskView.getRecentsView();
+                if (recentsView != null && recentsView.getCurrentPageTaskView() == taskView) {
+                    mTarget.getActionsView().updateLockIcon(!wasLocked);
+                }
                 Toast.makeText(mContext,
                         wasLocked ? R.string.unlock_app : R.string.lock_app,
                         Toast.LENGTH_SHORT).show();

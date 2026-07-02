@@ -4560,6 +4560,10 @@ public abstract class RecentsView<
 
         boolean isCurrentDesktop = taskView instanceof DesktopTaskView;
         mActionsView.updateHiddenFlags(HIDDEN_DESKTOP, isCurrentDesktop);
+
+        if (taskView != null) {
+            mActionsView.updateLockIcon(taskView.isLocked());
+        }
     }
 
     /**

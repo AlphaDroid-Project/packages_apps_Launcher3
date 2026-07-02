@@ -34,6 +34,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import android.widget.Toast;
 
 import com.android.launcher3.R;
 import com.android.launcher3.model.data.ItemInfo;
@@ -469,6 +470,21 @@ public class TaskOverlayFactory {
                     showBlockedByPolicyMessage();
                 }
             }
+
+            @Override
+            public void onLockTaskRequested() {
+                if (mTask != null && mTask.getTopComponent() != null) {
+                    String packageName = mTask.getTopComponent().getPackageName();
+                    LockedTaskManager ltm = LockedTaskManager.getInstance(mApplicationContext);
+                    boolean wasLocked = ltm.isPackageLocked(packageName);
+                    ltm.setPackageLocked(packageName, !wasLocked);
+                    getTaskView().updateLockState(packageName);
+                    getActionsView().updateLockIcon(!wasLocked);
+                    Toast.makeText(mApplicationContext,
+                            wasLocked ? R.string.unlock_app : R.string.lock_app,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
@@ -489,5 +505,7 @@ public class TaskOverlayFactory {
         void onClearAllTasksRequested();
 
         void onLens();
+
+        void onLockTaskRequested();
     }
 }

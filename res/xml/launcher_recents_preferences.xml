@@ -86,6 +86,13 @@
             launcher:iconSpaceReserved="false" />
 
         <SwitchPreferenceCompat
+            android:key="pref_recents_lock"
+            android:title="@string/action_lock"
+            android:defaultValue="true"
+            android:persistent="true"
+            launcher:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
             android:key="pref_recents_clear_all"
             android:title="@string/recents_clear_all_title"
             android:defaultValue="true"

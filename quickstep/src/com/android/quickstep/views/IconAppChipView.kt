@@ -664,7 +664,7 @@ constructor(
     fun setLockState(isLocked: Boolean) {
         isShowingLockIcon = isLocked
         if (isLocked) {
-            iconArrowView?.setImageResource(R.drawable.recents_locked)
+            iconArrowView?.setImageResource(R.drawable.ic_lock_recent)
             iconArrowView?.imageTintList = ColorStateList.valueOf(
                 resources.getColor(R.color.recent_app_locked_icon_color, context.theme)
             )

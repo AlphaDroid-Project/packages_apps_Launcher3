@@ -8,6 +8,8 @@
     <string name="action_lock">Bloquear/Desbloquear</string>
     <string name="unlock_app">Aplicação desbloqueada</string>
     <string name="lock_app">Aplicação bloqueada</string>
+    <string name="action_lock_locked">Locked</string>
+    <string name="action_lock_unlocked">Unlocked</string>
     <!-- Recents style -->
     <string name="recents_style_title">Estilo do layout recentes</string>
     <string name="recents_style_stock">Padrão</string>

@@ -8,6 +8,8 @@
     <string name="action_lock">锁定/解锁应用</string>
     <string name="unlock_app">在最近任务中解锁应用</string>
     <string name="lock_app">在最近任务中锁定应用</string>
+    <string name="action_lock_locked">Locked</string>
+    <string name="action_lock_unlocked">Unlocked</string>
     <!-- Recents style -->
     <string name="recents_style_title">Recents layout style</string>
     <string name="recents_style_stock">Stock</string>

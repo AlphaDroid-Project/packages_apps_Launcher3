@@ -8,12 +8,14 @@
     <string name="action_lock">Uygulama kilitle/kilidi aç</string>
     <string name="unlock_app">Son kullanılanlarda uygulamanın kilidini açıldı</string>
     <string name="lock_app">Son kullanılanlarda uygulama kilitlendi</string>
+    <string name="action_lock_locked">Kilitli</string>
+    <string name="action_lock_unlocked">Kilitli değil</string>
     <!-- Recents style -->
-    <string name="recents_style_title">Recents layout style</string>
-    <string name="recents_style_stock">Stock</string>
-    <string name="recents_style_staple">Kami Style</string>
-    <string name="recents_style_ios">iOS Style</string>
-    <string name="recents_style_oxygen">OxygenOS Style</string>
+    <string name="recents_style_title">Son kullanılanlar düzeni stili</string>
+    <string name="recents_style_stock">Varsayılan</string>
+    <string name="recents_style_staple">Kami stili</string>
+    <string name="recents_style_ios">iOS stili</string>
+    <string name="recents_style_oxygen">OxygenOS stili</string>
     <string-array name="quickspace_psa_random">
         <item>Cehalet mutluluktur</item>
         <item>Savaşma, seviş</item>

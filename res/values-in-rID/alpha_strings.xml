@@ -8,8 +8,6 @@
     <string name="action_lock">Kunci/Buka kunci aplikasi</string>
     <string name="unlock_app">Aplikasi yang tidak terkunci baru - baru ini</string>
     <string name="lock_app">Kunci aplikasi di baru - baru ini</string>
-    <string name="action_lock_locked">Locked</string>
-    <string name="action_lock_unlocked">Unlocked</string>
     <!-- Recents style -->
     <string name="recents_style_title">Gaya tata letak Terbaru</string>
     <string name="recents_style_stock">Bawaan</string>

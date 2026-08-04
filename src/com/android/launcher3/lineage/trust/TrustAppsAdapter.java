@@ -34,7 +34,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.internal.util.crdroid.Utils;
 import com.android.launcher3.R;
 import com.android.launcher3.lineage.trust.db.TrustComponent;
 
@@ -46,9 +45,11 @@ class TrustAppsAdapter extends RecyclerView.Adapter<TrustAppsAdapter.ViewHolder>
     private Listener mListener;
     private boolean mHasSecureKeyguard;
     private Context mContext;
+    private PackageManager mPackageManager;
 
     TrustAppsAdapter(Context context, Listener listener, boolean hasSecureKeyguard) {
         mContext = context;
+        mPackageManager = context.getPackageManager();
         mListener = listener;
         mHasSecureKeyguard = hasSecureKeyguard;
     }
@@ -109,8 +110,10 @@ class TrustAppsAdapter extends RecyclerView.Adapter<TrustAppsAdapter.ViewHolder>
 
             mProtectedView.setVisibility(hasSecureKeyguard ? View.VISIBLE : View.GONE);
 
-            mHiddenView.setVisibility(Utils.launchablePackages(mContext).contains(component.getPackageName()) ?
-                    View.VISIBLE : View.GONE);
+            // Hide toggle only for packages with a launcher activity
+            mHiddenView.setVisibility(
+                    mPackageManager.getLaunchIntentForPackage(component.getPackageName()) != null
+                            ? View.VISIBLE : View.GONE);
 
             mHiddenView.setOnClickListener(v -> {
                 component.invertVisibility();

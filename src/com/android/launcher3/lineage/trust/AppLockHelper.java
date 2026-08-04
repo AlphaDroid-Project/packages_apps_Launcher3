@@ -17,50 +17,97 @@
  */
 package com.android.launcher3.lineage.trust;
 
-import android.app.AppLockData;
-import android.app.AppLockManager;
+import android.app.AxSandboxManager;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.List;
-
+/**
+ * Thin client for the platform {@link AxSandboxManager} API — same role as the old
+ * {@code AppLockManager} bridge for Trust UI and drawer/recents observe paths.
+ *
+ * <p>Lock/hide writes need {@code MANAGE_APP_LOCK}; reads use USE or ungated
+ * per-package checks. Framework clears binder identity when persisting
+ * {@code sandbox_config}.
+ */
 public class AppLockHelper {
 
-    private AppLockManager mAppLockManager;
+    private static final String TAG = "AppLockHelper";
+
+    @Nullable
+    private final AxSandboxManager mSandboxManager;
 
     @Nullable
     private static AppLockHelper sSingleton;
 
     private AppLockHelper(@NonNull Context context) {
-        mAppLockManager = context.getSystemService(AppLockManager.class);
+        mSandboxManager = context.getSystemService(AxSandboxManager.class);
+        if (mSandboxManager == null) {
+            Log.w(TAG, "AxSandboxManager unavailable");
+        }
     }
 
     public static synchronized AppLockHelper getInstance(@NonNull Context context) {
         if (sSingleton == null) {
-            sSingleton = new AppLockHelper(context);
+            sSingleton = new AppLockHelper(context.getApplicationContext());
         }
         return sSingleton;
     }
 
+    /** Hide from drawer — {@link AxSandboxManager#setPackageHidden}. */
     public void setShouldHideApp(@NonNull String packageName, boolean hide) {
-        mAppLockManager.setPackageHidden(packageName, hide);
+        if (mSandboxManager == null) return;
+        try {
+            mSandboxManager.setPackageHidden(packageName, hide);
+        } catch (RuntimeException e) {
+            Log.w(TAG, "setShouldHideApp failed for " + packageName, e);
+        }
     }
 
     public boolean isPackageHidden(@NonNull String packageName) {
-        return mAppLockManager.isPackageHidden(packageName);
+        if (mSandboxManager == null) return false;
+        try {
+            return mSandboxManager.isPackageHidden(packageName);
+        } catch (RuntimeException e) {
+            Log.w(TAG, "isPackageHidden failed for " + packageName, e);
+            return false;
+        }
     }
 
+    /** App lock list — {@link AxSandboxManager#addLockedApp} / {@link #removeLockedApp}. */
     public void setShouldProtectApp(@NonNull String packageName, boolean protect) {
-        mAppLockManager.setShouldProtectApp(packageName, protect);
+        if (mSandboxManager == null) return;
+        try {
+            if (protect) {
+                mSandboxManager.addLockedApp(packageName);
+            } else {
+                mSandboxManager.removeLockedApp(packageName);
+            }
+        } catch (RuntimeException e) {
+            Log.w(TAG, "setShouldProtectApp failed for " + packageName, e);
+        }
     }
 
     public boolean isPackageProtected(@NonNull String packageName) {
-        return mAppLockManager.isPackageProtected(packageName);
+        if (mSandboxManager == null) return false;
+        try {
+            return mSandboxManager.getAppLockState(packageName).hasAppLock();
+        } catch (RuntimeException e) {
+            Log.w(TAG, "isPackageProtected failed for " + packageName, e);
+            return false;
+        }
     }
 
+    /** USE-level count for prediction padding (not the MANAGE name list). */
     public int getHiddenPackagesCount() {
-        return  mAppLockManager.getHiddenPackages().size();
+        if (mSandboxManager == null) return 0;
+        try {
+            return mSandboxManager.getHiddenPackagesCount();
+        } catch (RuntimeException e) {
+            Log.w(TAG, "getHiddenPackagesCount failed", e);
+            return 0;
+        }
     }
 }

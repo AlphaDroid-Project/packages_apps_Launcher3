@@ -16,7 +16,6 @@
 package com.android.launcher3.lineage.trust;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.PackageInfoFlags;
@@ -26,11 +25,9 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import com.android.internal.util.crdroid.Utils;
 import com.android.launcher3.lineage.trust.db.TrustComponent;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -64,18 +61,16 @@ public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<Trust
         List<PackageInfo> apps = mPackageManager.getInstalledPackages(
                     PackageInfoFlags.of(Long.valueOf(PackageManager.MATCH_ALL)));
 
-        List<String> launchablePackages = Utils.launchablePackages(mContext);
-        List<String> whiteListedPackages = Arrays.asList(mContext.getResources().getStringArray(
-                com.android.internal.R.array.config_appLockAllowedSystemApps));
-
+        // Lineage used Utils.launchablePackages + config_appLockAllowedSystemApps; those
+        // APIs are gone. A package is trust-relevant if it has a MAIN/LAUNCHER activity
+        // (same rule AxSandbox isPackageLockable uses via LauncherApps).
         int numPackages = apps.size();
         for (int i = 0; i < numPackages; i++) {
             PackageInfo app = apps.get(i);
 
             try {
                 String pkgName = app.packageName;
-                if (!app.applicationInfo.isSystemApp() || launchablePackages.contains(pkgName) ||
-                        whiteListedPackages.contains(pkgName)) {
+                if (mPackageManager.getLaunchIntentForPackage(pkgName) != null) {
                     String label = mPackageManager.getApplicationLabel(
                             mPackageManager.getApplicationInfo(pkgName,
                                     PackageManager.GET_META_DATA)).toString();

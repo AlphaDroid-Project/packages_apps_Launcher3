@@ -104,6 +104,8 @@ public class QuickstepModelDelegate extends ModelDelegate {
 
     private final StatsManager mStatsManager;
 
+    private final AppLockHelper mAppLockHelper;
+
     protected boolean mActive = false;
     private DisplayInfoChangeListener mDisplayInfoChangeListener;
 
@@ -127,6 +129,8 @@ public class QuickstepModelDelegate extends ModelDelegate {
         // instance, as there will be additional instances that may be destroyed at any time.
         mStatsManager = TextUtils.isEmpty(dbFileName)
                 ? null : context.getSystemService(StatsManager.class);
+
+        mAppLockHelper = AppLockHelper.getInstance(context);
     }
 
     @Override
@@ -322,8 +326,7 @@ public class QuickstepModelDelegate extends ModelDelegate {
         mAllPredictionAppsState.registerPredictor(mContext,
                 new AppPredictionContext.Builder(mContext)
                     .setUiSurface("home")
-                    .setPredictedTargetCount(mIDP.numDatabaseAllAppsColumns +
-                        AppLockHelper.getInstance(mContext).getHiddenPackagesCount())
+                    .setPredictedTargetCount(mIDP.numDatabaseAllAppsColumns + getHiddenPackagesCount())
                     .build(),
                 mModel,
                 PredictionUpdateTask::new);
@@ -352,12 +355,16 @@ public class QuickstepModelDelegate extends ModelDelegate {
         }
     }
 
+    /** Pad predictions by the hidden apps that will be filtered back out of the results. */
+    private int getHiddenPackagesCount() {
+        return mAppLockHelper != null ? mAppLockHelper.getHiddenPackagesCount() : 0;
+    }
+
     private void registerHotseatPredictor(Context context) {
         mHotseatPredictionState.registerPredictor(context,
                 new AppPredictionContext.Builder(context)
                     .setUiSurface("hotseat")
-                    .setPredictedTargetCount(mIDP.numDatabaseHotseatIcons +
-                        AppLockHelper.getInstance(mContext).getHiddenPackagesCount())
+                    .setPredictedTargetCount(mIDP.numDatabaseHotseatIcons + getHiddenPackagesCount())
                     .setExtras(getBundleForHotseatPredictions(context, mDataModel))
                     .build(),
                 mModel, PredictionUpdateTask::new);

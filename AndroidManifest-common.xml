@@ -37,6 +37,10 @@
     <uses-permission android:name="android.permission.BIND_APPWIDGET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- AxSandbox: observe (USE) + Trust UI manage lock/hide (MANAGE) -->
+    <uses-permission android:name="com.android.axion.permission.USE_APP_LOCK" />
+    <uses-permission android:name="com.android.axion.permission.MANAGE_APP_LOCK" />
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission android:name="android.permission.READ_DEVICE_CONFIG" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
@@ -63,9 +67,6 @@
 
     <!-- Floating window -->
     <uses-permission android:name="com.libremobileos.permission.START_FREEFORM" />
-
-    <!-- AppLock -->
-    <uses-permission android:name="android.permission.MANAGE_APP_LOCK" />
 
     <permission
         android:name="${applicationId}.permission.GRID_CONTROL"
@@ -251,7 +252,7 @@
         <activity
             android:name="com.android.launcher3.lineage.trust.TrustAppsActivity"
             android:label="@string/trust_apps_manager_name"
-            android:permission="android.permission.MANAGE_APP_LOCK"
+            android:permission="com.android.axion.permission.MANAGE_APP_LOCK"
             android:theme="@style/Theme.SubSettingsBase.Expressive"
             android:autoRemoveFromRecents="true" />
     </application>

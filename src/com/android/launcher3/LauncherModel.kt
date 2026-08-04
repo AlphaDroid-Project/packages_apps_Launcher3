@@ -15,6 +15,7 @@
  */
 package com.android.launcher3
 
+import android.app.AxSandboxManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -132,7 +133,7 @@ constructor(
                 }
             }
         context.contentResolver.registerContentObserver(
-            Settings.Secure.getUriFor(SANDBOX_CONFIG),
+            Settings.Secure.getUriFor(AxSandboxManager.SETTING_SANDBOX_CONFIG),
             false,
             sandboxObserver,
         )
@@ -473,6 +474,5 @@ constructor(
 
     companion object {
         const val TAG = "Launcher.Model"
-        private const val SANDBOX_CONFIG = "sandbox_config"
     }
 }

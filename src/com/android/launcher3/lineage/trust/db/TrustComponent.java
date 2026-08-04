@@ -76,13 +76,17 @@ public class TrustComponent {
         }
 
         TrustComponent otherComponent = (TrustComponent) other;
-        return otherComponent.getPackageName().equals(mPackageName) &&
-                otherComponent.isHidden() == mIsHidden;
+        return otherComponent.getPackageName().equals(mPackageName)
+                && otherComponent.isHidden() == mIsHidden
+                && otherComponent.isProtected() == mIsProtected;
     }
 
     @Override
     public int hashCode() {
-        return mPackageName.hashCode() + (mIsHidden ? 1 : 0);
+        int h = mPackageName.hashCode();
+        h = 31 * h + (mIsHidden ? 1 : 0);
+        h = 31 * h + (mIsProtected ? 1 : 0);
+        return h;
     }
 
     public enum Kind {

@@ -18,7 +18,6 @@
 package com.android.launcher3.lineage.trust;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.AnimatedVectorDrawable;
@@ -31,21 +30,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DiffUtil;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.launcher3.R;
 import com.android.launcher3.lineage.trust.db.TrustComponent;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-class TrustAppsAdapter extends RecyclerView.Adapter<TrustAppsAdapter.ViewHolder> {
-    private List<TrustComponent> mList = new ArrayList<>();
-    private Listener mListener;
-    private boolean mHasSecureKeyguard;
-    private Context mContext;
-    private PackageManager mPackageManager;
+/**
+ * List with optional sections: Private apps (locked and/or hidden), then Other apps.
+ * Hidden apps stay under Private so they can be unhidden without leaving the UI.
+ */
+class TrustAppsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_APP = 1;
+
+    private final List<TrustComponent> mComponents = new ArrayList<>();
+    private final List<Row> mRows = new ArrayList<>();
+    private final Listener mListener;
+    private final boolean mHasSecureKeyguard;
+    private final Context mContext;
+    private final PackageManager mPackageManager;
 
     TrustAppsAdapter(Context context, Listener listener, boolean hasSecureKeyguard) {
         mContext = context;
@@ -55,26 +65,71 @@ class TrustAppsAdapter extends RecyclerView.Adapter<TrustAppsAdapter.ViewHolder>
     }
 
     public void update(List<TrustComponent> list) {
-        DiffUtil.DiffResult result = DiffUtil.calculateDiff(new Callback(mList, list));
-        mList = list;
-        result.dispatchUpdatesTo(this);
+        mComponents.clear();
+        if (list != null) {
+            mComponents.addAll(list);
+        }
+        rebuildRows();
+        notifyDataSetChanged();
+    }
+
+    private void rebuildRows() {
+        List<TrustComponent> privateApps = new ArrayList<>();
+        List<TrustComponent> otherApps = new ArrayList<>();
+        for (TrustComponent c : mComponents) {
+            if (c.isHidden() || c.isProtected()) {
+                privateApps.add(c);
+            } else {
+                otherApps.add(c);
+            }
+        }
+        Collections.sort(privateApps, (a, b) -> a.getLabel().compareToIgnoreCase(b.getLabel()));
+        Collections.sort(otherApps, (a, b) -> a.getLabel().compareToIgnoreCase(b.getLabel()));
+
+        mRows.clear();
+        if (!privateApps.isEmpty()) {
+            mRows.add(Row.header(R.string.trust_apps_section_private));
+            for (TrustComponent c : privateApps) {
+                mRows.add(Row.app(c));
+            }
+            if (!otherApps.isEmpty()) {
+                mRows.add(Row.header(R.string.trust_apps_section_other));
+            }
+        }
+        for (TrustComponent c : otherApps) {
+            mRows.add(Row.app(c));
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return mRows.get(position).isHeader() ? TYPE_HEADER : TYPE_APP;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int type) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_hidden_app, parent, false));
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int type) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        if (type == TYPE_HEADER) {
+            return new HeaderViewHolder(inflater.inflate(
+                    R.layout.item_trust_section_header, parent, false));
+        }
+        return new AppViewHolder(inflater.inflate(R.layout.item_hidden_app, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        viewHolder.bind(mList.get(i), mHasSecureKeyguard);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        Row row = mRows.get(position);
+        if (holder instanceof HeaderViewHolder) {
+            ((HeaderViewHolder) holder).bind(row.headerRes);
+        } else if (holder instanceof AppViewHolder && row.component != null) {
+            ((AppViewHolder) holder).bind(row.component, mHasSecureKeyguard);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return mRows.size();
     }
 
     public interface Listener {
@@ -83,15 +138,51 @@ class TrustAppsAdapter extends RecyclerView.Adapter<TrustAppsAdapter.ViewHolder>
         void onProtectedItemChanged(@NonNull TrustComponent component);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView mIconView;
-        private TextView mLabelView;
-        private ImageView mHiddenView;
-        private ImageView mProtectedView;
+    private static final class Row {
+        @StringRes
+        final int headerRes;
+        @Nullable
+        final TrustComponent component;
 
-        ViewHolder(@NonNull View itemView) {
+        private Row(int headerRes, @Nullable TrustComponent component) {
+            this.headerRes = headerRes;
+            this.component = component;
+        }
+
+        static Row header(@StringRes int res) {
+            return new Row(res, null);
+        }
+
+        static Row app(@NonNull TrustComponent c) {
+            return new Row(0, c);
+        }
+
+        boolean isHeader() {
+            return component == null;
+        }
+    }
+
+    private static class HeaderViewHolder extends RecyclerView.ViewHolder {
+        private final TextView mTitle;
+
+        HeaderViewHolder(@NonNull View itemView) {
             super(itemView);
+            mTitle = itemView.findViewById(R.id.trust_section_title);
+        }
 
+        void bind(@StringRes int titleRes) {
+            mTitle.setText(titleRes);
+        }
+    }
+
+    class AppViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView mIconView;
+        private final TextView mLabelView;
+        private final ImageView mHiddenView;
+        private final ImageView mProtectedView;
+
+        AppViewHolder(@NonNull View itemView) {
+            super(itemView);
             mIconView = itemView.findViewById(R.id.item_hidden_app_icon);
             mLabelView = itemView.findViewById(R.id.item_hidden_app_title);
             mHiddenView = itemView.findViewById(R.id.item_hidden_app_switch);
@@ -102,111 +193,67 @@ class TrustAppsAdapter extends RecyclerView.Adapter<TrustAppsAdapter.ViewHolder>
             mIconView.setImageDrawable(component.getIcon());
             mLabelView.setText(component.getLabel());
 
-            mHiddenView.setImageResource(component.isHidden() ?
-                    R.drawable.ic_hidden_locked : R.drawable.ic_hidden_unlocked);
-
-            mProtectedView.setImageResource(component.isProtected() ?
-                    R.drawable.ic_protected_locked : R.drawable.ic_protected_unlocked);
+            mHiddenView.setImageResource(component.isHidden()
+                    ? R.drawable.ic_hidden_locked : R.drawable.ic_hidden_unlocked);
+            mProtectedView.setImageResource(component.isProtected()
+                    ? R.drawable.ic_protected_locked : R.drawable.ic_protected_unlocked);
 
             mProtectedView.setVisibility(hasSecureKeyguard ? View.VISIBLE : View.GONE);
 
-            // Hide toggle only for packages with a launcher activity
-            mHiddenView.setVisibility(
-                    mPackageManager.getLaunchIntentForPackage(component.getPackageName()) != null
-                            ? View.VISIBLE : View.GONE);
+            // Always allow hide toggle for private section apps (they may lack a visible launcher
+            // intent after being hidden from package queries).
+            boolean canHide = component.isHidden()
+                    || mPackageManager.getLaunchIntentForPackage(component.getPackageName()) != null;
+            mHiddenView.setVisibility(canHide ? View.VISIBLE : View.GONE);
 
             mHiddenView.setOnClickListener(v -> {
                 component.invertVisibility();
-
-                mHiddenView.setImageResource(component.isHidden() ?
-                        R.drawable.avd_hidden_lock : R.drawable.avd_hidden_unlock);
+                mHiddenView.setImageResource(component.isHidden()
+                        ? R.drawable.avd_hidden_lock : R.drawable.avd_hidden_unlock);
                 AnimatedVectorDrawable avd = (AnimatedVectorDrawable) mHiddenView.getDrawable();
-
-                int position = getAdapterPosition();
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-                    avd.registerAnimationCallback(new Animatable2.AnimationCallback() {
-                        @Override
-                        public void onAnimationEnd(Drawable drawable) {
-                            updateHiddenList(position, component);
-                        }
-                    });
-                    avd.start();
-                } else {
-                    avd.start();
-                    updateHiddenList(position, component);
-                }
+                runToggleAnimation(avd, () -> {
+                    mListener.onHiddenItemChanged(component);
+                    onComponentToggled(component);
+                });
             });
 
             mProtectedView.setOnClickListener(v -> {
                 component.invertProtection();
-
-                mProtectedView.setImageResource(component.isProtected() ?
-                        R.drawable.avd_protected_lock : R.drawable.avd_protected_unlock);
+                mProtectedView.setImageResource(component.isProtected()
+                        ? R.drawable.avd_protected_lock : R.drawable.avd_protected_unlock);
                 AnimatedVectorDrawable avd = (AnimatedVectorDrawable) mProtectedView.getDrawable();
-
-                int position = getAdapterPosition();
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-                    avd.registerAnimationCallback(new Animatable2.AnimationCallback() {
-                        @Override
-                        public void onAnimationEnd(Drawable drawable) {
-                            updateProtectedList(position, component);
-                        }
-                    });
-                    avd.start();
-                } else {
-                    avd.start();
-                    updateProtectedList(position, component);
-                }
+                runToggleAnimation(avd, () -> {
+                    mListener.onProtectedItemChanged(component);
+                    onComponentToggled(component);
+                });
             });
         }
 
-        private void updateHiddenList(int position, TrustComponent component) {
-            mListener.onHiddenItemChanged(component);
-            updateList(position, component);
+        private void runToggleAnimation(@Nullable AnimatedVectorDrawable avd, Runnable after) {
+            if (avd != null && Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                avd.registerAnimationCallback(new Animatable2.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        after.run();
+                    }
+                });
+                avd.start();
+            } else {
+                if (avd != null) avd.start();
+                after.run();
+            }
         }
 
-        private void updateProtectedList(int position, TrustComponent component) {
-            mListener.onProtectedItemChanged(component);
-            updateList(position, component);
-        }
-
-        private void updateList(int position, TrustComponent component) {
-            mList.set(position, component);
-            notifyItemChanged(position);
-        }
-    }
-
-    private static class Callback extends DiffUtil.Callback {
-        List<TrustComponent> mOldList;
-        List<TrustComponent> mNewList;
-
-        public Callback(List<TrustComponent> oldList,
-                        List<TrustComponent> newList) {
-            mOldList = oldList;
-            mNewList = newList;
-        }
-
-
-        @Override
-        public int getOldListSize() {
-            return mOldList.size();
-        }
-
-        @Override
-        public int getNewListSize() {
-            return mNewList.size();
-        }
-
-        @Override
-        public boolean areItemsTheSame(int iOld, int iNew) {
-            String oldPkg = mOldList.get(iOld).getPackageName();
-            String newPkg = mNewList.get(iNew).getPackageName();
-            return oldPkg.equals(newPkg);
-        }
-
-        @Override
-        public boolean areContentsTheSame(int iOld, int iNew) {
-            return mOldList.get(iOld).equals(mNewList.get(iNew));
+        private void onComponentToggled(@NonNull TrustComponent component) {
+            // Keep mComponents in sync; re-section so private/other headers stay correct.
+            for (int i = 0; i < mComponents.size(); i++) {
+                if (mComponents.get(i).getPackageName().equals(component.getPackageName())) {
+                    mComponents.set(i, component);
+                    break;
+                }
+            }
+            rebuildRows();
+            notifyDataSetChanged();
         }
     }
 }

@@ -16,12 +16,12 @@
 package com.android.launcher3.lineage.trust;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.PackageInfoFlags;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
 
@@ -29,8 +29,16 @@ import com.android.launcher3.lineage.trust.db.TrustComponent;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+/**
+ * Loads all trust-relevant apps. Private apps (locked and/or hidden) always appear
+ * even when package visibility would hide them from normal launch-intent queries.
+ */
 public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<TrustComponent>> {
     @NonNull
     private AppLockHelper mAppLockHelper;
@@ -56,41 +64,69 @@ public class LoadTrustComponentsTask extends AsyncTask<Void, Integer, List<Trust
 
     @Override
     protected List<TrustComponent> doInBackground(Void... voids) {
-        List<TrustComponent> list = new ArrayList<>();
+        // MANAGE name lists — used to discover private packages that may be
+        // missing from launch-intent queries after hide filtering.
+        Set<String> privatePkgs = new HashSet<>();
+        privatePkgs.addAll(mAppLockHelper.getLockedPackages());
+        privatePkgs.addAll(mAppLockHelper.getHiddenPackages());
+
+        Map<String, TrustComponent> byPackage = new HashMap<>();
 
         List<PackageInfo> apps = mPackageManager.getInstalledPackages(
-                    PackageInfoFlags.of(Long.valueOf(PackageManager.MATCH_ALL)));
+                PackageInfoFlags.of(PackageManager.MATCH_ALL));
 
-        // Lineage used Utils.launchablePackages + config_appLockAllowedSystemApps; those
-        // APIs are gone. A package is trust-relevant if it has a MAIN/LAUNCHER activity
-        // (same rule AxSandbox isPackageLockable uses via LauncherApps).
         int numPackages = apps.size();
         for (int i = 0; i < numPackages; i++) {
             PackageInfo app = apps.get(i);
-
             try {
                 String pkgName = app.packageName;
-                if (mPackageManager.getLaunchIntentForPackage(pkgName) != null) {
-                    String label = mPackageManager.getApplicationLabel(
-                            mPackageManager.getApplicationInfo(pkgName,
-                                    PackageManager.GET_META_DATA)).toString();
-                    Drawable icon = app.applicationInfo.loadIcon(mPackageManager);
-                    boolean isHidden = mAppLockHelper.isPackageHidden(pkgName);
-                    boolean isProtected = mAppLockHelper.isPackageProtected(pkgName);
-
-                    list.add(new TrustComponent(pkgName, icon, label, isHidden, isProtected));
+                boolean isPrivate = privatePkgs.contains(pkgName);
+                // Always include private packages; others only if launchable.
+                if (!isPrivate && mPackageManager.getLaunchIntentForPackage(pkgName) == null) {
+                    publishProgress(Math.round(i * 100f / numPackages));
+                    continue;
                 }
+                if (app.applicationInfo == null) {
+                    publishProgress(Math.round(i * 100f / numPackages));
+                    continue;
+                }
+                byPackage.put(pkgName, buildComponent(pkgName, app.applicationInfo));
+            } catch (Exception ignored) {
+            }
+            publishProgress(Math.round(i * 100f / numPackages));
+        }
 
-                publishProgress(Math.round(i * 100f / numPackages));
+        // Private packages may be filtered out of normal queries — force-add them.
+        for (String pkgName : privatePkgs) {
+            if (byPackage.containsKey(pkgName)) continue;
+            try {
+                ApplicationInfo ai = mPackageManager.getApplicationInfo(pkgName,
+                        PackageManager.ApplicationInfoFlags.of(PackageManager.MATCH_ALL));
+                byPackage.put(pkgName, buildComponent(pkgName, ai));
             } catch (PackageManager.NameNotFoundException ignored) {
             }
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Collections.sort(list, (a, b) -> a.getLabel().compareTo(b.getLabel()));
-        }
-
+        List<TrustComponent> list = new ArrayList<>(byPackage.values());
+        Collections.sort(list, (a, b) -> {
+            boolean aPriv = a.isHidden() || a.isProtected();
+            boolean bPriv = b.isHidden() || b.isProtected();
+            if (aPriv != bPriv) {
+                return aPriv ? -1 : 1;
+            }
+            return a.getLabel().compareToIgnoreCase(b.getLabel());
+        });
         return list;
+    }
+
+    @NonNull
+    private TrustComponent buildComponent(@NonNull String pkgName, @NonNull ApplicationInfo ai) {
+        String label = mPackageManager.getApplicationLabel(ai).toString();
+        Drawable icon = ai.loadIcon(mPackageManager);
+        // Live per-package reads for display state (authoritative for flags).
+        boolean isHidden = mAppLockHelper.isPackageHidden(pkgName);
+        boolean isProtected = mAppLockHelper.isPackageProtected(pkgName);
+        return new TrustComponent(pkgName, icon, label, isHidden, isProtected);
     }
 
     @Override

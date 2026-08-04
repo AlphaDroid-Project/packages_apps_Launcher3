@@ -24,6 +24,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Thin client for the platform {@link AxSandboxManager} API — same role as the old
  * {@code AppLockManager} bridge for Trust UI and drawer/recents observe paths.
@@ -108,6 +111,32 @@ public class AppLockHelper {
         } catch (RuntimeException e) {
             Log.w(TAG, "getHiddenPackagesCount failed", e);
             return 0;
+        }
+    }
+
+    /** MANAGE — package names on the lock list. */
+    @NonNull
+    public List<String> getLockedPackages() {
+        if (mSandboxManager == null) return Collections.emptyList();
+        try {
+            List<String> list = mSandboxManager.getLockedPackages();
+            return list != null ? list : Collections.emptyList();
+        } catch (RuntimeException e) {
+            Log.w(TAG, "getLockedPackages failed", e);
+            return Collections.emptyList();
+        }
+    }
+
+    /** MANAGE — package names on the hidden list. */
+    @NonNull
+    public List<String> getHiddenPackages() {
+        if (mSandboxManager == null) return Collections.emptyList();
+        try {
+            List<String> list = mSandboxManager.getHiddenPackages();
+            return list != null ? list : Collections.emptyList();
+        } catch (RuntimeException e) {
+            Log.w(TAG, "getHiddenPackages failed", e);
+            return Collections.emptyList();
         }
     }
 }

@@ -29,6 +29,7 @@ import android.util.Log;
 
 import com.android.launcher3.R;
 import com.android.launcher3.config.FeatureFlags;
+import com.android.launcher3.customization.IconDatabase;
 import com.android.launcher3.dagger.ApplicationContext;
 import com.android.launcher3.dagger.LauncherAppSingleton;
 import com.android.launcher3.graphics.ThemeManager;
@@ -73,7 +74,8 @@ public class LauncherIconProvider extends IconProvider {
 
     @Override
     public Drawable getIcon(ComponentInfo info, int iconDpi) {
-        if (info instanceof ActivityInfo) {
+        if (info instanceof ActivityInfo
+                && !TextUtils.isEmpty(IconDatabase.getGlobal(mContext))) {
             ActivityInfo activityInfo = (ActivityInfo) info;
             ComponentName cn = new ComponentName(activityInfo.packageName, activityInfo.name);
             Drawable iconPackIcon = AxIconsHelper.loadIconPackDrawable(mContext, cn, iconDpi);
@@ -87,7 +89,7 @@ public class LauncherIconProvider extends IconProvider {
     @Override
     public void updateSystemState() {
         super.updateSystemState();
-        String iconPack = AxIconsHelper.getActiveIconPackPackage(mContext);
+        String iconPack = IconDatabase.getGlobal(mContext);
         mSystemState += "," + mThemeManager.getIconState().toUniqueId()
             + Build.VERSION.INCREMENTAL
             + "," + (iconPack != null ? iconPack : "") + ",icon-pack-shape-v2";

@@ -18,12 +18,15 @@ public class IconDatabase {
     public static final String VALUE_DEFAULT = "";
 
     public static String getGlobal(Context context) {
-        String local = LauncherPrefs.getPrefs(context).getString(KEY_ICON_PACK, VALUE_DEFAULT);
-        if (local == null || local.isEmpty()) {
-            String themeEnginePack = AxIconsHelper.getActiveIconPackPackage(context);
-            if (themeEnginePack != null) return themeEnginePack;
+        SharedPreferences prefs = LauncherPrefs.getPrefs(context);
+        // An explicit launcher choice — including Default, stored as "" — must win
+        // over Theme Store. Only fall back when the user has never selected a pack.
+        if (prefs.contains(KEY_ICON_PACK)) {
+            String local = prefs.getString(KEY_ICON_PACK, VALUE_DEFAULT);
+            return local != null ? local : VALUE_DEFAULT;
         }
-        return local != null ? local : VALUE_DEFAULT;
+        String themeEnginePack = AxIconsHelper.getActiveIconPackPackage(context);
+        return themeEnginePack != null ? themeEnginePack : VALUE_DEFAULT;
     }
 
     public static String getGlobalLabel(Context context) {
@@ -44,13 +47,19 @@ public class IconDatabase {
     }
 
     public static void setGlobal(Context context, String value) {
-        LauncherPrefs.getPrefs(context).edit().putString(KEY_ICON_PACK, value).apply();
+        if (value == null) {
+            value = VALUE_DEFAULT;
+        }
+        // Theme engine must be updated first: SharedPreferences listeners fire
+        // synchronously from apply() on the UI thread, and both IDP and icon
+        // loading still read theme_engine_data via getGlobal() / AxIconsHelper.
         AxIconsHelper.setActiveIconPackPackage(context, value);
+        LauncherPrefs.getPrefs(context).edit().putString(KEY_ICON_PACK, value).apply();
     }
 
     public static void resetGlobal(Context context) {
-        LauncherPrefs.getPrefs(context).edit().remove(KEY_ICON_PACK).apply();
         AxIconsHelper.setActiveIconPackPackage(context, "");
+        LauncherPrefs.getPrefs(context).edit().remove(KEY_ICON_PACK).apply();
     }
 
     public static String getByComponent(Context context, ComponentKey key) {

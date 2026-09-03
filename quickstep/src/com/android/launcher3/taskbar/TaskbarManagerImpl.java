@@ -72,6 +72,7 @@ import android.util.ArraySet;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseBooleanArray;
+import android.util.SparseIntArray;
 import android.view.Display;
 import android.view.IWindowManager;
 import android.view.MotionEvent;
@@ -168,6 +169,9 @@ public class TaskbarManagerImpl implements DisplayDecorationListener {
             | ActivityInfo.CONFIG_SCREEN_LAYOUT
             | ActivityInfo.CONFIG_SMALLEST_SCREEN_SIZE;
 
+    private static final int MAX_ROOT_LAYOUT_ADD_RETRIES = 3;
+    private static final long ROOT_LAYOUT_ADD_RETRY_DELAY_MS = 100;
+
     private static final Uri USER_SETUP_COMPLETE_URI = Settings.Secure.getUriFor(
             Settings.Secure.USER_SETUP_COMPLETE);
 
@@ -230,6 +234,8 @@ public class TaskbarManagerImpl implements DisplayDecorationListener {
     private final SparseArray<FrameLayout> mRootLayouts = new SparseArray<>();
     /** DisplayId - {@link Boolean} map indicating if RootLayout was added to window. */
     private final SparseBooleanArray mAddedRootLayouts = new SparseBooleanArray();
+    /** DisplayId - retries left for a rejected RootLayout add. */
+    private final SparseIntArray mRootLayoutAddRetries = new SparseIntArray();
     /** DisplayId - {@link TaskbarNavButtonController} map for Connected Display. */
     private final SparseArray<TaskbarNavButtonController> mNavButtonControllers =
             new SparseArray<>();
@@ -1347,8 +1353,27 @@ public class TaskbarManagerImpl implements DisplayDecorationListener {
             FrameLayout rootLayout = getTaskbarRootLayoutForDisplay(displayId);
             WindowManager windowManager = getWindowManager(displayId);
             if (rootLayout != null && windowManager != null) {
-                windowManager.addView(rootLayout, taskbar.getWindowLayoutParams());
-                mAddedRootLayouts.put(displayId, true);
+                try {
+                    windowManager.addView(rootLayout, taskbar.getWindowLayoutParams());
+                    mAddedRootLayouts.put(displayId, true);
+                    mRootLayoutAddRetries.delete(displayId);
+                } catch (WindowManager.BadTokenException e) {
+                    // The navigation bar window is a singleton per display, so this add can lose a
+                    // race against the previous owner's window being reaped. Retry rather than
+                    // let it take down the launcher.
+                    mAddedRootLayouts.put(displayId, false);
+                    int retries = mRootLayoutAddRetries.get(displayId);
+                    debugTaskbarManager("addTaskbarRootViewToWindow: rejected, retry " + retries
+                            + "/" + MAX_ROOT_LAYOUT_ADD_RETRIES, displayId);
+                    if (retries < MAX_ROOT_LAYOUT_ADD_RETRIES) {
+                        mRootLayoutAddRetries.put(displayId, retries + 1);
+                        MAIN_EXECUTOR.getHandler().postDelayed(
+                                () -> recreateTaskbarForDisplay(displayId, /* duration= */ 0),
+                                ROOT_LAYOUT_ADD_RETRY_DELAY_MS);
+                    } else {
+                        mRootLayoutAddRetries.delete(displayId);
+                    }
+                }
             } else {
                 String rootLayoutStatus =
                         (rootLayout == null) ? "rootLayout is NULL!" : "rootLayout exists!";
@@ -1807,6 +1832,7 @@ public class TaskbarManagerImpl implements DisplayDecorationListener {
         debugTaskbarManager("removeTaskbarRootLayoutFromMap:", displayId);
         if (mRootLayouts.contains(displayId)) {
             mAddedRootLayouts.delete(displayId);
+            mRootLayoutAddRetries.delete(displayId);
             mRootLayouts.delete(displayId);
         }
 

@@ -8,8 +8,6 @@
     <string name="action_lock">Uygulama kilitle/kilidi aç</string>
     <string name="unlock_app">Son kullanılanlarda uygulamanın kilidini açıldı</string>
     <string name="lock_app">Son kullanılanlarda uygulama kilitlendi</string>
-    <string name="action_lock_locked">Kilitli</string>
-    <string name="action_lock_unlocked">Kilitli değil</string>
     <!-- Recents style -->
     <string name="recents_style_title">Son kullanılanlar düzeni stili</string>
     <string name="recents_style_stock">Varsayılan</string>
